@@ -3,438 +3,663 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pizzeria u Marka — Prawdziwa pizza z pieca, Kraków</title>
-<meta name="description" content="Pizzeria u Marka w Krakowie. Pizza z pieca opalanego drewnem, dostawa i odbiór własny. Zamów online.">
+<title>Pizzeria u Marka — Kraków Kazimierz</title>
+<meta name="description" content="Prawdziwa pizza z pieca opalanego drewnem. Kraków, Kazimierz. Zamów z dostawą lub przyjdź do nas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --bg: #0f0d0b;
-  --surface: #1a1612;
-  --surface2: #231e18;
-  --border: rgba(255,255,255,0.08);
-  --border2: rgba(255,255,255,0.14);
-  --text: #f5f0e8;
-  --muted: #8a8078;
-  --accent: #e8622a;
-  --accent2: #d4501e;
-  --gold: #d4a947;
+  --cream: #f5f0e6;
+  --cream2: #ede5d4;
+  --paper: #faf7f2;
+  --ink: #2a2118;
+  --ink2: #3d2f1f;
+  --muted: #8a7a66;
+  --red: #b83a1a;
+  --red2: #a02f12;
+  --gold: #c8942a;
+  --border: rgba(42,33,24,0.12);
+  --border2: rgba(42,33,24,0.22);
 }
+
+html { scroll-behavior: smooth; }
+
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
+/* ── TEKSTURY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 48px;
-  background: rgba(15,13,11,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  padding: 0 52px; height: 64px;
+  background: rgba(245,240,230,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border2);
 }
 .nav-logo {
-  font-family: 'Syne', sans-serif; font-weight: 800;
-  font-size: 20px; color: var(--text); text-decoration: none;
-  letter-spacing: -0.02em;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 30px; color: var(--ink2);
+  text-decoration: none; line-height: 1;
+  letter-spacing: 0.01em;
 }
-.nav-logo span { color: var(--accent); }
-.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text); }
+.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 13px;
+  font-weight: 500; padding: 6px 14px; border-radius: 6px;
+  letter-spacing: 0.03em; transition: color 0.2s, background 0.2s;
+  text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em;
+}
+.nav-links a:hover { color: var(--ink); background: rgba(42,33,24,0.06); }
 .nav-order {
-  background: var(--accent); color: #fff !important;
-  padding: 9px 20px; border-radius: 8px; font-size: 14px !important;
-  font-weight: 700 !important; text-decoration: none; transition: background 0.2s;
+  background: var(--red) !important; color: #fff !important;
+  border-radius: 7px; font-weight: 500 !important;
+  transition: background 0.2s !important;
 }
-.nav-order:hover { background: var(--accent2) !important; }
+.nav-order:hover { background: var(--red2) !important; }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 120px 48px 80px;
-  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  padding: 100px 52px 72px;
   position: relative;
+  overflow: hidden;
 }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,148,42,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(184,58,26,0.06) 0%, transparent 60%);
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; position: relative; z-index: 1;
+}
+.hero-left {}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
 }
-.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 800; line-height: 0.95;
-  letter-spacing: -0.03em; margin-bottom: 24px;
-  max-width: 12ch;
+.hero-tag::before, .hero-tag::after {
+  content: ''; display: block; flex: 1;
+  height: 1px; background: var(--gold); width: 20px; opacity: 0.5;
 }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero-sub { font-size: 18px; color: var(--muted); max-width: 480px; line-height: 1.7; margin-bottom: 40px; }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 60px; }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 80px);
+  font-weight: 600; font-style: italic;
+  line-height: 1.0; letter-spacing: -0.01em;
+  color: var(--ink2); margin-bottom: 20px;
+}
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero-sub {
+  font-size: 17px; color: var(--muted); line-height: 1.75;
+  max-width: 380px; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-red {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent); color: #fff;
-  font-weight: 700; font-size: 15px; padding: 14px 28px;
-  border-radius: 10px; text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--red); color: #fff;
+  font-weight: 500; font-size: 14px; padding: 13px 28px;
+  border-radius: 8px; text-decoration: none;
+  letter-spacing: 0.02em;
   transition: background 0.2s, transform 0.15s;
 }
-.btn-red:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn-red:hover { background: var(--red2); transform: translateY(-1px); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border2); color: var(--muted);
-  font-size: 15px; padding: 14px 28px; border-radius: 10px;
-  text-decoration: none; transition: color 0.2s, border-color 0.2s;
+  border: 1px solid var(--border2); color: var(--ink2);
+  font-size: 14px; padding: 13px 24px; border-radius: 8px;
+  text-decoration: none; letter-spacing: 0.02em;
+  transition: border-color 0.2s, background 0.2s;
 }
-.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+.btn-ghost:hover { border-color: var(--ink2); background: rgba(42,33,24,0.04); }
 
-.hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
-.chip {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 99px; padding: 7px 16px;
-  font-size: 13px; font-weight: 600; color: var(--muted);
+/* Hero dekoracja */
+.hero-deco {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
 }
-
-/* SECTION */
-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
-.section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px; }
-.section-sub { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.7; margin-bottom: 48px; }
-hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
-
-/* MENU */
-.menu-tabs { display: flex; gap: 2px; margin-bottom: 32px; background: var(--surface); border-radius: 12px; padding: 4px; width: fit-content; }
-.menu-tab {
-  padding: 9px 20px; border-radius: 9px; font-size: 14px; font-weight: 600;
-  cursor: pointer; border: none; background: none; color: var(--muted);
-  font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s;
-}
-.menu-tab.active { background: var(--accent); color: #fff; }
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.menu-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.menu-card:hover { border-color: var(--border2); transform: translateY(-3px); }
-.menu-thumb {
-  height: 160px; background: var(--surface2);
+.hero-plate {
+  width: 340px; height: 340px; border-radius: 50%;
+  background: var(--cream2);
+  border: 1px solid var(--border2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 52px; position: relative;
+  position: relative;
+  box-shadow: inset 0 2px 20px rgba(42,33,24,0.06), 0 8px 40px rgba(42,33,24,0.08);
 }
-.menu-badge {
-  position: absolute; top: 12px; right: 12px;
-  background: var(--accent); color: #fff;
-  font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+.hero-plate::before {
+  content: '';
+  position: absolute; inset: 16px;
+  border-radius: 50%; border: 1px dashed rgba(42,33,24,0.15);
 }
-.menu-info { padding: 18px 20px 22px; }
-.menu-name { font-weight: 700; font-size: 16px; margin-bottom: 5px; }
-.menu-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
-.menu-footer { display: flex; justify-content: space-between; align-items: center; }
-.menu-price { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
-.menu-sizes { font-size: 12px; color: var(--muted); }
-.btn-add {
-  background: var(--accent); color: #fff; border: none; cursor: pointer;
-  width: 32px; height: 32px; border-radius: 8px; font-size: 18px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.2s;
+.hero-pizza-icon { font-size: 110px; line-height: 1; }
+.hero-plate-label {
+  position: absolute; bottom: 32px;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 22px; color: var(--gold); letter-spacing: 0.02em;
 }
-.btn-add:hover { background: var(--accent2); }
+.hero-badges {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+}
+.badge-pill {
+  background: var(--paper); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 6px 14px;
+  font-size: 12px; color: var(--muted); font-weight: 500;
+  letter-spacing: 0.02em;
+}
 
-/* ZAMÓWIENIE */
-.order-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.order-form { display: flex; flex-direction: column; gap: 12px; }
-.order-form input, .order-form select, .order-form textarea {
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px; padding: 13px 16px; border-radius: 10px;
-  outline: none; width: 100%; appearance: none; transition: border-color 0.2s;
+/* ── DIVIDER OZDOBNY ── */
+.ornament-divider {
+  text-align: center; padding: 8px 0; color: var(--gold);
+  font-size: 18px; letter-spacing: 12px; opacity: 0.5;
+  user-select: none;
 }
-.order-form input:focus, .order-form select:focus { border-color: var(--accent); }
-.order-form select option { background: #1a1612; }
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.full-divider { border: none; border-top: 1px solid var(--border2); margin: 0 52px; }
+
+/* ── SECTION ── */
+.section { padding: 80px 52px; max-width: 1100px; margin: 0 auto; }
+.section-eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.section-eyebrow::before, .section-eyebrow::after {
+  content: ''; display: block; height: 1px;
+  background: var(--gold); opacity: 0.4; flex: 0 0 24px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600; font-style: italic;
+  letter-spacing: -0.01em; line-height: 1.1;
+  color: var(--ink2); margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 16px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 48px;
+}
+
+/* ── MENU ── */
+.menu-tabs {
+  display: flex; gap: 2px; margin-bottom: 36px;
+  border-bottom: 1px solid var(--border2); padding-bottom: 0;
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 10px 22px; font-size: 13px; font-weight: 500;
+  cursor: pointer; border: none; background: none;
+  color: var(--muted); font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab.active { color: var(--red); border-bottom-color: var(--red); }
+.tab:hover:not(.active) { color: var(--ink); }
+
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; }
+.menu-item {
+  background: var(--paper);
+  padding: 24px 26px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  transition: background 0.15s;
+  cursor: default;
+}
+.menu-item:hover { background: var(--cream2); }
+.menu-item-left { flex: 1; }
+.menu-item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 600; color: var(--ink2);
+  margin-bottom: 5px; line-height: 1.2;
+}
+.menu-item-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.menu-item-tag {
+  display: inline-block; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--red); background: rgba(184,58,26,0.08);
+  border-radius: 4px; padding: 2px 7px; margin-top: 8px;
+}
+.menu-item-right { text-align: right; flex-shrink: 0; }
+.menu-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--ink2);
+  line-height: 1;
+}
+.menu-sizes { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* ── O NAS ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-img {
+  aspect-ratio: 4/3;
+  background: var(--cream2);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  border: 1px solid var(--border2);
+  position: relative; overflow: hidden;
+}
+.about-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(200,148,42,0.08), transparent);
+}
+.about-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-style: italic; color: var(--gold);
+  letter-spacing: 0.04em; margin-bottom: 14px;
+}
+.about-text {
+  font-size: 15px; color: var(--muted); line-height: 1.8;
+  margin-bottom: 24px;
+}
+.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.fact-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 600; font-style: italic;
+  color: var(--red); line-height: 1;
+}
+.fact-label { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* ── ZAMÓW ── */
+.order-wrap { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: start; }
 .order-toggle {
-  display: flex; gap: 2px; background: var(--surface);
-  border-radius: 10px; padding: 4px;
+  display: flex; gap: 0; margin-bottom: 24px;
+  border: 1px solid var(--border2); border-radius: 9px; overflow: hidden; width: fit-content;
 }
-.order-toggle button {
-  flex: 1; padding: 10px; border: none; border-radius: 8px;
-  font-size: 14px; font-weight: 600; cursor: pointer;
-  font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s;
-  background: none; color: var(--muted);
+.toggle-btn {
+  padding: 10px 24px; font-size: 13px; font-weight: 500;
+  border: none; cursor: pointer; background: none; color: var(--muted);
+  font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+  letter-spacing: 0.03em;
 }
-.order-toggle button.active { background: var(--accent); color: #fff; }
+.toggle-btn.active { background: var(--red); color: #fff; }
 
-.info-block { display: flex; flex-direction: column; gap: 22px; }
-.info-item-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.info-item-val { font-size: 15px; color: var(--text); line-height: 1.6; }
-.info-item-val a { color: var(--accent); text-decoration: none; }
+.order-form { display: flex; flex-direction: column; gap: 11px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.order-form input, .order-form select, .order-form textarea {
+  background: var(--paper); border: 1px solid var(--border2);
+  color: var(--ink); font-family: 'DM Sans', sans-serif;
+  font-size: 15px; padding: 12px 16px; border-radius: 9px;
+  outline: none; width: 100%; appearance: none;
+  transition: border-color 0.15s;
+}
+.order-form input::placeholder { color: rgba(138,122,102,0.6); }
+.order-form input:focus, .order-form select:focus { border-color: var(--gold); }
+.order-form select option { background: var(--paper); }
 
-.hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; font-size: 14px; }
-.hours-grid .day { color: var(--muted); }
-.hours-grid .time { color: var(--text); font-weight: 600; }
-
-.map-placeholder {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; height: 160px;
+.info-side { display: flex; flex-direction: column; gap: 28px; }
+.info-block-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+}
+.info-block-val { font-size: 15px; color: var(--ink2); line-height: 1.7; }
+.info-block-val a { color: var(--red); text-decoration: none; }
+.hours-row { display: flex; justify-content: space-between; font-size: 14px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.hours-row:last-child { border-bottom: none; }
+.hours-day { color: var(--muted); }
+.hours-time { font-weight: 500; color: var(--ink2); }
+.map-box {
+  background: var(--cream2); border: 1px solid var(--border2);
+  border-radius: 12px; height: 140px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; color: var(--muted); margin-top: 4px;
+  font-size: 13px; color: var(--muted);
 }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border); padding: 36px 48px;
-  max-width: 1200px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+/* ── OPINIE ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.review-card {
+  background: var(--paper); border: 1px solid var(--border2);
+  border-radius: 14px; padding: 24px 26px;
 }
-.footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
-.footer-logo span { color: var(--accent); }
-footer p { font-size: 13px; color: var(--muted); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--text); }
+.review-stars { color: var(--gold); font-size: 13px; letter-spacing: 3px; margin-bottom: 12px; }
+.review-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic; color: var(--ink2);
+  line-height: 1.65; margin-bottom: 16px;
+}
+.review-author { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.03em; }
 
-/* DEMO BAR */
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--ink2); color: rgba(245,240,230,0.7);
+  padding: 52px; text-align: center;
+}
+.footer-logo {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 44px; color: var(--cream);
+  display: block; margin-bottom: 16px; text-decoration: none;
+  line-height: 1;
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic; color: var(--gold);
+  letter-spacing: 0.04em; margin-bottom: 28px;
+}
+.footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 28px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: rgba(245,240,230,0.45); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { font-size: 12px; color: rgba(245,240,230,0.3); }
+
+/* ── DEMO BAR ── */
 .demo-bar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: #fff; color: #1a1a1a;
+  background: var(--ink2); color: rgba(245,240,230,0.8);
   display: flex; align-items: center; justify-content: center; gap: 16px;
-  padding: 12px 20px; font-size: 13px;
-  border-top: 1px solid #e0e0e0;
+  padding: 11px 20px; font-size: 12px; letter-spacing: 0.02em;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
-.demo-bar a { color: var(--accent); text-decoration: none; font-weight: 700; }
+.demo-bar a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 100px 20px 60px; }
-  section { padding: 60px 20px; }
-  hr.divider { margin: 0 20px; }
-  .order-wrapper { grid-template-columns: 1fr; gap: 36px; }
-  .form-row-2 { grid-template-columns: 1fr; }
-  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-deco { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .order-wrap { grid-template-columns: 1fr; gap: 36px; }
 }
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 90px 24px 60px; }
+  .section { padding: 60px 24px; }
+  .full-divider { margin: 0 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .site-footer { padding: 40px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
 <div class="demo-bar">
-  🍕 To jest strona demo stworzona przez <a href="index.html">Kuba.dev</a> — przykład realizacji dla pizzerii &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
+  Strona demo — realizacja <a href="index.html">deczdev</a> · przykład dla pizzerii &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
 </div>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">u Marka<span>.</span></a>
+  <a href="#" class="nav-logo">u Marka</a>
   <ul class="nav-links">
     <li><a href="#menu">Menu</a></li>
-    <li><a href="#zamow">Zamów</a></li>
-    <li><a href="#kontakt-pizzeria">Kontakt</a></li>
+    <li><a href="#o-nas">O nas</a></li>
+    <li><a href="#opinie">Opinie</a></li>
     <li><a href="#zamow" class="nav-order">Zamów online</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Pizza z pieca opalanego drewnem · Kraków Kazimierz</div>
-  <h1>Prawdziwa<br>pizza, bez<br><em>kompromisów.</em></h1>
-  <p class="hero-sub">Ciasto na zakwasie przez 48 godzin, san marzano prosto z Włoch, piec opalany dębem. Dowóz w 35 minut lub odbiór własny.</p>
-  <div class="hero-actions">
-    <a href="#zamow" class="btn-red">Zamów online →</a>
-    <a href="#menu" class="btn-ghost">Zobacz menu</a>
-  </div>
-  <div class="hero-chips">
-    <span class="chip">🔥 Piec dębowy 450°C</span>
-    <span class="chip">🌿 Składniki z Włoch</span>
-    <span class="chip">⏱ Dowóz 35 min</span>
-    <span class="chip">📍 Kazimierz, Kraków</span>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">Kraków · Kazimierz · od 1997</div>
+      <h1>Pizza jak<br>w <em>Neapolu</em>,<br>w sercu<br>Krakowa.</h1>
+      <p class="hero-sub">Ciasto na naturalnym zakwasie, piec opalany dębem rozgrzany do 450°C, składniki sprowadzane prosto z Włoch. Bez kompromisów.</p>
+      <div class="hero-actions">
+        <a href="#zamow" class="btn-red">Zamów z dostawą →</a>
+        <a href="#menu" class="btn-ghost">Zobacz menu</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <div class="hero-plate">
+        <div class="hero-pizza-icon">🍕</div>
+        <div class="hero-plate-label">fatto a mano</div>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-pill">🔥 Piec dębowy</span>
+        <span class="badge-pill">🌿 Bio składniki</span>
+        <span class="badge-pill">⏱ Dowóz 35 min</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
+<hr class="full-divider">
+<div class="ornament-divider">✦ ✦ ✦</div>
+<hr class="full-divider">
 
 <!-- MENU -->
-<section id="menu">
-  <div class="section-label">Menu</div>
+<section class="section" id="menu">
+  <div class="section-eyebrow">Menu</div>
   <h2 class="section-title">Nasze pizze</h2>
-  <p class="section-sub">Każda pizza robiona na zamówienie — ciasto, sos, dodatki świeże każdego dnia.</p>
+  <p class="section-sub">Każda pizza robiona na zamówienie — ciasto wyrastało 48 godzin, sos ze świeżych pomidorów, składniki dobierane codziennie.</p>
 
   <div class="menu-tabs">
-    <button class="menu-tab active">Klasyczne</button>
-    <button class="menu-tab">Specjalne</button>
-    <button class="menu-tab">Wegetariańskie</button>
-    <button class="menu-tab">Napoje</button>
+    <button class="tab active" onclick="switchTab(this)">Klasyczne</button>
+    <button class="tab" onclick="switchTab(this)">Specjalne</button>
+    <button class="tab" onclick="switchTab(this)">Wegetariańskie</button>
+    <button class="tab" onclick="switchTab(this)">Napoje</button>
   </div>
 
   <div class="menu-grid">
-    <div class="menu-card">
-      <div class="menu-thumb">🍕</div>
-      <div class="menu-info">
-        <div class="menu-name">Margherita</div>
-        <div class="menu-desc">San marzano, fior di latte, świeża bazylia, oliwa extra vergine. Klasyk który zachwyca prostotą.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">32 zł</div>
-            <div class="menu-sizes">30 cm · 40 cm +10 zł</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
-        </div>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Margherita</div>
+        <div class="menu-item-desc">San marzano, fior di latte, świeża bazylia, oliwa extra vergine</div>
+      </div>
+      <div class="menu-item-right">
+        <div class="menu-price">32 zł</div>
+        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
       </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-thumb">🍕
-        <div class="menu-badge">Bestseller</div>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Diavola</div>
+        <div class="menu-item-desc">San marzano, mozzarella, salami piccante, chili, czarne oliwki</div>
+        <span class="menu-item-tag">Bestseller</span>
       </div>
-      <div class="menu-info">
-        <div class="menu-name">Diavola</div>
-        <div class="menu-desc">San marzano, mozzarella, salami piccante, chili, czarne oliwki. Ostra i intensywna.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">42 zł</div>
-            <div class="menu-sizes">30 cm · 40 cm +10 zł</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
-        </div>
+      <div class="menu-item-right">
+        <div class="menu-price">42 zł</div>
+        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
       </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-thumb">🍕</div>
-      <div class="menu-info">
-        <div class="menu-name">Quattro Formaggi</div>
-        <div class="menu-desc">Mozzarella, gorgonzola, parmezan, taleggio. Kremowa i intensywna — dla miłośników sera.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">46 zł</div>
-            <div class="menu-sizes">30 cm · 40 cm +10 zł</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
-        </div>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Quattro Formaggi</div>
+        <div class="menu-item-desc">Mozzarella, gorgonzola, parmezan, taleggio</div>
+      </div>
+      <div class="menu-item-right">
+        <div class="menu-price">46 zł</div>
+        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
       </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-thumb">🍕
-        <div class="menu-badge">Nowość</div>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Prosciutto e Funghi</div>
+        <div class="menu-item-desc">San marzano, mozzarella, szynka parmeńska, pieczarki, rukola</div>
       </div>
-      <div class="menu-info">
-        <div class="menu-name">u Marka Specjalna</div>
-        <div class="menu-desc">Sos truflowy, mozzarella, pieczarki portobello, parmezan, roszponka. Nasz popis.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">54 zł</div>
-            <div class="menu-sizes">30 cm · 40 cm +10 zł</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
-        </div>
+      <div class="menu-item-right">
+        <div class="menu-price">48 zł</div>
+        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
       </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-thumb">🍕</div>
-      <div class="menu-info">
-        <div class="menu-name">Prosciutto e Funghi</div>
-        <div class="menu-desc">San marzano, mozzarella, szynka parmeńska, pieczarki, rukola po upieczeniu.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">48 zł</div>
-            <div class="menu-sizes">30 cm · 40 cm +10 zł</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
-        </div>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">u Marka Specjalna</div>
+        <div class="menu-item-desc">Sos truflowy, mozzarella, portobello, parmezan, roszponka</div>
+        <span class="menu-item-tag">Nowość</span>
+      </div>
+      <div class="menu-item-right">
+        <div class="menu-price">54 zł</div>
+        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
       </div>
     </div>
-    <div class="menu-card">
-      <div class="menu-thumb">🍕</div>
-      <div class="menu-info">
-        <div class="menu-name">Calzone</div>
-        <div class="menu-desc">Zamknięte ciasto z ricottą, mozzarellą, szpinakiem i szynką. Podawane z sosem marinara.</div>
-        <div class="menu-footer">
-          <div>
-            <div class="menu-price">44 zł</div>
-            <div class="menu-sizes">Jeden rozmiar</div>
-          </div>
-          <button class="btn-add" onclick="this.textContent='✓';this.style.background='#2d6a4f'">+</button>
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">Calzone</div>
+        <div class="menu-item-desc">Ricotta, mozzarella, szpinak, szynka — podawany z marinara</div>
+      </div>
+      <div class="menu-item-right">
+        <div class="menu-price">44 zł</div>
+        <div class="menu-sizes">Jeden rozmiar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+<div class="ornament-divider">✦ ✦ ✦</div>
+<hr class="full-divider">
+
+<!-- O NAS -->
+<section class="section" id="o-nas">
+  <div class="about-grid">
+    <div class="about-img">🍕</div>
+    <div>
+      <div class="about-label">Nasza historia</div>
+      <h2 class="section-title" style="margin-bottom:16px">Trzy pokolenia,<br>jedna receptura.</h2>
+      <p class="about-text">Marek Wiśniewski otworzył pizzerię w 1997 roku po powrocie z Neapolu, gdzie przez dwa lata uczył się rzemiosła od lokalnych mistrzów. Dziś prowadzi ją razem z synem — z tą samą recepturą na ciasto i tym samym piecem, który pamieta pierwsze dni.</p>
+      <p class="about-text">Nie robimy pizzy na skróty. Ciasto wyrasta 48 godzin, sos gotujemy codziennie rano, a składniki zamawiamy dwa razy w tygodniu prosto z Włoch.</p>
+      <div class="about-facts">
+        <div>
+          <div class="fact-num">27</div>
+          <div class="fact-label">lat na Kazimierzu</div>
+        </div>
+        <div>
+          <div class="fact-num">450°</div>
+          <div class="fact-label">temperatura pieca</div>
+        </div>
+        <div>
+          <div class="fact-num">48h</div>
+          <div class="fact-label">wyrastanie ciasta</div>
+        </div>
+        <div>
+          <div class="fact-num">4,9★</div>
+          <div class="fact-label">średnia 124 opinii</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<hr class="full-divider">
+<div class="ornament-divider">✦ ✦ ✦</div>
+<hr class="full-divider">
+
+<!-- OPINIE -->
+<section class="section" id="opinie">
+  <div class="section-eyebrow">Opinie</div>
+  <h2 class="section-title">Co mówią goście</h2>
+  <p class="section-sub">124 opinie w Google — średnia 4,9 na 5.</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-quote">„Najlepsza pizza w Krakowie bez żadnej dyskusji. Ciasto cienkie, chrupiące, składniki świeże. Wracam tu od dziesięciu lat i nigdy się nie zawiodłam."</div>
+      <div class="review-author">Marta W. · 2 tygodnie temu</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-quote">„Przychodzimy tu całą rodziną od lat. Pan Marek zawsze przywituje z uśmiechem, pizza zawsze taka sama — doskonała. To rzadkość."</div>
+      <div class="review-author">Tomasz K. · miesiąc temu</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-quote">„Byłam w pizzeriach w Neapolu, Rzymie, Florencji. U Marka jest na tym samym poziomie. Serio. I to w Krakowie — niesamowite."</div>
+      <div class="review-author">Karolina P. · 3 tygodnie temu</div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+<div class="ornament-divider">✦ ✦ ✦</div>
+<hr class="full-divider">
 
 <!-- ZAMÓW -->
-<section id="zamow">
-  <div class="section-label">Zamówienie</div>
+<section class="section" id="zamow">
+  <div class="section-eyebrow">Zamówienie</div>
   <h2 class="section-title">Zamów online</h2>
-  <p class="section-sub">Dowóz w 35 minut lub odbiór własny bez czekania. Płatność przy odbiorze lub kartą online.</p>
+  <p class="section-sub">Dowóz w 35 minut lub odbiór bez czekania. Płatność przy odbiorze lub kartą.</p>
 
-  <div class="order-wrapper">
-    <form class="order-form">
+  <div class="order-wrap">
+    <div>
       <div class="order-toggle">
-        <button type="button" class="active" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🛵 Dowóz</button>
-        <button type="button" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🏃 Odbiór własny</button>
+        <button class="toggle-btn active" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🛵 Dowóz</button>
+        <button class="toggle-btn" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🏃 Odbiór</button>
       </div>
-      <div class="form-row-2">
-        <input type="text" placeholder="Imię *">
-        <input type="tel" placeholder="Telefon *">
-      </div>
-      <input type="text" placeholder="Ulica i numer domu *">
-      <div class="form-row-2">
-        <input type="text" placeholder="Kod pocztowy">
-        <input type="text" placeholder="Miasto" value="Kraków">
-      </div>
-      <select>
-        <option value="" disabled selected>Sposób płatności</option>
-        <option>Gotówka przy odbiorze</option>
-        <option>Karta przy odbiorze</option>
-        <option>Przelew online (Przelewy24)</option>
-        <option>BLIK</option>
-      </select>
-      <textarea placeholder="Uwagi do zamówienia (np. bez cebuli, dzwonek nie działa...)" style="min-height:80px;resize:none"></textarea>
-      <button type="button" class="btn-red" style="border:none;cursor:pointer" onclick="this.textContent='Zamówiono ✓';this.style.background='#2d6a4f'">
-        Złóż zamówienie →
-      </button>
-      <p style="font-size:13px;color:var(--muted)">Minimalna kwota zamówienia: 40 zł. Dowóz w promieniu 5 km — bezpłatny.</p>
-    </form>
+      <form class="order-form">
+        <div class="form-row">
+          <input type="text" placeholder="Imię i nazwisko *">
+          <input type="tel" placeholder="Telefon *">
+        </div>
+        <input type="text" placeholder="Ulica i numer *">
+        <div class="form-row">
+          <input type="text" placeholder="Kod pocztowy">
+          <input type="text" placeholder="Miasto" value="Kraków">
+        </div>
+        <select>
+          <option value="" disabled selected>Sposób płatności</option>
+          <option>Gotówka przy odbiorze</option>
+          <option>Karta przy odbiorze</option>
+          <option>BLIK</option>
+          <option>Przelew online</option>
+        </select>
+        <input type="text" placeholder="Uwagi (np. bez cebuli, kod do bramy...)">
+        <button type="button" class="btn-red" style="border:none;cursor:pointer;justify-content:center" onclick="this.textContent='Zamówiono ✓';this.style.background='#2d6a4f'">
+          Złóż zamówienie →
+        </button>
+        <p style="font-size:12px;color:var(--muted)">Minimum zamówienia: 40 zł. Bezpłatny dowóz w promieniu 5 km.</p>
+      </form>
+    </div>
 
-    <div class="info-block">
+    <div class="info-side">
       <div>
-        <div class="info-item-label">Adres</div>
-        <div class="info-item-val">ul. Józefa 14, 31-056 Kraków<br><span style="color:var(--muted);font-size:14px">Kazimierz, przy Placu Nowym</span></div>
+        <div class="info-block-label">Adres</div>
+        <div class="info-block-val">ul. Józefa 14<br>31-056 Kraków — Kazimierz</div>
       </div>
       <div>
-        <div class="info-item-label">Telefon</div>
-        <div class="info-item-val"><a href="tel:+48122345678">+48 12 234 56 78</a></div>
+        <div class="info-block-label">Telefon</div>
+        <div class="info-block-val"><a href="tel:+48122345678">+48 12 234 56 78</a></div>
       </div>
       <div>
-        <div class="info-item-label">Godziny</div>
-        <div class="hours-grid">
-          <span class="day">Pon – Czw</span><span class="time">12:00 – 22:00</span>
-          <span class="day">Pt – Sob</span><span class="time">12:00 – 23:30</span>
-          <span class="day">Niedziela</span><span class="time">13:00 – 22:00</span>
+        <div class="info-block-label">Godziny</div>
+        <div>
+          <div class="hours-row"><span class="hours-day">Pon – Czw</span><span class="hours-time">12:00 – 22:00</span></div>
+          <div class="hours-row"><span class="hours-day">Pt – Sob</span><span class="hours-time">12:00 – 23:30</span></div>
+          <div class="hours-row"><span class="hours-day">Niedziela</span><span class="hours-time">13:00 – 22:00</span></div>
         </div>
       </div>
-      <div>
-        <div class="info-item-label">Dowóz</div>
-        <div class="info-item-val">Bezpłatny · promień 5 km<br><span style="color:var(--muted);font-size:14px">Czas oczekiwania ok. 35 minut</span></div>
-      </div>
-      <div class="map-placeholder">📍 ul. Józefa 14, Kraków Kazimierz</div>
+      <div class="map-box">📍 ul. Józefa 14, Kraków Kazimierz</div>
     </div>
   </div>
 </section>
 
-<footer id="kontakt-pizzeria">
-  <a href="#" class="footer-logo">u Marka<span>.</span></a>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <a href="#" class="footer-logo">u Marka</a>
+  <div class="footer-tagline">Prawdziwa pizza z pieca · Kraków od 1997</div>
   <nav class="footer-links">
     <a href="#menu">Menu</a>
+    <a href="#o-nas">O nas</a>
+    <a href="#opinie">Opinie</a>
     <a href="#zamow">Zamów</a>
   </nav>
-  <p>© 2026 Pizzeria u Marka · Kraków Kazimierz</p>
+  <div class="footer-copy">© 2026 Pizzeria u Marka · ul. Józefa 14, Kraków</div>
 </footer>
 
+<script>
+function switchTab(el) {
+  el.parentNode.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
 </body>
 </html>
