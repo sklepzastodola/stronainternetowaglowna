@@ -3,426 +3,692 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fryzjer Kowalski — Zakład Fryzjerski Warszawa</title>
-<meta name="description" content="Zakład fryzjerski w sercu Warszawy. Strzyżenie, koloryzacja, stylizacja. Umów wizytę online.">
+<title>Fryzjer Kowalski — Salon Fryzjerski Warszawa</title>
+<meta name="description" content="Profesjonalny salon fryzjerski w Warszawie. Strzyżenie, koloryzacja, stylizacja. Umów wizytę online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --bg: #faf9f7;
-  --surface: #ffffff;
-  --border: #e8e4df;
-  --text: #1a1a1a;
-  --muted: #6b6b6b;
-  --accent: #c9a96e;
-  --accent2: #b8935a;
-  --dark: #1a1a1a;
+  --bg: #0a0a08;
+  --surface: #111110;
+  --surface2: #1a1a18;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #e8e4dc;
+  --muted: #6a6860;
+  --gold: #c8a86a;
+  --gold2: #b8944e;
+  --cream: #f0e8d8;
+  --radius: 12px;
 }
+
+html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 48px;
-  background: rgba(250,249,247,0.92);
-  backdrop-filter: blur(10px);
+  padding: 0 52px; height: 68px;
+  background: rgba(10,10,8,0.96);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text); }
-.nav-book {
-  background: var(--dark); color: #fff !important;
-  padding: 9px 20px; border-radius: 8px; font-size: 14px !important;
-  font-weight: 600 !important; text-decoration: none; transition: background 0.2s;
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300; font-style: italic;
+  color: var(--cream); text-decoration: none; letter-spacing: 0.04em;
 }
-.nav-book:hover { background: #333 !important; }
+.nav-logo em { font-style: normal; color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 13px;
+  font-weight: 500; padding: 7px 14px; border-radius: 7px;
+  letter-spacing: 0.04em; transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--cream); }
+.nav-book {
+  background: var(--gold) !important; color: #0a0a08 !important;
+  font-weight: 600 !important; border-radius: 8px;
+  transition: background 0.2s !important;
+}
+.nav-book:hover { background: var(--gold2) !important; }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 100px 48px 60px;
-  max-width: 1200px; margin: 0 auto;
-  gap: 60px;
+  padding-top: 68px;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 64px 80px 52px;
 }
 .hero-eyebrow {
-  font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
 }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); opacity: 0.6; }
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(40px, 5vw, 68px);
-  font-weight: 700; line-height: 1.1;
-  letter-spacing: -0.01em; margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 5.5vw, 82px);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -0.01em; color: var(--cream);
+  margin-bottom: 24px;
 }
-.hero-sub { font-size: 17px; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-dark {
+.hero h1 strong { font-weight: 600; font-style: italic; color: var(--gold); display: block; }
+.hero-sub {
+  font-size: 16px; color: var(--muted); line-height: 1.8;
+  max-width: 380px; margin-bottom: 40px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+.btn-gold {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--dark); color: #fff;
-  font-weight: 600; font-size: 15px; padding: 14px 28px;
-  border-radius: 10px; text-decoration: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: background 0.2s;
+  background: var(--gold); color: #0a0a08;
+  font-weight: 600; font-size: 14px; padding: 13px 28px;
+  border-radius: 8px; text-decoration: none; letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.15s;
 }
-.btn-dark:hover { background: #333; }
+.btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border); color: var(--text);
-  font-size: 15px; padding: 14px 28px; border-radius: 10px;
-  text-decoration: none; transition: border-color 0.2s;
+  border: 1px solid var(--border2); color: var(--muted);
+  font-size: 14px; padding: 13px 24px; border-radius: 8px;
+  text-decoration: none; letter-spacing: 0.02em;
+  transition: color 0.2s, border-color 0.2s;
 }
-.btn-ghost:hover { border-color: #aaa; }
+.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+.hero-meta {
+  display: flex; gap: 36px; padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.meta-item-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.meta-item-val { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; font-style: italic; color: var(--cream); }
 
-.hero-image {
-  background: var(--border);
-  border-radius: 20px;
-  height: 500px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 80px;
-  position: relative;
-  overflow: hidden;
+/* HERO RIGHT — zdjęcie */
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--surface2);
 }
-.hero-image::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(201,169,110,0.15) 0%, transparent 60%);
+.hero-photo {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; opacity: 0.85;
+}
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: linear-gradient(160deg, #1a1a14 0%, #0e0e0a 100%);
+  color: var(--muted); text-align: center; padding: 40px;
+}
+.hero-photo-placeholder .ph-icon { font-size: 48px; opacity: 0.3; }
+.hero-photo-placeholder .ph-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--border2); }
+.hero-photo-placeholder .ph-desc { font-size: 13px; color: var(--muted); opacity: 0.7; line-height: 1.6; max-width: 260px; }
+.hero-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,10,8,0.8) 0%, transparent 100%);
+  padding: 40px 36px;
 }
 .hero-badge {
-  position: absolute; bottom: 24px; left: 24px;
-  background: #fff; border-radius: 12px;
-  padding: 14px 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  display: flex; align-items: center; gap: 12px; z-index: 1;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(10,10,8,0.8); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 10px 18px;
+  backdrop-filter: blur(8px);
 }
-.hero-badge-icon { font-size: 28px; }
-.hero-badge-text { font-size: 13px; font-weight: 700; color: var(--text); }
-.hero-badge-sub { font-size: 12px; color: var(--muted); }
+.hero-badge-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+.hero-badge-text { font-size: 13px; color: var(--text); font-weight: 500; }
 
-/* SEKCJA */
-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
-.section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
-.section-sub { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.7; margin-bottom: 48px; }
-hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 52px; }
+.ornament { text-align: center; padding: 6px 0; color: var(--gold); font-size: 14px; letter-spacing: 14px; opacity: 0.35; user-select: none; }
 
-/* USŁUGI */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; }
+/* ── SECTION ── */
+.section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+}
+.section-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--gold); opacity: 0.5; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px); font-weight: 300;
+  line-height: 1.1; color: var(--cream); margin-bottom: 14px;
+}
+.section-title em { font-style: italic; font-weight: 600; color: var(--gold); }
+.section-sub { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.8; margin-bottom: 48px; }
+
+/* ── USŁUGI — siatka z kartami ── */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .service-card {
   background: var(--surface); border: 1px solid var(--border);
-  padding: 28px 24px;
+  padding: 36px 30px; position: relative; overflow: hidden;
+  transition: border-color 0.2s, background 0.2s;
 }
-.service-card:first-child { border-radius: 16px 0 0 16px; }
-.service-card:last-child { border-radius: 0 16px 16px 0; }
-.service-icon { font-size: 28px; margin-bottom: 14px; }
-.service-name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
-.service-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
-.service-price { font-weight: 700; font-size: 15px; color: var(--accent); }
+.service-card:hover { background: var(--surface2); border-color: var(--border2); }
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.service-card:hover::before { opacity: 1; }
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.06); line-height: 1;
+  margin-bottom: 16px; letter-spacing: -0.02em;
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600; font-style: italic;
+  color: var(--cream); margin-bottom: 10px;
+}
+.service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.service-price { font-size: 13px; color: var(--gold); font-weight: 600; letter-spacing: 0.04em; }
 
-/* CENNIK */
-.price-table { width: 100%; border-collapse: collapse; }
-.price-table tr { border-bottom: 1px solid var(--border); }
-.price-table tr:last-child { border-bottom: none; }
-.price-table td { padding: 16px 0; font-size: 15px; }
-.price-table td:last-child { text-align: right; font-weight: 700; color: var(--text); }
-.price-cat { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 24px 0 10px !important; }
+/* ── CENNIK ── */
+.price-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.price-col { background: var(--surface); border: 1px solid var(--border); padding: 32px 28px; }
+.price-col-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.price-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid var(--border); gap: 16px;
+}
+.price-row:last-child { border-bottom: none; }
+.price-name { font-size: 14px; color: var(--text); }
+.price-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); white-space: nowrap; }
 
-/* OPINIE */
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.review-card {
+/* ── GALERIA ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 8px;
+}
+.gallery-item {
+  position: relative; overflow: hidden; border-radius: 8px;
+  background: var(--surface2);
+  aspect-ratio: 3/4;
+}
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-placeholder {
+  width: 100%; height: 100%; min-height: 220px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  padding: 20px; text-align: center;
+}
+.gallery-placeholder .ph-icon { font-size: 28px; opacity: 0.2; }
+.gallery-placeholder .ph-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gold); opacity: 0.6;
+}
+.gallery-placeholder .ph-hint { font-size: 11px; color: var(--muted); opacity: 0.5; line-height: 1.5; }
+
+/* ── OPINIE ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 16px; padding: 24px 26px;
+  border-radius: 14px; padding: 26px 24px;
 }
-.review-stars { color: var(--accent); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-.review-text { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
-.review-author { font-size: 13px; font-weight: 700; color: var(--muted); }
+.review-stars { color: var(--gold); font-size: 11px; letter-spacing: 3px; margin-bottom: 14px; }
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic; font-weight: 300;
+  color: var(--text); line-height: 1.7; margin-bottom: 18px;
+}
+.review-author { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
 
-/* REZERWACJA */
-.booking-wrapper {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: start;
+/* ── REZERWACJA ── */
+.booking-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 52px; align-items: start; }
+.booking-form { display: flex; flex-direction: column; gap: 11px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.booking-form input, .booking-form select, .booking-form textarea {
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 15px; padding: 13px 16px; border-radius: 9px;
+  outline: none; width: 100%; appearance: none; transition: border-color 0.15s;
 }
-.booking-form { display: flex; flex-direction: column; gap: 12px; }
-.booking-form input,
-.booking-form select,
-.booking-form textarea {
+.booking-form input::placeholder { color: var(--muted); opacity: 0.5; }
+.booking-form input:focus, .booking-form select:focus { border-color: var(--gold); }
+.booking-form select option { background: #111; }
+
+.contact-side { display: flex; flex-direction: column; gap: 24px; }
+.contact-block-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.contact-block-val { font-size: 15px; color: var(--text); line-height: 1.7; }
+.contact-block-val a { color: var(--gold); text-decoration: none; }
+.hours-table { width: 100%; }
+.hours-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.hours-row:last-child { border-bottom: none; }
+.hours-day { color: var(--muted); }
+.hours-time { color: var(--text); font-weight: 500; }
+.map-ph {
   background: var(--surface); border: 1px solid var(--border);
-  color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px; padding: 13px 16px; border-radius: 10px;
-  outline: none; width: 100%; appearance: none;
-  transition: border-color 0.2s;
-}
-.booking-form input:focus,
-.booking-form select:focus { border-color: var(--accent); }
-.booking-form select option { background: #fff; }
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-.info-block { display: flex; flex-direction: column; gap: 24px; }
-.info-item-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.info-item-val { font-size: 16px; color: var(--text); }
-.info-item-val a { color: var(--accent); text-decoration: none; }
-
-/* MAP PLACEHOLDER */
-.map-placeholder {
-  background: var(--border); border-radius: 16px; height: 180px;
+  border-radius: 10px; height: 140px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; color: var(--muted); margin-top: 8px;
+  font-size: 13px; color: var(--muted);
 }
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer {
-  border-top: 1px solid var(--border); padding: 36px 48px;
-  max-width: 1200px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 44px 52px; text-align: center;
 }
-.footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text); text-decoration: none; }
-footer p { font-size: 13px; color: var(--muted); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
-.footer-links a:hover { color: var(--text); }
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; font-style: italic;
+  color: var(--cream); display: block; margin-bottom: 8px; text-decoration: none;
+}
+.footer-logo em { font-style: normal; color: var(--gold); }
+.footer-tagline { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 24px; }
+.footer-nav { display: flex; justify-content: center; gap: 28px; margin-bottom: 24px; }
+.footer-nav a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
-/* Wstążka "demo" */
+/* ── DEMO BAR ── */
 .demo-bar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: #1a1a1a; color: #fff;
+  background: var(--surface); border-top: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; gap: 16px;
-  padding: 12px 20px; font-size: 13px;
+  padding: 11px 20px; font-size: 12px; color: var(--muted);
 }
-.demo-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.demo-bar a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { height: 400px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .price-cols { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .booking-grid { grid-template-columns: 1fr; gap: 36px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item.wide { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 100px 20px 48px; gap: 32px; }
-  .hero-image { height: 280px; }
-  section { padding: 60px 20px; }
-  hr.divider { margin: 0 20px; }
-  .booking-wrapper { grid-template-columns: 1fr; gap: 36px; }
-  .form-row-2 { grid-template-columns: 1fr; }
-  .service-card:first-child { border-radius: 16px 16px 0 0; }
-  .service-card:last-child { border-radius: 0 0 16px 16px; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: fixed;
+    top: 68px; left: 0; right: 0; background: var(--bg);
+    border-bottom: 1px solid var(--border); padding: 16px 20px; gap: 4px; z-index: 99;
+  }
+  .nav-burger { display: flex; }
+  .hero-left { padding: 48px 20px; }
+  .section { padding: 56px 20px; }
+  .divider { margin: 0 20px; }
   .services-grid { grid-template-columns: 1fr; }
-  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 36px 20px; }
+  .demo-bar { flex-wrap: wrap; gap: 8px; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- WSTĄŻKA DEMO -->
 <div class="demo-bar">
-  📋 To jest strona demo stworzona przez <a href="index.html">Kuba.dev</a> — przykład realizacji dla zakładu fryzjerskiego &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
+  Strona demo — realizacja <a href="index.html">deczdev</a> · przykład wizytówki dla salonu fryzjerskiego &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
 </div>
 
 <nav>
-  <a href="#" class="nav-logo">Fryzjer Kowalski</a>
-  <ul class="nav-links">
+  <a href="#" class="nav-logo">Kowalski <em>&</em> Co</a>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#uslugi">Usługi</a></li>
     <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#galeria">Galeria</a></li>
     <li><a href="#opinie">Opinie</a></li>
     <li><a href="#rezerwacja" class="nav-book">Umów wizytę</a></li>
   </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div>
-    <div class="hero-eyebrow">Zakład Fryzjerski · Warszawa Mokotów</div>
-    <h1>Twój styl,<br>nasza pasja.</h1>
-    <p class="hero-sub">Profesjonalne strzyżenie, koloryzacja i stylizacja dla mężczyzn i kobiet. Ponad 15 lat doświadczenia w centrum Warszawy.</p>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Salon fryzjerski · Warszawa</div>
+    <h1>Sztuka<br>cięcia.<br><strong>Od 1998 roku.</strong></h1>
+    <p class="hero-sub">Profesjonalne strzyżenie, koloryzacja i stylizacja dla kobiet i mężczyzn. Umawiamy wizyty online — bez czekania w kolejce.</p>
     <div class="hero-actions">
-      <a href="#rezerwacja" class="btn-dark">Umów wizytę online →</a>
-      <a href="#cennik" class="btn-ghost">Zobacz cennik</a>
+      <a href="#rezerwacja" class="btn-gold">Umów wizytę online →</a>
+      <a href="#uslugi" class="btn-ghost">Nasze usługi</a>
+    </div>
+    <div class="hero-meta">
+      <div>
+        <div class="meta-item-label">Lat doświadczenia</div>
+        <div class="meta-item-val">26+</div>
+      </div>
+      <div>
+        <div class="meta-item-label">Opinie Google</div>
+        <div class="meta-item-val">4,9 ★</div>
+      </div>
+      <div>
+        <div class="meta-item-label">Zadowolonych klientów</div>
+        <div class="meta-item-val">2 400+</div>
+      </div>
     </div>
   </div>
-  <div class="hero-image">
-    ✂️
-    <div class="hero-badge">
-      <div class="hero-badge-icon">⭐</div>
-      <div>
-        <div class="hero-badge-text">4.9 / 5.0</div>
-        <div class="hero-badge-sub">124 opinii Google</div>
+  <div class="hero-right">
+    <!-- ZDJĘCIE HERO: pionowe zdjęcie fryzjera przy pracy lub wnętrza salonu -->
+    <!-- Zalecany rozmiar: min. 900×1200px, format JPG -->
+    <img src="img/hero-salon.jpg" alt="Salon fryzjerski Kowalski" class="hero-photo">
+    <div class="hero-photo-placeholder">
+      <div class="ph-icon">📷</div>
+      <div class="ph-title">Zdjęcie hero salonu</div>
+      <div class="ph-desc">Pionowe zdjęcie fryzjera przy pracy lub wnętrza salonu — klimatyczne, z dobrym oświetleniem. Min. 900×1200 px.</div>
+    </div>
+    <div class="hero-overlay">
+      <div class="hero-badge">
+        <div class="hero-badge-stars">★★★★★</div>
+        <div class="hero-badge-text">124 opinii · Google Maps</div>
       </div>
     </div>
   </div>
 </div>
 
 <hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- USŁUGI -->
-<section id="uslugi">
-  <div class="section-label">Usługi</div>
-  <h2 class="section-title">Co oferujemy</h2>
-  <p class="section-sub">Kompleksowa obsługa fryzjerska — od klasycznych cięć po nowoczesną koloryzację.</p>
+<section class="section" id="uslugi">
+  <div class="section-eyebrow">Oferta</div>
+  <h2 class="section-title">Co dla Ciebie<br><em>zrobimy</em></h2>
+  <p class="section-sub">Każdy zabieg wykonujemy z dbałością o detal — używamy wyłącznie sprawdzonych produktów Schwarzkopf i Wella.</p>
 
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">✂️</div>
+      <div class="service-num">01</div>
       <div class="service-name">Strzyżenie</div>
-      <div class="service-desc">Klasyczne i nowoczesne cięcia dla mężczyzn i kobiet. Zawsze dopasowane do kształtu twarzy.</div>
+      <div class="service-desc">Klasyczne i nowoczesne cięcia dla kobiet i mężczyzn. Zawsze dopasowane do kształtu twarzy, struktury włosa i trybu życia klienta.</div>
       <div class="service-price">od 60 zł</div>
     </div>
     <div class="service-card">
-      <div class="service-icon">🎨</div>
+      <div class="service-num">02</div>
       <div class="service-name">Koloryzacja</div>
-      <div class="service-desc">Farbowanie, balayage, ombre, pasemka. Używamy wyłącznie farb Schwarzkopf i Wella.</div>
+      <div class="service-desc">Farbowanie, balayage, ombre, pasemka i techniki dekoloryzacji. Farby bez amoniaku dostępne dla wrażliwej skóry głowy.</div>
       <div class="service-price">od 180 zł</div>
     </div>
     <div class="service-card">
-      <div class="service-icon">💆</div>
+      <div class="service-num">03</div>
       <div class="service-name">Pielęgnacja</div>
-      <div class="service-desc">Keratynowe prostowanie, nawilżające maski i zabiegi regeneracyjne dla zniszczonych włosów.</div>
+      <div class="service-desc">Keratynowe prostowanie, nawilżające maski, zabiegi regeneracyjne Olaplex i botoks do włosów. Dla każdego rodzaju włosa.</div>
       <div class="service-price">od 120 zł</div>
     </div>
     <div class="service-card">
-      <div class="service-icon">👰</div>
-      <div class="service-name">Upięcia</div>
-      <div class="service-desc">Stylizacje okolicznościowe — ślub, wesele, studniówka. Próba fryzury gratis przy rezerwacji.</div>
-      <div class="service-price">od 200 zł</div>
+      <div class="service-num">04</div>
+      <div class="service-name">Stylizacja</div>
+      <div class="service-desc">Blow-dry, prostowanie, koki i loki. Modelowanie na co dzień i na wyjątkowe okazje — w cenie konsultacja stylistyczna.</div>
+      <div class="service-price">od 80 zł</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Upięcia ślubne</div>
+      <div class="service-desc">Próba fryzury gratis przy rezerwacji na ślub. Dojeżdżamy do miejsca ślubu i wesela w obrębie Warszawy.</div>
+      <div class="service-price">od 280 zł</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Broda i wąsy</div>
+      <div class="service-desc">Precyzyjne strzyżenie i stylizacja brody dla panów. Golenie brzytwą i pielęgnacja skóry po goleniu.</div>
+      <div class="service-price">od 40 zł</div>
     </div>
   </div>
 </section>
 
+<hr class="divider">
+<div class="ornament">· · ·</div>
 <hr class="divider">
 
 <!-- CENNIK -->
-<section id="cennik">
-  <div class="section-label">Cennik</div>
-  <h2 class="section-title">Przejrzyste ceny</h2>
-  <p class="section-sub">Bez ukrytych kosztów — wiesz ile zapłacisz zanim wejdziesz do salonu.</p>
+<section class="section" id="cennik">
+  <div class="section-eyebrow">Cennik</div>
+  <h2 class="section-title">Przejrzyste<br><em>ceny</em></h2>
+  <p class="section-sub">Bez ukrytych kosztów — mówisz co chcesz, wiesz ile zapłacisz zanim usiądziesz na fotelu.</p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:800px">
-    <div>
-      <table class="price-table">
-        <tr><td class="price-cat" colspan="2">Damskie</td></tr>
-        <tr><td>Strzyżenie + modelowanie</td><td>90 zł</td></tr>
-        <tr><td>Strzyżenie bez suszenia</td><td>65 zł</td></tr>
-        <tr><td>Koloryzacja jednolita</td><td>od 180 zł</td></tr>
-        <tr><td>Balayage / ombre</td><td>od 280 zł</td></tr>
-        <tr><td>Pasemka</td><td>od 160 zł</td></tr>
-        <tr><td>Keratyna</td><td>od 350 zł</td></tr>
-      </table>
+  <div class="price-cols">
+    <div class="price-col" style="border-radius: 14px 0 0 14px;">
+      <div class="price-col-title">Damskie</div>
+      <div class="price-row"><span class="price-name">Strzyżenie + modelowanie</span><span class="price-val">90 zł</span></div>
+      <div class="price-row"><span class="price-name">Strzyżenie bez suszenia</span><span class="price-val">65 zł</span></div>
+      <div class="price-row"><span class="price-name">Koloryzacja jednolita</span><span class="price-val">od 180 zł</span></div>
+      <div class="price-row"><span class="price-name">Balayage / ombre</span><span class="price-val">od 280 zł</span></div>
+      <div class="price-row"><span class="price-name">Pasemka klasyczne</span><span class="price-val">od 160 zł</span></div>
+      <div class="price-row"><span class="price-name">Keratyna brazylijska</span><span class="price-val">od 350 zł</span></div>
+      <div class="price-row"><span class="price-name">Olaplex (zabieg)</span><span class="price-val">od 120 zł</span></div>
+      <div class="price-row"><span class="price-name">Upięcie okolicznościowe</span><span class="price-val">od 200 zł</span></div>
+      <div class="price-row"><span class="price-name">Próba fryzury ślubnej</span><span class="price-val">gratis</span></div>
     </div>
-    <div>
-      <table class="price-table">
-        <tr><td class="price-cat" colspan="2">Męskie</td></tr>
-        <tr><td>Strzyżenie klasyczne</td><td>60 zł</td></tr>
-        <tr><td>Strzyżenie + broda</td><td>90 zł</td></tr>
-        <tr><td>Broda / wąsy</td><td>40 zł</td></tr>
-        <tr><td class="price-cat" colspan="2">Dodatki</td></tr>
-        <tr><td>Maska nawilżająca</td><td>40 zł</td></tr>
-        <tr><td>Próba fryzury ślubnej</td><td>gratis</td></tr>
-      </table>
+    <div class="price-col" style="border-radius: 0 14px 14px 0; border-left: none;">
+      <div class="price-col-title">Męskie</div>
+      <div class="price-row"><span class="price-name">Strzyżenie klasyczne</span><span class="price-val">60 zł</span></div>
+      <div class="price-row"><span class="price-name">Strzyżenie + fade</span><span class="price-val">75 zł</span></div>
+      <div class="price-row"><span class="price-name">Strzyżenie + broda</span><span class="price-val">95 zł</span></div>
+      <div class="price-row"><span class="price-name">Broda / wąsy</span><span class="price-val">40 zł</span></div>
+      <div class="price-row"><span class="price-name">Golenie brzytwą</span><span class="price-val">55 zł</span></div>
+      <div class="price-col-title" style="margin-top: 20px;">Dodatki</div>
+      <div class="price-row"><span class="price-name">Maska nawilżająca</span><span class="price-val">40 zł</span></div>
+      <div class="price-row"><span class="price-name">Masaż głowy</span><span class="price-val">30 zł</span></div>
+      <div class="price-row"><span class="price-name">Koloryzacja brody</span><span class="price-val">50 zł</span></div>
     </div>
   </div>
 </section>
 
 <hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
+
+<!-- GALERIA -->
+<section class="section" id="galeria">
+  <div class="section-eyebrow">Galeria</div>
+  <h2 class="section-title">Nasze<br><em>realizacje</em></h2>
+  <p class="section-sub">Każde zdjęcie to prawdziwy efekt pracy naszego zespołu — bez filtrów i retuszu.</p>
+
+  <div class="gallery-grid">
+    <!-- ZDJĘCIE 1: Szerokie — wnętrze salonu lub metamorfoza przed/po -->
+    <div class="gallery-item wide">
+      <!-- <img src="img/galeria-1.jpg" alt="Wnętrze salonu Kowalski"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 1 — szerokie</div>
+        <div class="ph-hint">Wnętrze salonu lub efekt koloryzacji z lotu ptaka. Poziome, min. 1200×700 px.</div>
+      </div>
+    </div>
+    <!-- ZDJĘCIE 2: Pionowe — szczegół fryzury damskiej -->
+    <div class="gallery-item">
+      <!-- <img src="img/galeria-2.jpg" alt="Koloryzacja balayage"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 2</div>
+        <div class="ph-hint">Fryzura damska z bliska — koloryzacja lub cięcie. Pionowe.</div>
+      </div>
+    </div>
+    <!-- ZDJĘCIE 3: Pionowe — fryzura męska lub broda -->
+    <div class="gallery-item">
+      <!-- <img src="img/galeria-3.jpg" alt="Strzyżenie męskie"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 3</div>
+        <div class="ph-hint">Fryzura męska lub broda. Pionowe, dobre oświetlenie boczne.</div>
+      </div>
+    </div>
+    <!-- ZDJĘCIE 4: Pionowe — balayage lub ombre -->
+    <div class="gallery-item">
+      <!-- <img src="img/galeria-4.jpg" alt="Balayage"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 4</div>
+        <div class="ph-hint">Balayage lub ombre — pokazuje umiejętności koloryzacji.</div>
+      </div>
+    </div>
+    <!-- ZDJĘCIE 5: Pionowe — praca fryzjera przy kliencie -->
+    <div class="gallery-item">
+      <!-- <img src="img/galeria-5.jpg" alt="Fryzjer przy pracy"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 5</div>
+        <div class="ph-hint">Fryzjer przy pracy — buduje zaufanie. Pionowe.</div>
+      </div>
+    </div>
+    <!-- ZDJĘCIE 6: Szerokie — detale salonu (nożyczki, produkty, lustro) -->
+    <div class="gallery-item wide">
+      <!-- <img src="img/galeria-6.jpg" alt="Detale salonu"> -->
+      <div class="gallery-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie 6 — szerokie</div>
+        <div class="ph-hint">Detale salonu — nożyczki, produkty, lustro, fotel. Klimatyczne, poziome.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7">
+    <strong style="color:var(--gold)">Jak dodać zdjęcia:</strong> Stwórz folder <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)">img/</code> obok tego pliku HTML. Zapisz zdjęcia jako <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)">galeria-1.jpg</code> do <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)">galeria-6.jpg</code> i odkomentuj tagi <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)">&lt;img&gt;</code> powyżej.
+  </div>
+</section>
+
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- OPINIE -->
-<section id="opinie">
-  <div class="section-label">Opinie</div>
-  <h2 class="section-title">Co mówią klienci</h2>
-  <p class="section-sub">124 opinii na Google — średnia 4.9/5.</p>
+<section class="section" id="opinie">
+  <div class="section-eyebrow">Opinie</div>
+  <h2 class="section-title">Co mówią<br><em>klienci</em></h2>
 
   <div class="reviews-grid">
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">„Najlepszy zakład w którym byłam. Pan Kowalski dokładnie wie czego chcę, zawsze wychodzę zachwycona. Polecam szczerze!"</div>
+      <div class="review-text">„Najlepszy zakład w którym byłam. Pan Kowalski zawsze dokładnie wie czego chcę, wychodzę zachwycona za każdym razem."</div>
       <div class="review-author">Marta W. · 2 tygodnie temu</div>
     </div>
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">„Chodzę tu od 3 lat. Świetna atmosfera, dobra kawa i za każdym razem idealny wynik. Rezerwacja przez stronę jest bardzo wygodna."</div>
+      <div class="review-text">„Chodzę tu od trzech lat. Świetna atmosfera, dobra kawa i za każdym razem idealny wynik. Rezerwacja przez stronę bardzo wygodna."</div>
       <div class="review-author">Tomasz K. · miesiąc temu</div>
     </div>
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-text">„Uratowali moje włosy po nieudanej koloryzacji w innym salonie. Profesjonalizm na najwyższym poziomie. Więcej nigdzie nie pójdę."</div>
+      <div class="review-text">„Uratowali moje włosy po nieudanej koloryzacji w innym miejscu. Profesjonalizm na najwyższym poziomie. Tylko tutaj."</div>
       <div class="review-author">Karolina P. · 3 tygodnie temu</div>
     </div>
   </div>
 </section>
 
 <hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- REZERWACJA -->
-<section id="rezerwacja">
-  <div class="section-label">Rezerwacja</div>
-  <h2 class="section-title">Umów wizytę online</h2>
-  <p class="section-sub">Wybierz termin i usługę — potwierdzimy w ciągu godziny przez SMS.</p>
+<section class="section" id="rezerwacja">
+  <div class="section-eyebrow">Rezerwacja</div>
+  <h2 class="section-title">Umów wizytę<br><em>online</em></h2>
+  <p class="section-sub">Wybierz usługę i termin — potwierdzimy SMS-em w ciągu godziny.</p>
 
-  <div class="booking-wrapper">
+  <div class="booking-grid">
     <form class="booking-form">
-      <div class="form-row-2">
+      <div class="form-row">
         <input type="text" placeholder="Imię i nazwisko *">
         <input type="tel" placeholder="Telefon *">
       </div>
       <select>
         <option value="" disabled selected>Wybierz usługę</option>
-        <option>Strzyżenie damskie + modelowanie — 90 zł</option>
-        <option>Strzyżenie damskie bez suszenia — 65 zł</option>
-        <option>Strzyżenie męskie — 60 zł</option>
-        <option>Strzyżenie + broda — 90 zł</option>
-        <option>Koloryzacja jednolita — od 180 zł</option>
-        <option>Balayage / ombre — od 280 zł</option>
-        <option>Upięcie okolicznościowe — od 200 zł</option>
+        <optgroup label="Damskie">
+          <option>Strzyżenie + modelowanie — 90 zł</option>
+          <option>Strzyżenie bez suszenia — 65 zł</option>
+          <option>Koloryzacja jednolita — od 180 zł</option>
+          <option>Balayage / ombre — od 280 zł</option>
+          <option>Keratyna — od 350 zł</option>
+          <option>Upięcie okolicznościowe — od 200 zł</option>
+        </optgroup>
+        <optgroup label="Męskie">
+          <option>Strzyżenie klasyczne — 60 zł</option>
+          <option>Strzyżenie + broda — 95 zł</option>
+          <option>Broda / wąsy — 40 zł</option>
+          <option>Golenie brzytwą — 55 zł</option>
+        </optgroup>
       </select>
-      <div class="form-row-2">
+      <div class="form-row">
         <input type="date">
         <select>
           <option value="" disabled selected>Godzina</option>
           <option>9:00</option><option>10:00</option><option>11:00</option>
           <option>12:00</option><option>13:00</option><option>14:00</option>
-          <option>15:00</option><option>16:00</option><option>17:00</option>
+          <option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option>
         </select>
       </div>
-      <button type="button" class="btn-dark" style="margin-top:4px" onclick="this.textContent='Wysłano ✓';this.style.background='#2d6a4f'">Wyślij rezerwację →</button>
-      <p style="font-size:13px;color:var(--muted)">Potwierdzimy SMS-em w ciągu godziny. Bezpłatne odwołanie do 24h przed wizytą.</p>
+      <input type="text" placeholder="Uwagi (opcjonalnie)">
+      <button type="button" class="btn-gold" style="border:none;cursor:pointer;justify-content:center" onclick="this.textContent='Wysłano ✓';this.style.background='#4a8a40'">
+        Wyślij rezerwację →
+      </button>
+      <p style="font-size:12px;color:var(--muted)">Bezpłatne odwołanie do 24h przed wizytą.</p>
     </form>
 
-    <div class="info-block">
+    <div class="contact-side">
       <div>
-        <div class="info-item-label">Adres</div>
-        <div class="info-item-val">ul. Puławska 42, 02-512 Warszawa<br><span style="color:var(--muted);font-size:14px">Mokotów, przy metrze Wilanowska</span></div>
+        <div class="contact-block-label">Adres</div>
+        <div class="contact-block-val">ul. Puławska 42<br>02-512 Warszawa — Mokotów<br><span style="color:var(--muted);font-size:13px">przy metrze Wilanowska</span></div>
       </div>
       <div>
-        <div class="info-item-label">Telefon</div>
-        <div class="info-item-val"><a href="tel:+48600123456">+48 600 123 456</a></div>
+        <div class="contact-block-label">Telefon</div>
+        <div class="contact-block-val"><a href="tel:+48600123456">+48 600 123 456</a></div>
       </div>
       <div>
-        <div class="info-item-label">Godziny otwarcia</div>
-        <div class="info-item-val" style="font-size:15px">
-          Pon – Pt: 9:00 – 19:00<br>
-          Sobota: 9:00 – 16:00<br>
-          <span style="color:var(--muted)">Niedziela: nieczynne</span>
+        <div class="contact-block-label">Godziny otwarcia</div>
+        <div class="hours-table">
+          <div class="hours-row"><span class="hours-day">Poniedziałek – Piątek</span><span class="hours-time">9:00 – 19:00</span></div>
+          <div class="hours-row"><span class="hours-day">Sobota</span><span class="hours-time">9:00 – 16:00</span></div>
+          <div class="hours-row"><span class="hours-day">Niedziela</span><span class="hours-time">nieczynne</span></div>
         </div>
       </div>
-      <div class="map-placeholder">📍 Google Maps — ul. Puławska 42, Warszawa</div>
+      <div class="map-ph">📍 ul. Puławska 42, Warszawa Mokotów</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <a href="#" class="footer-logo">Fryzjer Kowalski</a>
-  <nav class="footer-links">
+  <a href="#" class="footer-logo">Kowalski <em>&</em> Co</a>
+  <div class="footer-tagline">Salon fryzjerski · Warszawa Mokotów · od 1998</div>
+  <nav class="footer-nav">
     <a href="#uslugi">Usługi</a>
     <a href="#cennik">Cennik</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#opinie">Opinie</a>
     <a href="#rezerwacja">Rezerwacja</a>
   </nav>
-  <p>© 2026 Zakład Fryzjerski Kowalski · Warszawa</p>
+  <div class="footer-copy">© 2026 Salon Fryzjerski Kowalski & Co · Warszawa</div>
 </footer>
 
+<script>
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('nav-links');
+if (burger) burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
 </body>
 </html>
