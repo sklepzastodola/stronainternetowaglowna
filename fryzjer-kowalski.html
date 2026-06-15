@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fryzjer Kowalski — Zakład Fryzjerski Warszawa</title>
+<meta name="description" content="Zakład fryzjerski w sercu Warszawy. Strzyżenie, koloryzacja, stylizacja. Umów wizytę online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --border: #e8e4df;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --accent: #c9a96e;
+  --accent2: #b8935a;
+  --dark: #1a1a1a;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(250,249,247,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-book {
+  background: var(--dark); color: #fff !important;
+  padding: 9px 20px; border-radius: 8px; font-size: 14px !important;
+  font-weight: 600 !important; text-decoration: none; transition: background 0.2s;
+}
+.nav-book:hover { background: #333 !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 100px 48px 60px;
+  max-width: 1200px; margin: 0 auto;
+  gap: 60px;
+}
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.01em; margin-bottom: 20px;
+}
+.hero-sub { font-size: 17px; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--dark); color: #fff;
+  font-weight: 600; font-size: 15px; padding: 14px 28px;
+  border-radius: 10px; text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: background 0.2s;
+}
+.btn-dark:hover { background: #333; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border); color: var(--text);
+  font-size: 15px; padding: 14px 28px; border-radius: 10px;
+  text-decoration: none; transition: border-color 0.2s;
+}
+.btn-ghost:hover { border-color: #aaa; }
+
+.hero-image {
+  background: var(--border);
+  border-radius: 20px;
+  height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,169,110,0.15) 0%, transparent 60%);
+}
+.hero-badge {
+  position: absolute; bottom: 24px; left: 24px;
+  background: #fff; border-radius: 12px;
+  padding: 14px 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 12px; z-index: 1;
+}
+.hero-badge-icon { font-size: 28px; }
+.hero-badge-text { font-size: 13px; font-weight: 700; color: var(--text); }
+.hero-badge-sub { font-size: 12px; color: var(--muted); }
+
+/* SEKCJA */
+section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+.section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+.section-sub { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.7; margin-bottom: 48px; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
+
+/* USŁUGI */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; }
+.service-card {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 28px 24px;
+}
+.service-card:first-child { border-radius: 16px 0 0 16px; }
+.service-card:last-child { border-radius: 0 16px 16px 0; }
+.service-icon { font-size: 28px; margin-bottom: 14px; }
+.service-name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+.service-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.service-price { font-weight: 700; font-size: 15px; color: var(--accent); }
+
+/* CENNIK */
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table tr { border-bottom: 1px solid var(--border); }
+.price-table tr:last-child { border-bottom: none; }
+.price-table td { padding: 16px 0; font-size: 15px; }
+.price-table td:last-child { text-align: right; font-weight: 700; color: var(--text); }
+.price-cat { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 24px 0 10px !important; }
+
+/* OPINIE */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.review-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px 26px;
+}
+.review-stars { color: var(--accent); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+.review-text { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px; }
+.review-author { font-size: 13px; font-weight: 700; color: var(--muted); }
+
+/* REZERWACJA */
+.booking-wrapper {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.booking-form { display: flex; flex-direction: column; gap: 12px; }
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; padding: 13px 16px; border-radius: 10px;
+  outline: none; width: 100%; appearance: none;
+  transition: border-color 0.2s;
+}
+.booking-form input:focus,
+.booking-form select:focus { border-color: var(--accent); }
+.booking-form select option { background: #fff; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.info-block { display: flex; flex-direction: column; gap: 24px; }
+.info-item-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.info-item-val { font-size: 16px; color: var(--text); }
+.info-item-val a { color: var(--accent); text-decoration: none; }
+
+/* MAP PLACEHOLDER */
+.map-placeholder {
+  background: var(--border); border-radius: 16px; height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--muted); margin-top: 8px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border); padding: 36px 48px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text); text-decoration: none; }
+footer p { font-size: 13px; color: var(--muted); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--text); }
+
+/* Wstążka "demo" */
+.demo-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #1a1a1a; color: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 12px 20px; font-size: 13px;
+}
+.demo-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 20px 48px; gap: 32px; }
+  .hero-image { height: 280px; }
+  section { padding: 60px 20px; }
+  hr.divider { margin: 0 20px; }
+  .booking-wrapper { grid-template-columns: 1fr; gap: 36px; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .service-card:first-child { border-radius: 16px 16px 0 0; }
+  .service-card:last-child { border-radius: 0 0 16px 16px; }
+  .services-grid { grid-template-columns: 1fr; }
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- WSTĄŻKA DEMO -->
+<div class="demo-bar">
+  📋 To jest strona demo stworzona przez <a href="index.html">Kuba.dev</a> — przykład realizacji dla zakładu fryzjerskiego &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">Fryzjer Kowalski</a>
+  <ul class="nav-links">
+    <li><a href="#uslugi">Usługi</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#opinie">Opinie</a></li>
+    <li><a href="#rezerwacja" class="nav-book">Umów wizytę</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Zakład Fryzjerski · Warszawa Mokotów</div>
+    <h1>Twój styl,<br>nasza pasja.</h1>
+    <p class="hero-sub">Profesjonalne strzyżenie, koloryzacja i stylizacja dla mężczyzn i kobiet. Ponad 15 lat doświadczenia w centrum Warszawy.</p>
+    <div class="hero-actions">
+      <a href="#rezerwacja" class="btn-dark">Umów wizytę online →</a>
+      <a href="#cennik" class="btn-ghost">Zobacz cennik</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    ✂️
+    <div class="hero-badge">
+      <div class="hero-badge-icon">⭐</div>
+      <div>
+        <div class="hero-badge-text">4.9 / 5.0</div>
+        <div class="hero-badge-sub">124 opinii Google</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- USŁUGI -->
+<section id="uslugi">
+  <div class="section-label">Usługi</div>
+  <h2 class="section-title">Co oferujemy</h2>
+  <p class="section-sub">Kompleksowa obsługa fryzjerska — od klasycznych cięć po nowoczesną koloryzację.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <div class="service-name">Strzyżenie</div>
+      <div class="service-desc">Klasyczne i nowoczesne cięcia dla mężczyzn i kobiet. Zawsze dopasowane do kształtu twarzy.</div>
+      <div class="service-price">od 60 zł</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <div class="service-name">Koloryzacja</div>
+      <div class="service-desc">Farbowanie, balayage, ombre, pasemka. Używamy wyłącznie farb Schwarzkopf i Wella.</div>
+      <div class="service-price">od 180 zł</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💆</div>
+      <div class="service-name">Pielęgnacja</div>
+      <div class="service-desc">Keratynowe prostowanie, nawilżające maski i zabiegi regeneracyjne dla zniszczonych włosów.</div>
+      <div class="service-price">od 120 zł</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👰</div>
+      <div class="service-name">Upięcia</div>
+      <div class="service-desc">Stylizacje okolicznościowe — ślub, wesele, studniówka. Próba fryzury gratis przy rezerwacji.</div>
+      <div class="service-price">od 200 zł</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CENNIK -->
+<section id="cennik">
+  <div class="section-label">Cennik</div>
+  <h2 class="section-title">Przejrzyste ceny</h2>
+  <p class="section-sub">Bez ukrytych kosztów — wiesz ile zapłacisz zanim wejdziesz do salonu.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:800px">
+    <div>
+      <table class="price-table">
+        <tr><td class="price-cat" colspan="2">Damskie</td></tr>
+        <tr><td>Strzyżenie + modelowanie</td><td>90 zł</td></tr>
+        <tr><td>Strzyżenie bez suszenia</td><td>65 zł</td></tr>
+        <tr><td>Koloryzacja jednolita</td><td>od 180 zł</td></tr>
+        <tr><td>Balayage / ombre</td><td>od 280 zł</td></tr>
+        <tr><td>Pasemka</td><td>od 160 zł</td></tr>
+        <tr><td>Keratyna</td><td>od 350 zł</td></tr>
+      </table>
+    </div>
+    <div>
+      <table class="price-table">
+        <tr><td class="price-cat" colspan="2">Męskie</td></tr>
+        <tr><td>Strzyżenie klasyczne</td><td>60 zł</td></tr>
+        <tr><td>Strzyżenie + broda</td><td>90 zł</td></tr>
+        <tr><td>Broda / wąsy</td><td>40 zł</td></tr>
+        <tr><td class="price-cat" colspan="2">Dodatki</td></tr>
+        <tr><td>Maska nawilżająca</td><td>40 zł</td></tr>
+        <tr><td>Próba fryzury ślubnej</td><td>gratis</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OPINIE -->
+<section id="opinie">
+  <div class="section-label">Opinie</div>
+  <h2 class="section-title">Co mówią klienci</h2>
+  <p class="section-sub">124 opinii na Google — średnia 4.9/5.</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Najlepszy zakład w którym byłam. Pan Kowalski dokładnie wie czego chcę, zawsze wychodzę zachwycona. Polecam szczerze!"</div>
+      <div class="review-author">Marta W. · 2 tygodnie temu</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Chodzę tu od 3 lat. Świetna atmosfera, dobra kawa i za każdym razem idealny wynik. Rezerwacja przez stronę jest bardzo wygodna."</div>
+      <div class="review-author">Tomasz K. · miesiąc temu</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Uratowali moje włosy po nieudanej koloryzacji w innym salonie. Profesjonalizm na najwyższym poziomie. Więcej nigdzie nie pójdę."</div>
+      <div class="review-author">Karolina P. · 3 tygodnie temu</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- REZERWACJA -->
+<section id="rezerwacja">
+  <div class="section-label">Rezerwacja</div>
+  <h2 class="section-title">Umów wizytę online</h2>
+  <p class="section-sub">Wybierz termin i usługę — potwierdzimy w ciągu godziny przez SMS.</p>
+
+  <div class="booking-wrapper">
+    <form class="booking-form">
+      <div class="form-row-2">
+        <input type="text" placeholder="Imię i nazwisko *">
+        <input type="tel" placeholder="Telefon *">
+      </div>
+      <select>
+        <option value="" disabled selected>Wybierz usługę</option>
+        <option>Strzyżenie damskie + modelowanie — 90 zł</option>
+        <option>Strzyżenie damskie bez suszenia — 65 zł</option>
+        <option>Strzyżenie męskie — 60 zł</option>
+        <option>Strzyżenie + broda — 90 zł</option>
+        <option>Koloryzacja jednolita — od 180 zł</option>
+        <option>Balayage / ombre — od 280 zł</option>
+        <option>Upięcie okolicznościowe — od 200 zł</option>
+      </select>
+      <div class="form-row-2">
+        <input type="date">
+        <select>
+          <option value="" disabled selected>Godzina</option>
+          <option>9:00</option><option>10:00</option><option>11:00</option>
+          <option>12:00</option><option>13:00</option><option>14:00</option>
+          <option>15:00</option><option>16:00</option><option>17:00</option>
+        </select>
+      </div>
+      <button type="button" class="btn-dark" style="margin-top:4px" onclick="this.textContent='Wysłano ✓';this.style.background='#2d6a4f'">Wyślij rezerwację →</button>
+      <p style="font-size:13px;color:var(--muted)">Potwierdzimy SMS-em w ciągu godziny. Bezpłatne odwołanie do 24h przed wizytą.</p>
+    </form>
+
+    <div class="info-block">
+      <div>
+        <div class="info-item-label">Adres</div>
+        <div class="info-item-val">ul. Puławska 42, 02-512 Warszawa<br><span style="color:var(--muted);font-size:14px">Mokotów, przy metrze Wilanowska</span></div>
+      </div>
+      <div>
+        <div class="info-item-label">Telefon</div>
+        <div class="info-item-val"><a href="tel:+48600123456">+48 600 123 456</a></div>
+      </div>
+      <div>
+        <div class="info-item-label">Godziny otwarcia</div>
+        <div class="info-item-val" style="font-size:15px">
+          Pon – Pt: 9:00 – 19:00<br>
+          Sobota: 9:00 – 16:00<br>
+          <span style="color:var(--muted)">Niedziela: nieczynne</span>
+        </div>
+      </div>
+      <div class="map-placeholder">📍 Google Maps — ul. Puławska 42, Warszawa</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">Fryzjer Kowalski</a>
+  <nav class="footer-links">
+    <a href="#uslugi">Usługi</a>
+    <a href="#cennik">Cennik</a>
+    <a href="#rezerwacja">Rezerwacja</a>
+  </nav>
+  <p>© 2026 Zakład Fryzjerski Kowalski · Warszawa</p>
+</footer>
+
+</body>
+</html>
