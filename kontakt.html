@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Kuba Web</title>
+<meta name="description" content="Napisz lub zadzwoń — wycena bezpłatnie, odpowiedź w 24 godziny.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Kuba<span>.</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="realizacje.html">Realizacje</a></li>
+    <li><a href="pakiety.html">Pakiety</a></li>
+    <li><a href="kontakt.html" class="nav-cta">Napisz do mnie</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Kontakt</div>
+  <h1>Porozmawiajmy</h1>
+  <p>Napisz kilka słów o swojej firmie. Odpisuję w ciągu 24 godzin — bezpłatnie i bez zobowiązań.</p>
+</div>
+
+<section class="section">
+  <div class="contact-wrapper">
+
+    <!-- FORMULARZ -->
+    <!-- WAŻNE: podmień action na swój endpoint Formspree -->
+    <!-- Rejestracja darmowa na formspree.io, potem wklej tu: action="https://formspree.io/f/TWÓJ_ID" -->
+    <form class="contact-form" id="contact-form" action="#" method="POST">
+      <div class="form-row">
+        <input type="text" name="imie" placeholder="Imię *" required>
+        <input type="text" name="firma" placeholder="Firma">
+      </div>
+      <input type="email" name="email" placeholder="E-mail *" required>
+      <input type="tel" name="telefon" placeholder="Telefon (opcjonalnie)">
+      <select name="pakiet">
+        <option value="" disabled selected>Który pakiet Cię interesuje?</option>
+        <option value="mini">Mini — 500 zł</option>
+        <option value="start">Start — 800 zł</option>
+        <option value="biznes">Biznes — 1 800 zł</option>
+        <option value="premium">Premium — 3 500 zł</option>
+        <option value="opieka">Opieka miesięczna — 150 zł</option>
+        <option value="inne">Nie wiem jeszcze</option>
+      </select>
+      <textarea name="wiadomosc" placeholder="Opowiedz mi o swojej firmie. Czym się zajmujesz, co chcesz osiągnąć stroną?" style="min-height:130px"></textarea>
+      <button type="submit" class="btn-primary">Wyślij wiadomość →</button>
+    </form>
+
+    <!-- DANE -->
+    <div class="contact-info">
+      <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:8px">
+        Wolisz zadzwonić? Chętnie porozmawiam — bez presji i bez sprzedawania na siłę.
+      </p>
+
+      <div class="contact-item">
+        <span class="contact-item-label">Telefon</span>
+        <!-- PODMIEŃ na swój numer -->
+        <span class="contact-item-val"><a href="tel:+48000000000">+48 000 000 000</a></span>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-item-label">E-mail</span>
+        <!-- PODMIEŃ na swój e-mail -->
+        <span class="contact-item-val"><a href="mailto:kuba@twojadomena.pl">kuba@twojadomena.pl</a></span>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-item-label">Dostępność</span>
+        <span class="contact-item-val" style="color:var(--muted)">Pon – Pt, 9:00 – 18:00</span>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-item-label">Czas realizacji</span>
+        <span class="contact-item-val" style="color:var(--muted)">3–10 dni roboczych</span>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-item-label">Odpowiedź na wiadomość</span>
+        <span class="contact-item-val" style="color:var(--muted)">Do 24 godzin</span>
+      </div>
+
+      <!-- mini pakiety reminder -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:8px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Pakiety w skrócie</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:14px">
+            <span style="color:var(--muted)">Mini</span>
+            <span style="font-weight:600">500 zł</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:14px">
+            <span style="color:var(--muted)">Start</span>
+            <span style="font-weight:600">800 zł</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:14px">
+            <span style="color:var(--muted)">Biznes</span>
+            <span style="font-weight:600">1 800 zł</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:14px">
+            <span style="color:var(--muted)">Premium</span>
+            <span style="font-weight:600">3 500 zł</span>
+          </div>
+          <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;font-size:14px">
+            <span style="color:var(--muted)">Opieka miesięczna</span>
+            <span style="font-weight:600">150 zł/mies.</span>
+          </div>
+        </div>
+        <a href="pakiety.html" style="display:inline-block;font-size:13px;color:var(--accent);margin-top:14px;text-decoration:none">Zobacz pełne pakiety →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Kuba<span>.</span></a>
+  <nav class="footer-links">
+    <a href="realizacje.html">Realizacje</a>
+    <a href="pakiety.html">Pakiety</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <p>© 2026 — Strony internetowe dla lokalnych firm</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
