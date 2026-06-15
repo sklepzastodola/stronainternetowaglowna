@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuba — Strony internetowe dla lokalnych firm</title>
+<meta name="description" content="Tworzę profesjonalne strony internetowe dla lokalnych firm. Szybko, czytelnie, z wynikami. Sprawdź pakiety i realizacje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* ── HERO (tylko index) ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 26px;
+    max-width: 10ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.65;
+    margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 72px;
+    padding-top: 44px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  /* ── MINI WORKS (index preview) ── */
+  .works-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 100px 20px 64px; }
+    .hero-stats { gap: 28px; margin-top: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Kuba<span>.</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="https://decz.pl" class="nav-back">← decz.pl</a></li>
+    <li><span class="nav-sep"></span></li>
+    <li><a href="realizacje.html">Realizacje</a></li>
+    <li><a href="pakiety.html">Pakiety</a></li>
+    <li><a href="kontakt.html" class="nav-cta">Napisz do mnie</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Strony internetowe dla lokalnych firm</div>
+  <h1>Twoja firma<br>w sieci, <em>wreszcie</em>.</h1>
+  <p class="hero-sub">Projektuję i wdrażam strony, które przyciągają klientów — szybkie, czytelne, dopasowane do Twojej branży.</p>
+  <div class="hero-actions">
+    <a href="pakiety.html" class="btn-primary">Zobacz pakiety →</a>
+    <a href="realizacje.html" class="btn-secondary">Moje realizacje</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">zrealizowanych projektów</div>
+    </div>
+    <div>
+      <div class="stat-num">7<span>dni</span></div>
+      <div class="stat-label">średni czas realizacji</div>
+    </div>
+    <div>
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">zadowolonych klientów</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- REALIZACJE PREVIEW -->
+<section class="section">
+  <div class="section-label">Realizacje</div>
+  <h2 class="section-title">Ostatnie projekty</h2>
+  <p class="section-sub">Każda strona to inny klient, inna branża — ale zawsze ten sam standard.</p>
+
+  <div class="works-preview">
+    <a href="https://www.sklepzastodola.pl" target="_blank" rel="noopener" class="work-card">
+      <div class="work-thumb">
+        <div style="font-size:48px">🚜</div>
+        <span class="work-tag">Sklep / Oferta</span>
+      </div>
+      <div class="work-info">
+        <div class="work-title">Sklep za Stodołą</div>
+        <div class="work-desc">Strona dla dystrybutora maszyn rolniczych — leasing, ARiMR, SEO.</div>
+        <div class="work-link">sklepzastodola.pl →</div>
+      </div>
+    </a>
+    <div class="work-card no-hover">
+      <div class="work-thumb">
+        <div style="font-size:48px">✂️</div>
+        <span class="work-tag">Wizytówka</span>
+      </div>
+      <div class="work-info">
+        <div class="work-title">Fryzjer Kowalski</div>
+        <div class="work-desc">Wizytówka z rezerwacją online. +40% telefonów w pierwszym miesiącu.</div>
+        <div class="work-link dim">Projekt portfolio</div>
+      </div>
+    </div>
+    <div class="work-card no-hover">
+      <div class="work-thumb">
+        <div style="font-size:48px">🍕</div>
+        <span class="work-tag">Restauracja</span>
+      </div>
+      <div class="work-info">
+        <div class="work-title">Pizzeria u Marka</div>
+        <div class="work-desc">Landing page z menu i zamówieniami. Lokalny SEO w Google Maps.</div>
+        <div class="work-link dim">Projekt portfolio</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px">
+    <a href="realizacje.html" class="btn-secondary">Wszystkie realizacje →</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PAKIETY PREVIEW -->
+<section class="section">
+  <div class="section-label">Cennik</div>
+  <h2 class="section-title">Pakiety</h2>
+  <p class="section-sub">Cztery opcje dopasowane do potrzeb i budżetu. Bez ukrytych kosztów.</p>
+
+  <div class="packages-grid">
+    <div class="package-card">
+      <div class="package-name">Mini</div>
+      <div class="package-price">500 <span>zł</span></div>
+      <p class="package-desc">Landing page z najważniejszymi informacjami + hosting i domena. Gotowe w 3 dni.</p>
+      <a href="pakiety.html" class="btn-outline">Szczegóły</a>
+    </div>
+    <div class="package-card">
+      <div class="package-name">Start</div>
+      <div class="package-price">800 <span>zł</span></div>
+      <p class="package-desc">Wizytówka do 3 podstron z formularzem, mapą i podstawowym SEO. 5 dni.</p>
+      <a href="pakiety.html" class="btn-outline">Szczegóły</a>
+    </div>
+    <div class="package-card featured">
+      <div class="featured-badge">Najpopularniejszy</div>
+      <div class="package-name">Biznes</div>
+      <div class="package-price">1 800 <span>zł</span></div>
+      <p class="package-desc">Pełna strona firmowa z panelem CMS i blogiem.</p>
+      <a href="pakiety.html" class="btn-solid">Szczegóły</a>
+    </div>
+    <div class="package-card">
+      <div class="package-name">Premium</div>
+      <div class="package-price">3 500 <span>zł</span></div>
+      <p class="package-desc">Zaawansowany projekt z SEO, Analytics i priorytetowym wsparciem.</p>
+      <a href="pakiety.html" class="btn-outline">Szczegóły</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCES -->
+<section class="section">
+  <div class="section-label">Jak pracuję</div>
+  <h2 class="section-title">Od rozmowy<br>do gotowej strony</h2>
+  <p class="section-sub">Prosty proces, zero znikania. Wiesz co się dzieje na każdym etapie.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Krótka rozmowa</div>
+      <div class="step-desc">15–20 minut przez telefon lub Zoom. Wycena tego samego dnia.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Zaliczka i brief</div>
+      <div class="step-desc">50% zaliczki i krótki formularz z materiałami — logotyp, kolory, teksty.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Projekt i poprawki</div>
+      <div class="step-desc">Gotowa strona w 5–7 dni. 2 rundy poprawek w cenie.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Wdrożenie</div>
+      <div class="step-desc">Domena, hosting, HTTPS. Szkolenie z zarządzania treścią.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section class="section">
+  <div class="cta-banner">
+    <div>
+      <h2>Gotowy żeby ruszyć?</h2>
+      <p>Odpowiadam w ciągu 24 godzin. Zero sprzedawania na siłę.</p>
+    </div>
+    <a href="kontakt.html" class="btn-primary">Napisz do mnie →</a>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Kuba<span>.</span></a>
+  <nav class="footer-links">
+    <a href="realizacje.html">Realizacje</a>
+    <a href="pakiety.html">Pakiety</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <p>© 2026 — Strony internetowe dla lokalnych firm</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

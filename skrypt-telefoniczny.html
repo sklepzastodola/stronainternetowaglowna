@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skrypt telefoniczny — oferta stron www</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f5f3ef;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  padding: 32px 20px 80px;
+}
+
+.wrapper { max-width: 760px; margin: 0 auto; }
+
+.page-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #999; margin-bottom: 10px;
+}
+h1 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  color: #1a1a1a; margin-bottom: 6px; line-height: 1.2;
+}
+.subtitle { font-size: 15px; color: #777; margin-bottom: 36px; }
+
+/* LEGENDA */
+.legend {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 32px; padding: 16px 20px;
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e8e4df;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+.dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.dot-ty { background: #1a1a1a; }
+.dot-oni { background: #e8622a; }
+.dot-tip { background: #7ab524; }
+.dot-uwaga { background: #d4a947; }
+
+/* ETAP */
+.stage { margin-bottom: 24px; }
+.stage-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.stage-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #1a1a1a; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.stage-title { font-size: 16px; font-weight: 700; color: #1a1a1a; }
+.stage-sub { font-size: 12px; color: #999; font-weight: 500; }
+
+.card {
+  background: #fff;
+  border: 1px solid #e8e4df;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* KWESTIA */
+.line {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0ede8;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.line:last-child { border-bottom: none; }
+
+.line-marker {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 7px;
+}
+
+.line-ty .line-marker { background: #1a1a1a; }
+.line-oni .line-marker { background: #e8622a; }
+.line-tip .line-marker { background: #7ab524; }
+.line-uwaga .line-marker { background: #d4a947; }
+
+.line-content { flex: 1; }
+.line-role {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.line-ty .line-role { color: #1a1a1a; }
+.line-oni .line-role { color: #e8622a; }
+.line-tip .line-role { color: #7ab524; }
+.line-uwaga .line-role { color: #d4a947; }
+
+.line-text { font-size: 14px; color: #2a2a2a; line-height: 1.65; }
+.line-tip .line-text { color: #555; font-style: italic; }
+.line-uwaga .line-text { color: #7a6010; }
+
+/* BOLD wewnątrz tekstu */
+.line-text strong { font-weight: 700; color: #1a1a1a; }
+
+/* OBIEKCJE */
+.objections { margin-top: 8px; }
+.obj-item {
+  background: #fff;
+  border: 1px solid #e8e4df;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.obj-q {
+  padding: 14px 18px 10px;
+  font-size: 14px; font-weight: 600; color: #e8622a;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.obj-q::before { content: '❓'; font-size: 14px; flex-shrink: 0; }
+.obj-a {
+  padding: 0 18px 14px 42px;
+  font-size: 14px; color: #2a2a2a; line-height: 1.65;
+}
+.obj-a strong { font-weight: 700; }
+
+/* NOTATKA */
+.note {
+  background: #fffbf0;
+  border: 1px solid #e8d88a;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px; color: #7a6010; line-height: 1.65;
+  margin-top: 8px;
+}
+.note strong { font-weight: 700; color: #5a4400; }
+
+/* DIVIDER */
+hr { border: none; border-top: 1px solid #e8e4df; margin: 32px 0; }
+
+/* QUICK REF */
+.quick-ref {
+  background: #0e0e0e; color: #f0ede8;
+  border-radius: 14px; padding: 28px 32px; margin-top: 36px;
+}
+.quick-ref h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #fff; letter-spacing: -0.01em; }
+.price-row {
+  display: flex; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+}
+.price-row:last-child { border-bottom: none; }
+.price-name { color: #aaa; }
+.price-val { font-weight: 700; color: #f0ede8; }
+.price-time { font-size: 12px; color: #666; margin-top: 2px; }
+
+@media print {
+  body { background: white; padding: 0; }
+  .quick-ref { background: #1a1a1a; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 22px; }
+  .legend { gap: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="page-title">Skrypt rozmowy telefonicznej</div>
+  <h1>Oferta stron internetowych — lokalny biznes</h1>
+  <p class="subtitle">Wydrukuj lub miej otwarte na telefonie podczas rozmowy. Nie czytaj dosłownie — traktuj jak mapę.</p>
+
+  <!-- LEGENDA -->
+  <div class="legend">
+    <div class="legend-item"><div class="dot dot-ty"></div> Ty mówisz</div>
+    <div class="legend-item"><div class="dot dot-oni"></div> Klient odpowiada</div>
+    <div class="legend-item"><div class="dot dot-tip"></div> Wskazówka</div>
+    <div class="legend-item"><div class="dot dot-uwaga"></div> Uwaga</div>
+  </div>
+
+  <!-- ETAP 1 -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">1</div>
+      <div>
+        <div class="stage-title">Otwarcie — pierwsze 20 sekund</div>
+        <div class="stage-sub">Cel: nie zostać rozłączonym. Bądź spokojny, konkretny, nie sprzedawaj jeszcze.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Dzień dobry, tu Kuba. Dzwonię w sprawie strony internetowej dla <strong>[NAZWA FIRMY]</strong> — czy trafiam do właściciela?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Zawsze pytaj czy trafiam do właściciela — nie trać czasu na pracowników bez decyzyjności. Jeśli nie — zapytaj kiedy możesz zadzwonić do szefa.</div>
+        </div>
+      </div>
+      <div class="line line-oni">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Klient</div>
+          <div class="line-text">Tak, słucham. / O co chodzi?</div>
+        </div>
+      </div>
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Zauważyłem że <strong>[NAZWA FIRMY]</strong> nie ma strony internetowej / ma stronę która mogłaby być nowocześniejsza. Zajmuję się robieniem stron dla lokalnych firm — od <strong>500 zł</strong>, gotowe w kilka dni. Mam chwilę żeby pokazać co konkretnie mam na myśli?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Podaj cenę już na wstępie — odsiewa niezainteresowanych i buduje zaufanie. Nie ukrywaj ceny "żeby nie przestraszyć".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAP 2 -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">2</div>
+      <div>
+        <div class="stage-title">Diagnoza — zadaj 2-3 pytania</div>
+        <div class="stage-sub">Cel: zrozumieć sytuację firmy. Słuchaj, nie mów.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Powiedz mi — jak teraz klienci głównie Panią/Pana znajdują? Z polecenia, z Google, z ulotek?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">To pytanie otwiera rozmowę. Klient zaczyna mówić o swoim biznesie — a Ty słuchasz i zbierasz informacje do późniejszej argumentacji.</div>
+        </div>
+      </div>
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">A zdarza się że ktoś szuka Pana firmy w Google i nie może jej znaleźć? Albo trafia na konkurencję?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Prawie każdy przyzna że tak. To jest "ból" który strona rozwiązuje. Nie musisz go wymyślać — wystarczy że go nazwiesz.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAP 3 -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">3</div>
+      <div>
+        <div class="stage-title">Prezentacja — krótko i konkretnie</div>
+        <div class="stage-sub">Cel: zainteresować, nie wyrecytować wszystkiego. Max 60 sekund.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Robię strony specjalnie dla takich firm jak Pana — <strong>szybko, konkretnie, bez zbędnego kombinowania</strong>. Mam trzy pakiety: najprostszy od <strong>500 zł</strong>, strona z podstronami od <strong>800 zł</strong>, a pełna strona z możliwością samodzielnej edycji od <strong>1 800 zł</strong>. Gotowe w 3 do 7 dni.</div>
+        </div>
+      </div>
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Mam też przykład strony którą zrobiłem dla lokalnej firmy — mogę przesłać na maila żeby Pan zobaczył jak to wygląda w praktyce?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Cel tego kroku to NIE sprzedać — tylko zdobyć adres e-mail i pozwolenie na wysłanie oferty. To redukuje presję po obu stronach.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAP 4 — obiekcje -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">4</div>
+      <div>
+        <div class="stage-title">Obiekcje — najczęstsze odpowiedzi</div>
+        <div class="stage-sub">Cel: nie kapitulować, ale też nie naciskać.</div>
+      </div>
+    </div>
+    <div class="objections">
+
+      <div class="obj-item">
+        <div class="obj-q">Nie potrzebuję strony, mam Facebook/Instagram.</div>
+        <div class="obj-a">Rozumiem — social media są świetne. Ale kiedy ktoś szuka np. "hydraulik Warszawa" w Google, Facebook nie pojawia się w wynikach. <strong>Strona to jedyne miejsce gdzie Pan kontroluje co klient widzi</strong> — bez algorytmów i bez konkurencji w prawej kolumnie.</div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-q">Za drogo, nie mam budżetu na stronę.</div>
+        <div class="obj-a">Rozumiem. Dlatego mam pakiet Mini za <strong>500 zł</strong> — jedna strona z danymi kontaktowymi, mapą i opisem. To mniej niż jedna reklama w gazecie, a działa 24 godziny na dobę przez lata. <strong>Mogę też rozłożyć płatność</strong> — 250 zł zaliczki, reszta po oddaniu.</div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-q">Muszę się zastanowić / porozmawiać z żoną/partnerem.</div>
+        <div class="obj-a">Oczywiście, to normalne. To żaden problem — <strong>mogę przesłać ofertę na maila</strong> żebyście mieli wszystko czarno na białym. Jaki adres mogę użyć?</div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-q">Mamy już stronę.</div>
+        <div class="obj-a">Świetnie! Czy mogę zapytać — <strong>kiedy ostatnio była aktualizowana?</strong> I czy dobrze wyświetla się na telefonie? Często pomagam firmom które mają strony ale wyglądają źle na mobile — a dziś ponad połowa klientów szuka przez telefon.</div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-q">Skąd mam wiedzieć że Pan nie zniknie po wzięciu zaliczki?</div>
+        <div class="obj-a">Rozumiem tę obawę — to uczciwe pytanie. Mogę pokazać Panu stronę którą zrobiłem wcześniej — <strong>sklepzastodola.pl</strong> — jest żywa i działa. Biorę też tylko 50% zaliczki, resztę płaci Pan po oddaniu strony do oceny.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ETAP 5 -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">5</div>
+      <div>
+        <div class="stage-title">Zamknięcie — wyraźny następny krok</div>
+        <div class="stage-sub">Cel: nie kończyć rozmowy bez konkretu. E-mail lub umówiony termin.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">W takim razie — <strong>na jaki adres e-mail</strong> mogę przesłać ofertę z pakietami i przykładami? Wyślę dzisiaj, to ma jedną stronę, nie zajmie dużo czasu.</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Zadaj pytanie zamknięte: nie "czy mogę przesłać?" tylko "na jaki adres?". Małe przesunięcie — duża różnica w odpowiedzi.</div>
+        </div>
+      </div>
+      <div class="line line-oni">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Klient</div>
+          <div class="line-text">Proszę napisać na: [e-mail]</div>
+        </div>
+      </div>
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Dziękuję. Wyślę dziś — czy mogę zadzwonić za <strong>2-3 dni</strong> żeby zapytać czy miał Pan chwilę przejrzeć?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Umawiaj follow-up od razu — wtedy drugi telefon jest zapowiedziany, nie nachalny. "Zadzwonię jak Pan się zastanowi" = znikasz na zawsze.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Jeśli klient definitywnie odmawia:</strong> "Rozumiem, dziękuję za rozmowę. Jeśli kiedyś zmienią się okoliczności — moje dane są na decz.pl. Miłego dnia!" — i koniec. Nie przekonuj siłą, nie zostawiaj złego wrażenia.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- FOLLOW-UP po mailu -->
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">↩</div>
+      <div>
+        <div class="stage-title">Follow-up — telefon po wysłaniu oferty</div>
+        <div class="stage-sub">Dzwoń 2-3 dni po wysłaniu maila, między 10:00 a 12:00 lub 14:00 a 16:00.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Dzień dobry, tu Kuba — rozmawialiśmy kilka dni temu o stronie internetowej i wysłałem ofertę na maila. Miał Pan/Pani chwilę rzucić okiem?</div>
+        </div>
+      </div>
+      <div class="line line-oni">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Klient — nie czytał</div>
+          <div class="line-text">Nie miałem czasu / zapodziało się w skrzynce.</div>
+        </div>
+      </div>
+      <div class="line line-ty">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Ty</div>
+          <div class="line-text">Rozumiem, nic się nie stało. W takim razie powiem w dwóch słowach co jest w ofercie — <strong>cztery pakiety od 500 do 3 500 zł</strong>, gotowe w 3-7 dni, płatność pół na pół. Czy to w ogóle jest coś co mogłoby być dla Pana interesujące?</div>
+        </div>
+      </div>
+      <div class="line line-tip">
+        <div class="line-marker"></div>
+        <div class="line-content">
+          <div class="line-role">Wskazówka</div>
+          <div class="line-text">Pytanie "czy to jest interesujące?" daje klientowi wyjście bez presji. Jeśli powie nie — to oszczędzasz obojgu czas. Jeśli powie tak — masz otwartą drogę do dalszej rozmowy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK REF -->
+  <div class="quick-ref">
+    <h2>Ściąga — pakiety i czasy</h2>
+    <div class="price-row">
+      <div><div class="price-name">Mini</div><div class="price-time">Landing 1-stronicowy · hosting i domena · 3 dni</div></div>
+      <div class="price-val">500 zł</div>
+    </div>
+    <div class="price-row">
+      <div><div class="price-name">Start</div><div class="price-time">Do 3 podstron · formularz · SEO · 5 dni</div></div>
+      <div class="price-val">800 zł</div>
+    </div>
+    <div class="price-row">
+      <div><div class="price-name">Biznes ⭐</div><div class="price-time">Do 8 podstron · CMS · blog · SEO · 7 dni</div></div>
+      <div class="price-val">1 800 zł</div>
+    </div>
+    <div class="price-row">
+      <div><div class="price-name">Premium</div><div class="price-time">Bez limitu · SEO zaawansowane · Analytics · 10 dni</div></div>
+      <div class="price-val">3 500 zł</div>
+    </div>
+    <div class="price-row">
+      <div><div class="price-name">Opieka miesięczna</div><div class="price-time">Aktualizacje, kopie, zmiany</div></div>
+      <div class="price-val">150 zł/mies.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
