@@ -4,389 +4,318 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pizzeria u Marka — Kraków Kazimierz</title>
-<meta name="description" content="Prawdziwa pizza z pieca opalanego drewnem. Kraków, Kazimierz. Zamów z dostawą lub przyjdź do nas.">
+<meta name="description" content="Prawdziwa pizza z pieca opalanego drewnem. Kraków Kazimierz. Zamów online z dostawą lub przyjdź do nas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cream: #f5f0e6;
-  --cream2: #ede5d4;
-  --paper: #faf7f2;
-  --ink: #2a2118;
-  --ink2: #3d2f1f;
-  --muted: #8a7a66;
-  --red: #b83a1a;
-  --red2: #a02f12;
-  --gold: #c8942a;
-  --border: rgba(42,33,24,0.12);
-  --border2: rgba(42,33,24,0.22);
+  --bg: #0e0b08;
+  --surface: #171410;
+  --surface2: #201c18;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #ede8df;
+  --muted: #6a6258;
+  --red: #c43a1a;
+  --red2: #a82e10;
+  --gold: #c8922a;
+  --cream: #f0e4d0;
+  --radius: 12px;
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 16px; line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ── TEKSTURY ── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: -1;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
 }
 
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 52px; height: 64px;
-  background: rgba(245,240,230,0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border2);
+  padding: 0 52px; height: 68px;
+  background: rgba(14,11,8,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
 }
 .nav-logo {
-  font-family: 'Pinyon Script', cursive;
-  font-size: 30px; color: var(--ink2);
-  text-decoration: none; line-height: 1;
-  letter-spacing: 0.01em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; font-style: italic;
+  color: var(--cream); text-decoration: none; letter-spacing: 0.04em;
 }
-.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-logo strong { font-weight: 600; font-style: normal; color: var(--red); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
 .nav-links a {
   color: var(--muted); text-decoration: none; font-size: 13px;
-  font-weight: 500; padding: 6px 14px; border-radius: 6px;
+  font-weight: 500; padding: 7px 14px; border-radius: 7px;
   letter-spacing: 0.03em; transition: color 0.2s, background 0.2s;
-  text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em;
 }
-.nav-links a:hover { color: var(--ink); background: rgba(42,33,24,0.06); }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 .nav-order {
   background: var(--red) !important; color: #fff !important;
-  border-radius: 7px; font-weight: 500 !important;
+  font-weight: 600 !important; border-radius: 8px;
   transition: background 0.2s !important;
 }
 .nav-order:hover { background: var(--red2) !important; }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; }
 
-/* ── HERO ── */
+/* ── HERO — fullscreen z obrazem ── */
 .hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 100px 52px 72px;
-  position: relative;
-  overflow: hidden;
+  height: 100vh; min-height: 600px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,148,42,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(184,58,26,0.06) 0%, transparent 60%);
+  background: var(--surface2);
 }
-.hero-inner {
-  max-width: 1100px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center; position: relative; z-index: 1;
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; opacity: 0.55;
 }
-.hero-left {}
+.hero-bg-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 14px;
+  background: linear-gradient(160deg, #201a10 0%, #0e0b08 100%);
+  text-align: center; padding: 40px;
+}
+.hero-bg-placeholder .ph-icon { font-size: 52px; opacity: 0.15; }
+.hero-bg-placeholder .ph-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px;
+  font-style: italic; color: rgba(255,255,255,0.2);
+}
+.hero-bg-placeholder .ph-desc { font-size: 13px; color: var(--muted); opacity: 0.6; line-height: 1.65; max-width: 360px; }
+.hero-gradient {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(14,11,8,0.98) 0%,
+    rgba(14,11,8,0.5) 40%,
+    rgba(14,11,8,0.1) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 52px 72px; max-width: 1200px; margin: 0 auto; width: 100%;
+}
 .hero-tag {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
 }
-.hero-tag::before, .hero-tag::after {
-  content: ''; display: block; flex: 1;
-  height: 1px; background: var(--gold); width: 20px; opacity: 0.5;
-}
+.hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); opacity: 0.6; }
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 6vw, 80px);
-  font-weight: 600; font-style: italic;
-  line-height: 1.0; letter-spacing: -0.01em;
-  color: var(--ink2); margin-bottom: 20px;
+  font-size: clamp(52px, 6vw, 90px);
+  font-weight: 300; line-height: 1.0; letter-spacing: -0.01em;
+  color: var(--cream); margin-bottom: 18px;
 }
-.hero h1 em { font-style: normal; color: var(--red); }
-.hero-sub {
-  font-size: 17px; color: var(--muted); line-height: 1.75;
-  max-width: 380px; margin-bottom: 36px;
-}
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero h1 em { font-style: italic; font-weight: 600; color: var(--red); }
+.hero-sub { font-size: 17px; color: rgba(237,232,223,0.65); line-height: 1.75; max-width: 520px; margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
 .btn-red {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--red); color: #fff;
-  font-weight: 500; font-size: 14px; padding: 13px 28px;
-  border-radius: 8px; text-decoration: none;
-  letter-spacing: 0.02em;
+  font-weight: 600; font-size: 14px; padding: 13px 28px;
+  border-radius: 8px; text-decoration: none; letter-spacing: 0.02em;
   transition: background 0.2s, transform 0.15s;
 }
 .btn-red:hover { background: var(--red2); transform: translateY(-1px); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border2); color: var(--ink2);
+  border: 1px solid var(--border2); color: rgba(237,232,223,0.6);
   font-size: 14px; padding: 13px 24px; border-radius: 8px;
-  text-decoration: none; letter-spacing: 0.02em;
-  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none; transition: color 0.2s, border-color 0.2s;
 }
-.btn-ghost:hover { border-color: var(--ink2); background: rgba(42,33,24,0.04); }
-
-/* Hero dekoracja */
-.hero-deco {
-  display: flex; flex-direction: column; align-items: center; gap: 20px;
-}
-.hero-plate {
-  width: 340px; height: 340px; border-radius: 50%;
-  background: var(--cream2);
-  border: 1px solid var(--border2);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  box-shadow: inset 0 2px 20px rgba(42,33,24,0.06), 0 8px 40px rgba(42,33,24,0.08);
-}
-.hero-plate::before {
-  content: '';
-  position: absolute; inset: 16px;
-  border-radius: 50%; border: 1px dashed rgba(42,33,24,0.15);
-}
-.hero-pizza-icon { font-size: 110px; line-height: 1; }
-.hero-plate-label {
-  position: absolute; bottom: 32px;
-  font-family: 'Pinyon Script', cursive;
-  font-size: 22px; color: var(--gold); letter-spacing: 0.02em;
-}
-.hero-badges {
-  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-}
-.badge-pill {
-  background: var(--paper); border: 1px solid var(--border2);
-  border-radius: 99px; padding: 6px 14px;
-  font-size: 12px; color: var(--muted); font-weight: 500;
-  letter-spacing: 0.02em;
+.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+.hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px; padding: 7px 16px;
+  font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 500; letter-spacing: 0.03em;
 }
 
-/* ── DIVIDER OZDOBNY ── */
-.ornament-divider {
-  text-align: center; padding: 8px 0; color: var(--gold);
-  font-size: 18px; letter-spacing: 12px; opacity: 0.5;
-  user-select: none;
-}
-.full-divider { border: none; border-top: 1px solid var(--border2); margin: 0 52px; }
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 52px; }
+.ornament { text-align: center; padding: 6px 0; color: var(--gold); font-size: 14px; letter-spacing: 14px; opacity: 0.3; user-select: none; }
 
 /* ── SECTION ── */
-.section { padding: 80px 52px; max-width: 1100px; margin: 0 auto; }
+.section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
 .section-eyebrow {
-  display: flex; align-items: center; gap: 14px;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
 }
-.section-eyebrow::before, .section-eyebrow::after {
-  content: ''; display: block; height: 1px;
-  background: var(--gold); opacity: 0.4; flex: 0 0 24px;
-}
+.section-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--gold); opacity: 0.5; }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 600; font-style: italic;
-  letter-spacing: -0.01em; line-height: 1.1;
-  color: var(--ink2); margin-bottom: 12px;
+  font-size: clamp(32px, 4vw, 52px); font-weight: 300;
+  line-height: 1.1; color: var(--cream); margin-bottom: 14px;
 }
-.section-sub {
-  font-size: 16px; color: var(--muted); max-width: 480px;
-  line-height: 1.75; margin-bottom: 48px;
-}
+.section-title em { font-style: italic; font-weight: 600; color: var(--red); }
+.section-sub { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.8; margin-bottom: 48px; }
 
-/* ── MENU ── */
-.menu-tabs {
-  display: flex; gap: 2px; margin-bottom: 36px;
-  border-bottom: 1px solid var(--border2); padding-bottom: 0;
-  flex-wrap: wrap;
-}
-.tab {
-  padding: 10px 22px; font-size: 13px; font-weight: 500;
-  cursor: pointer; border: none; background: none;
-  color: var(--muted); font-family: 'DM Sans', sans-serif;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.tab.active { color: var(--red); border-bottom-color: var(--red); }
-.tab:hover:not(.active) { color: var(--ink); }
-
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; }
-.menu-item {
-  background: var(--paper);
-  padding: 24px 26px;
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
-  transition: background 0.15s;
-  cursor: default;
-}
-.menu-item:hover { background: var(--cream2); }
-.menu-item-left { flex: 1; }
-.menu-item-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px; font-weight: 600; color: var(--ink2);
-  margin-bottom: 5px; line-height: 1.2;
-}
-.menu-item-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-.menu-item-tag {
-  display: inline-block; font-size: 10px; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--red); background: rgba(184,58,26,0.08);
-  border-radius: 4px; padding: 2px 7px; margin-top: 8px;
-}
-.menu-item-right { text-align: right; flex-shrink: 0; }
-.menu-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px; font-weight: 600; color: var(--ink2);
-  line-height: 1;
-}
-.menu-sizes { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-/* ── O NAS ── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+/* ── O NAS — z zdjęciem ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
 .about-img {
-  aspect-ratio: 4/3;
-  background: var(--cream2);
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 80px;
-  border: 1px solid var(--border2);
-  position: relative; overflow: hidden;
+  position: relative; min-height: 480px;
+  background: var(--surface2);
 }
-.about-img::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(200,148,42,0.08), transparent);
+.about-img img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.8; }
+.about-img-placeholder {
+  width: 100%; height: 100%; min-height: 480px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  padding: 40px; text-align: center;
 }
-.about-label {
+.about-img-placeholder .ph-icon { font-size: 36px; opacity: 0.15; }
+.about-img-placeholder .ph-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
+.about-img-placeholder .ph-hint { font-size: 12px; color: var(--muted); opacity: 0.5; line-height: 1.65; max-width: 240px; }
+.about-text { padding: 48px 44px; background: var(--surface); display: flex; flex-direction: column; justify-content: center; }
+.about-quote {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 13px; font-style: italic; color: var(--gold);
-  letter-spacing: 0.04em; margin-bottom: 14px;
+  font-size: 28px; font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.4; margin-bottom: 24px;
 }
-.about-text {
-  font-size: 15px; color: var(--muted); line-height: 1.8;
-  margin-bottom: 24px;
-}
+.about-quote em { font-style: normal; font-weight: 600; color: var(--gold); }
+.about-body { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 32px; }
 .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.fact-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 600; font-style: italic;
-  color: var(--red); line-height: 1;
+.fact { border-top: 1px solid var(--border); padding-top: 16px; }
+.fact-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; font-style: italic; color: var(--red); line-height: 1; }
+.fact-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.02em; }
+
+/* ── MENU — siatka zdjęć ── */
+.menu-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+.tab { padding: 10px 22px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: none; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+.tab.active { color: var(--red); border-bottom-color: var(--red); }
+
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.menu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.menu-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.menu-photo { position: relative; aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; }
+.menu-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.menu-card:hover .menu-photo img { transform: scale(1.05); }
+.menu-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  padding: 20px; text-align: center;
 }
-.fact-label { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.menu-photo-placeholder .ph-icon { font-size: 28px; opacity: 0.15; }
+.menu-photo-placeholder .ph-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
+.menu-photo-placeholder .ph-name { font-size: 12px; color: var(--muted); opacity: 0.6; }
+.menu-badge { position: absolute; top: 12px; right: 12px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; letter-spacing: 0.04em; }
+.menu-info { padding: 18px 20px 22px; }
+.menu-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; font-style: italic; color: var(--cream); margin-bottom: 6px; }
+.menu-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.menu-footer { display: flex; justify-content: space-between; align-items: center; }
+.menu-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--cream); }
+.menu-sizes { font-size: 11px; color: var(--muted); }
+
+/* ── ATMOSFERA — siatka zdjęć ── */
+.atmo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; }
+.atmo-item { position: relative; background: var(--surface2); border-radius: 10px; overflow: hidden; }
+.atmo-item.tall { grid-row: span 2; }
+.atmo-item img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 180px; transition: transform 0.4s; opacity: 0.85; }
+.atmo-item:hover img { transform: scale(1.04); opacity: 1; }
+.atmo-placeholder {
+  width: 100%; min-height: 180px; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  padding: 16px; text-align: center;
+}
+.atmo-placeholder .ph-icon { font-size: 22px; opacity: 0.15; }
+.atmo-placeholder .ph-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
+.atmo-placeholder .ph-hint { font-size: 11px; color: var(--muted); opacity: 0.45; line-height: 1.5; }
 
 /* ── ZAMÓW ── */
-.order-wrap { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: start; }
-.order-toggle {
-  display: flex; gap: 0; margin-bottom: 24px;
-  border: 1px solid var(--border2); border-radius: 9px; overflow: hidden; width: fit-content;
-}
-.toggle-btn {
-  padding: 10px 24px; font-size: 13px; font-weight: 500;
-  border: none; cursor: pointer; background: none; color: var(--muted);
-  font-family: 'DM Sans', sans-serif; transition: all 0.15s;
-  letter-spacing: 0.03em;
-}
+.order-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 52px; align-items: start; }
+.order-toggle { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--border2); border-radius: 9px; overflow: hidden; width: fit-content; }
+.toggle-btn { padding: 10px 24px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; background: none; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em; transition: all 0.15s; }
 .toggle-btn.active { background: var(--red); color: #fff; }
-
-.order-form { display: flex; flex-direction: column; gap: 11px; }
+.order-form { display: flex; flex-direction: column; gap: 10px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .order-form input, .order-form select, .order-form textarea {
-  background: var(--paper); border: 1px solid var(--border2);
-  color: var(--ink); font-family: 'DM Sans', sans-serif;
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
   font-size: 15px; padding: 12px 16px; border-radius: 9px;
-  outline: none; width: 100%; appearance: none;
-  transition: border-color 0.15s;
+  outline: none; width: 100%; appearance: none; transition: border-color 0.15s;
 }
-.order-form input::placeholder { color: rgba(138,122,102,0.6); }
+.order-form input::placeholder { color: var(--muted); opacity: 0.5; }
 .order-form input:focus, .order-form select:focus { border-color: var(--gold); }
-.order-form select option { background: var(--paper); }
+.order-form select option { background: #171410; }
 
-.info-side { display: flex; flex-direction: column; gap: 28px; }
-.info-block-label {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-}
-.info-block-val { font-size: 15px; color: var(--ink2); line-height: 1.7; }
-.info-block-val a { color: var(--red); text-decoration: none; }
-.hours-row { display: flex; justify-content: space-between; font-size: 14px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.info-side { display: flex; flex-direction: column; gap: 24px; }
+.info-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.info-val { font-size: 15px; color: var(--text); line-height: 1.7; }
+.info-val a { color: var(--red); text-decoration: none; }
+.hours-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
 .hours-row:last-child { border-bottom: none; }
 .hours-day { color: var(--muted); }
-.hours-time { font-weight: 500; color: var(--ink2); }
-.map-box {
-  background: var(--cream2); border: 1px solid var(--border2);
-  border-radius: 12px; height: 140px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; color: var(--muted);
+.hours-time { color: var(--text); font-weight: 500; }
+.map-ph { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; height: 140px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--muted); }
+
+/* ZDJĘCIA GUIDE */
+.photo-guide {
+  margin-top: 20px; padding: 18px 22px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; font-size: 13px; color: var(--muted); line-height: 1.7;
 }
+.photo-guide strong { color: var(--gold); }
+.photo-guide code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; color: var(--text); font-size: 12px; }
 
 /* ── OPINIE ── */
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-.review-card {
-  background: var(--paper); border: 1px solid var(--border2);
-  border-radius: 14px; padding: 24px 26px;
-}
-.review-stars { color: var(--gold); font-size: 13px; letter-spacing: 3px; margin-bottom: 12px; }
-.review-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px; font-style: italic; color: var(--ink2);
-  line-height: 1.65; margin-bottom: 16px;
-}
-.review-author { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.03em; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; }
+.review-stars { color: var(--gold); font-size: 11px; letter-spacing: 3px; margin-bottom: 14px; }
+.review-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+.review-author { font-size: 12px; color: var(--muted); font-weight: 500; }
 
 /* ── FOOTER ── */
-.site-footer {
-  background: var(--ink2); color: rgba(245,240,230,0.7);
-  padding: 52px; text-align: center;
-}
-.footer-logo {
-  font-family: 'Pinyon Script', cursive;
-  font-size: 44px; color: var(--cream);
-  display: block; margin-bottom: 16px; text-decoration: none;
-  line-height: 1;
-}
-.footer-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px; font-style: italic; color: var(--gold);
-  letter-spacing: 0.04em; margin-bottom: 28px;
-}
-.footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 28px; flex-wrap: wrap; }
-.footer-links a { font-size: 12px; color: rgba(245,240,230,0.45); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-.footer-links a:hover { color: var(--cream); }
-.footer-copy { font-size: 12px; color: rgba(245,240,230,0.3); }
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 44px 52px; text-align: center; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: var(--cream); display: block; margin-bottom: 8px; text-decoration: none; }
+.footer-logo strong { font-weight: 600; font-style: normal; color: var(--red); }
+.footer-tagline { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 24px; }
+.footer-nav { display: flex; justify-content: center; gap: 28px; margin-bottom: 24px; }
+.footer-nav a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
 /* ── DEMO BAR ── */
-.demo-bar {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: var(--ink2); color: rgba(245,240,230,0.8);
-  display: flex; align-items: center; justify-content: center; gap: 16px;
-  padding: 11px 20px; font-size: 12px; letter-spacing: 0.02em;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+.demo-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 11px 20px; font-size: 12px; color: var(--muted); }
 .demo-bar a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-deco { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .order-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img { min-height: 300px; }
+  .menu-grid { grid-template-columns: 1fr 1fr; }
+  .atmo-grid { grid-template-columns: 1fr 1fr; }
+  .atmo-item.tall { grid-row: span 1; }
+  .order-grid { grid-template-columns: 1fr; gap: 36px; }
+  .reviews-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero { padding: 90px 24px 60px; }
-  .section { padding: 60px 24px; }
-  .full-divider { margin: 0 24px; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 16px 20px; gap: 4px; z-index: 99; }
+  .nav-burger { display: flex; }
+  .hero-content { padding: 0 20px 56px; }
+  .section { padding: 56px 20px; }
+  .divider { margin: 0 20px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .atmo-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .site-footer { padding: 40px 24px; }
+  footer { padding: 36px 20px; }
 }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
@@ -395,52 +324,91 @@ nav {
   Strona demo — realizacja <a href="index.html">deczdev</a> · przykład dla pizzerii &nbsp;·&nbsp; <a href="kontakt.html">Zamów podobną →</a>
 </div>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">u Marka</a>
-  <ul class="nav-links">
-    <li><a href="#menu">Menu</a></li>
+  <a href="#" class="nav-logo">u <strong>Marka</strong></a>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#o-nas">O nas</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#atmosfera">Klimat</a></li>
     <li><a href="#opinie">Opinie</a></li>
     <li><a href="#zamow" class="nav-order">Zamów online</a></li>
   </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — fullscreen z zdjęciem -->
 <div class="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag">Kraków · Kazimierz · od 1997</div>
-      <h1>Pizza jak<br>w <em>Neapolu</em>,<br>w sercu<br>Krakowa.</h1>
-      <p class="hero-sub">Ciasto na naturalnym zakwasie, piec opalany dębem rozgrzany do 450°C, składniki sprowadzane prosto z Włoch. Bez kompromisów.</p>
-      <div class="hero-actions">
-        <a href="#zamow" class="btn-red">Zamów z dostawą →</a>
-        <a href="#menu" class="btn-ghost">Zobacz menu</a>
-      </div>
+  <div class="hero-bg">
+    <!--
+      ZDJĘCIE HERO: panoramiczne ujęcie pizzy wychodzącej z pieca lub całej pizzy z bliska
+      Zalecane: szerokokątne, ciepłe kolory, dym z pieca w tle, format 1920×1080px lub większy
+      <img src="img/hero-pizza.jpg" alt="Pizza u Marka">
+    -->
+    <div class="hero-bg-placeholder">
+      <div class="ph-icon">📷</div>
+      <div class="ph-title">Zdjęcie hero — pizza z pieca</div>
+      <div class="ph-desc">Panoramiczne zdjęcie pizzy wychodzącej z pieca lub całej pizzy z bliska, ciepłe kolory, dym, ogień. Min. 1920×1080 px.</div>
     </div>
-    <div class="hero-deco">
-      <div class="hero-plate">
-        <div class="hero-pizza-icon">🍕</div>
-        <div class="hero-plate-label">fatto a mano</div>
-      </div>
-      <div class="hero-badges">
-        <span class="badge-pill">🔥 Piec dębowy</span>
-        <span class="badge-pill">🌿 Bio składniki</span>
-        <span class="badge-pill">⏱ Dowóz 35 min</span>
-      </div>
+  </div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Kraków · Kazimierz · od 1997</div>
+    <h1>Pizza jak<br>w <em>Neapolu.</em></h1>
+    <p class="hero-sub">Ciasto na zakwasie przez 48 godzin. Piec opalany dębem rozgrzany do 450°C. Składniki prosto z Włoch. Bez kompromisów od 27 lat.</p>
+    <div class="hero-actions">
+      <a href="#zamow" class="btn-red">Zamów z dostawą →</a>
+      <a href="#menu" class="btn-ghost">Zobacz menu</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">🔥 Piec dębowy 450°C</span>
+      <span class="chip">🌿 Składniki z Włoch</span>
+      <span class="chip">⏱ Dowóz 35 min</span>
+      <span class="chip">⭐ 4,9 · 124 opinie</span>
     </div>
   </div>
 </div>
 
-<hr class="full-divider">
-<div class="ornament-divider">✦ ✦ ✦</div>
-<hr class="full-divider">
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
+
+<!-- O NAS -->
+<section class="section" id="o-nas">
+  <div class="about-grid">
+    <div class="about-img">
+      <!--
+        ZDJĘCIE O NAS: Marek przy piecu, portret właściciela lub zdjęcie pieca z ogniem
+        Format pionowy, ciepłe oświetlenie, klimatyczne. Min. 800×900 px.
+        <img src="img/marek-piec.jpg" alt="Marek Wiśniewski przy piecu">
+      -->
+      <div class="about-img-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zdjęcie właściciela</div>
+        <div class="ph-hint">Marek przy piecu lub portret z kuchnią w tle. Ciepłe oświetlenie, klimatyczne. Min. 800×900 px.</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="about-quote">„Dobra pizza to nie przepis.<br>To <em>czas, ogień</em><br>i szacunek do składników."</div>
+      <p class="about-body">Marek Wiśniewski wrócił z Neapolu w 1997 roku z jedną myślą — zrobić w Krakowie pizzę taką jak ta, którą jadł przy via dei Tribunali. Przez dwa lata uczył się rzemiosła od lokalnych mistrzów pizzy.<br><br>Dziś, 27 lat później, pracuje razem z synem. Ta sama receptura na ciasto, ten sam piec — tylko doświadczenie jest większe.</p>
+      <div class="about-facts">
+        <div class="fact"><div class="fact-num">27</div><div class="fact-label">lat na Kazimierzu</div></div>
+        <div class="fact"><div class="fact-num">450°</div><div class="fact-label">temperatura pieca</div></div>
+        <div class="fact"><div class="fact-num">48h</div><div class="fact-label">wyrastanie ciasta</div></div>
+        <div class="fact"><div class="fact-num">4,9★</div><div class="fact-label">124 opinie Google</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- MENU -->
 <section class="section" id="menu">
   <div class="section-eyebrow">Menu</div>
-  <h2 class="section-title">Nasze pizze</h2>
-  <p class="section-sub">Każda pizza robiona na zamówienie — ciasto wyrastało 48 godzin, sos ze świeżych pomidorów, składniki dobierane codziennie.</p>
+  <h2 class="section-title">Nasze<br><em>pizze</em></h2>
+  <p class="section-sub">Każda robiona na zamówienie — ciasto i sos świeże każdego dnia.</p>
 
   <div class="menu-tabs">
     <button class="tab active" onclick="switchTab(this)">Klasyczne</button>
@@ -450,146 +418,253 @@ nav {
   </div>
 
   <div class="menu-grid">
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Margherita</div>
-        <div class="menu-item-desc">San marzano, fior di latte, świeża bazylia, oliwa extra vergine</div>
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Margherita z bliska, widoczne bąble na cieście, świeża bazylia
+          <img src="img/pizza-margherita.jpg" alt="Margherita">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Margherita — z góry lub pod kątem 45°</div>
+        </div>
       </div>
-      <div class="menu-item-right">
-        <div class="menu-price">32 zł</div>
-        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Diavola</div>
-        <div class="menu-item-desc">San marzano, mozzarella, salami piccante, chili, czarne oliwki</div>
-        <span class="menu-item-tag">Bestseller</span>
-      </div>
-      <div class="menu-item-right">
-        <div class="menu-price">42 zł</div>
-        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
-      </div>
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Quattro Formaggi</div>
-        <div class="menu-item-desc">Mozzarella, gorgonzola, parmezan, taleggio</div>
-      </div>
-      <div class="menu-item-right">
-        <div class="menu-price">46 zł</div>
-        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
+      <div class="menu-info">
+        <div class="menu-name">Margherita</div>
+        <div class="menu-desc">San marzano, fior di latte, świeża bazylia, oliwa extra vergine</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">32 zł</div><div class="menu-sizes">30 cm · 40 cm +10 zł</div></div>
+        </div>
       </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Prosciutto e Funghi</div>
-        <div class="menu-item-desc">San marzano, mozzarella, szynka parmeńska, pieczarki, rukola</div>
+
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Diavola — widoczne salami, czerwony kolor od chili
+          <img src="img/pizza-diavola.jpg" alt="Diavola">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Diavola — salami piccante, intensywne kolory</div>
+        </div>
+        <div class="menu-badge">Bestseller</div>
       </div>
-      <div class="menu-item-right">
-        <div class="menu-price">48 zł</div>
-        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
+      <div class="menu-info">
+        <div class="menu-name">Diavola</div>
+        <div class="menu-desc">San marzano, mozzarella, salami piccante, chili, czarne oliwki</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">42 zł</div><div class="menu-sizes">30 cm · 40 cm +10 zł</div></div>
+        </div>
       </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">u Marka Specjalna</div>
-        <div class="menu-item-desc">Sos truflowy, mozzarella, portobello, parmezan, roszponka</div>
-        <span class="menu-item-tag">Nowość</span>
+
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Quattro Formaggi — topiony ser, złocista skórka
+          <img src="img/pizza-4formaggi.jpg" alt="Quattro Formaggi">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Quattro Formaggi — topiony ser, złota skórka</div>
+        </div>
       </div>
-      <div class="menu-item-right">
-        <div class="menu-price">54 zł</div>
-        <div class="menu-sizes">30 · 40 cm (+10 zł)</div>
+      <div class="menu-info">
+        <div class="menu-name">Quattro Formaggi</div>
+        <div class="menu-desc">Mozzarella, gorgonzola, parmezan, taleggio</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">46 zł</div><div class="menu-sizes">30 cm · 40 cm +10 zł</div></div>
+        </div>
       </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-left">
-        <div class="menu-item-name">Calzone</div>
-        <div class="menu-item-desc">Ricotta, mozzarella, szpinak, szynka — podawany z marinara</div>
+
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Specjalna — sos truflowy, ciemniejsze kolory, elegancka
+          <img src="img/pizza-specjalna.jpg" alt="u Marka Specjalna">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Specjalna — sos truflowy, elegancka prezentacja</div>
+        </div>
+        <div class="menu-badge">Nowość</div>
       </div>
-      <div class="menu-item-right">
-        <div class="menu-price">44 zł</div>
-        <div class="menu-sizes">Jeden rozmiar</div>
+      <div class="menu-info">
+        <div class="menu-name">u Marka Specjalna</div>
+        <div class="menu-desc">Sos truflowy, mozzarella, portobello, parmezan, roszponka</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">54 zł</div><div class="menu-sizes">30 cm · 40 cm +10 zł</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Prosciutto — szynka parmeńska widoczna, rukola na wierzchu
+          <img src="img/pizza-prosciutto.jpg" alt="Prosciutto e Funghi">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Prosciutto — szynka parmeńska, świeża rukola</div>
+        </div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name">Prosciutto e Funghi</div>
+        <div class="menu-desc">San marzano, mozzarella, szynka parmeńska, pieczarki, rukola</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">48 zł</div><div class="menu-sizes">30 cm · 40 cm +10 zł</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-photo">
+        <!--
+          ZDJĘCIE: Calzone — zamknięty, przekrojony na pół, widoczne nadzienie
+          <img src="img/pizza-calzone.jpg" alt="Calzone">
+        -->
+        <div class="menu-photo-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-label">Zdjęcie pizzy</div>
+          <div class="ph-name">Calzone — przekrojony na pół, widoczne nadzienie</div>
+        </div>
+      </div>
+      <div class="menu-info">
+        <div class="menu-name">Calzone</div>
+        <div class="menu-desc">Ricotta, mozzarella, szpinak, szynka — podawany z marinara</div>
+        <div class="menu-footer">
+          <div><div class="menu-price">44 zł</div><div class="menu-sizes">Jeden rozmiar</div></div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<hr class="full-divider">
-<div class="ornament-divider">✦ ✦ ✦</div>
-<hr class="full-divider">
-
-<!-- O NAS -->
-<section class="section" id="o-nas">
-  <div class="about-grid">
-    <div class="about-img">🍕</div>
-    <div>
-      <div class="about-label">Nasza historia</div>
-      <h2 class="section-title" style="margin-bottom:16px">Trzy pokolenia,<br>jedna receptura.</h2>
-      <p class="about-text">Marek Wiśniewski otworzył pizzerię w 1997 roku po powrocie z Neapolu, gdzie przez dwa lata uczył się rzemiosła od lokalnych mistrzów. Dziś prowadzi ją razem z synem — z tą samą recepturą na ciasto i tym samym piecem, który pamieta pierwsze dni.</p>
-      <p class="about-text">Nie robimy pizzy na skróty. Ciasto wyrasta 48 godzin, sos gotujemy codziennie rano, a składniki zamawiamy dwa razy w tygodniu prosto z Włoch.</p>
-      <div class="about-facts">
-        <div>
-          <div class="fact-num">27</div>
-          <div class="fact-label">lat na Kazimierzu</div>
-        </div>
-        <div>
-          <div class="fact-num">450°</div>
-          <div class="fact-label">temperatura pieca</div>
-        </div>
-        <div>
-          <div class="fact-num">48h</div>
-          <div class="fact-label">wyrastanie ciasta</div>
-        </div>
-        <div>
-          <div class="fact-num">4,9★</div>
-          <div class="fact-label">średnia 124 opinii</div>
-        </div>
-      </div>
-    </div>
+  <div class="photo-guide" style="margin-top:20px">
+    <strong>Jak dodać zdjęcia do menu:</strong> Stwórz folder <code>img/</code> obok pliku HTML. Zdjęcia pizz zapisz jako <code>pizza-margherita.jpg</code>, <code>pizza-diavola.jpg</code> itd. i odkomentuj tagi <code>&lt;img&gt;</code> w każdej karcie. Zalecany rozmiar: min. <strong>600×450 px</strong>, format JPG. Rób zdjęcia z góry lub pod kątem 45° przy naturalnym świetle.
   </div>
 </section>
 
-<hr class="full-divider">
-<div class="ornament-divider">✦ ✦ ✦</div>
-<hr class="full-divider">
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
+
+<!-- ATMOSFERA -->
+<section class="section" id="atmosfera">
+  <div class="section-eyebrow">Klimat</div>
+  <h2 class="section-title">Przyjdź<br><em>do nas</em></h2>
+  <p class="section-sub">Kazimierz, stare kamienice i prawdziwy włoski klimat — u nas jest miejsce dla każdego.</p>
+
+  <div class="atmo-grid">
+    <!--
+      ZDJĘCIE DUŻE: Wnętrze restauracji — stoły, goście, ciepłe światło
+      Min. 900×600 px, pionowe
+      <img src="img/wnetrze-glowne.jpg" alt="Wnętrze pizzerii">
+    -->
+    <div class="atmo-item tall">
+      <div class="atmo-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Wnętrze — duże</div>
+        <div class="ph-hint">Ogólny widok sali z gośćmi lub pusty ale klimatyczny. Pionowe, min. 700×900 px.</div>
+      </div>
+    </div>
+    <!--
+      ZDJĘCIE: Piec z ogniem — ogień widoczny, piec opalany drewnem
+      <img src="img/piec.jpg" alt="Piec opalany drewnem">
+    -->
+    <div class="atmo-item">
+      <div class="atmo-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Piec z ogniem</div>
+        <div class="ph-hint">Ogień w piecu, dramatyczne oświetlenie.</div>
+      </div>
+    </div>
+    <!--
+      ZDJĘCIE: Składniki — pomidory, ser, bazylia na blacie
+      <img src="img/skladniki.jpg" alt="Świeże składniki">
+    -->
+    <div class="atmo-item">
+      <div class="atmo-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Składniki</div>
+        <div class="ph-hint">Pomidory, mozzarella, bazylia — flat lay na drewnianym blacie.</div>
+      </div>
+    </div>
+    <!--
+      ZDJĘCIE: Detal — kieliszek wina + pizza lub talerz z detalem
+      <img src="img/detal-wino.jpg" alt="Pizza i wino">
+    -->
+    <div class="atmo-item">
+      <div class="atmo-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Detal — wino + pizza</div>
+        <div class="ph-hint">Kieliszek wina przy pizzy, klimat włoskiej kolacji.</div>
+      </div>
+    </div>
+    <!--
+      ZDJĘCIE: Zewnętrze — taras lub wejście do restauracji wieczorem
+      <img src="img/zewnetrze.jpg" alt="Zewnętrze pizzerii">
+    -->
+    <div class="atmo-item">
+      <div class="atmo-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-label">Zewnętrze / taras</div>
+        <div class="ph-hint">Wejście lub taras wieczorem, ciepłe światło, Kazimierz w tle.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="photo-guide" style="margin-top:16px">
+    <strong>Zdjęcia atmosfery:</strong> Zapisz jako <code>wnetrze-glowne.jpg</code>, <code>piec.jpg</code>, <code>skladniki.jpg</code>, <code>detal-wino.jpg</code>, <code>zewnetrze.jpg</code> w folderze <code>img/</code> i odkomentuj tagi <code>&lt;img&gt;</code> powyżej. Najlepsze zdjęcia atmosfery to te robione wieczorem przy naturalnym oświetleniu sali.
+  </div>
+</section>
+
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- OPINIE -->
 <section class="section" id="opinie">
   <div class="section-eyebrow">Opinie</div>
-  <h2 class="section-title">Co mówią goście</h2>
-  <p class="section-sub">124 opinie w Google — średnia 4,9 na 5.</p>
+  <h2 class="section-title">Co mówią<br><em>goście</em></h2>
 
   <div class="reviews-grid">
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-quote">„Najlepsza pizza w Krakowie bez żadnej dyskusji. Ciasto cienkie, chrupiące, składniki świeże. Wracam tu od dziesięciu lat i nigdy się nie zawiodłam."</div>
+      <div class="review-text">„Najlepsza pizza w Krakowie bez dyskusji. Ciasto cienkie, chrupiące, składniki świeże. Wracam tu od dziesięciu lat."</div>
       <div class="review-author">Marta W. · 2 tygodnie temu</div>
     </div>
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-quote">„Przychodzimy tu całą rodziną od lat. Pan Marek zawsze przywituje z uśmiechem, pizza zawsze taka sama — doskonała. To rzadkość."</div>
+      <div class="review-text">„Przychodzimy całą rodziną od lat. Pan Marek zawsze z uśmiechem, pizza zawsze taka sama — doskonała. To rzadkość."</div>
       <div class="review-author">Tomasz K. · miesiąc temu</div>
     </div>
-    <div class="review-card">
+    <div class="review">
       <div class="review-stars">★★★★★</div>
-      <div class="review-quote">„Byłam w pizzeriach w Neapolu, Rzymie, Florencji. U Marka jest na tym samym poziomie. Serio. I to w Krakowie — niesamowite."</div>
+      <div class="review-text">„Byłam w Neapolu, Rzymie i Florencji. U Marka jest na tym samym poziomie. Serio. I to w Krakowie."</div>
       <div class="review-author">Karolina P. · 3 tygodnie temu</div>
     </div>
   </div>
 </section>
 
-<hr class="full-divider">
-<div class="ornament-divider">✦ ✦ ✦</div>
-<hr class="full-divider">
+<hr class="divider">
+<div class="ornament">· · ·</div>
+<hr class="divider">
 
 <!-- ZAMÓW -->
 <section class="section" id="zamow">
   <div class="section-eyebrow">Zamówienie</div>
-  <h2 class="section-title">Zamów online</h2>
-  <p class="section-sub">Dowóz w 35 minut lub odbiór bez czekania. Płatność przy odbiorze lub kartą.</p>
+  <h2 class="section-title">Zamów<br><em>online</em></h2>
+  <p class="section-sub">Dowóz w 35 minut lub odbiór bez czekania.</p>
 
-  <div class="order-wrap">
+  <div class="order-grid">
     <div>
       <div class="order-toggle">
         <button class="toggle-btn active" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🛵 Dowóz</button>
@@ -621,34 +696,26 @@ nav {
     </div>
 
     <div class="info-side">
+      <div><div class="info-label">Adres</div><div class="info-val">ul. Józefa 14<br>31-056 Kraków — Kazimierz<br><span style="color:var(--muted);font-size:13px">przy Placu Nowym</span></div></div>
+      <div><div class="info-label">Telefon</div><div class="info-val"><a href="tel:+48122345678">+48 12 234 56 78</a></div></div>
       <div>
-        <div class="info-block-label">Adres</div>
-        <div class="info-block-val">ul. Józefa 14<br>31-056 Kraków — Kazimierz</div>
+        <div class="info-label">Godziny</div>
+        <div class="hours-row"><span class="hours-day">Pon – Czw</span><span class="hours-time">12:00 – 22:00</span></div>
+        <div class="hours-row"><span class="hours-day">Pt – Sob</span><span class="hours-time">12:00 – 23:30</span></div>
+        <div class="hours-row"><span class="hours-day">Niedziela</span><span class="hours-time">13:00 – 22:00</span></div>
       </div>
-      <div>
-        <div class="info-block-label">Telefon</div>
-        <div class="info-block-val"><a href="tel:+48122345678">+48 12 234 56 78</a></div>
-      </div>
-      <div>
-        <div class="info-block-label">Godziny</div>
-        <div>
-          <div class="hours-row"><span class="hours-day">Pon – Czw</span><span class="hours-time">12:00 – 22:00</span></div>
-          <div class="hours-row"><span class="hours-day">Pt – Sob</span><span class="hours-time">12:00 – 23:30</span></div>
-          <div class="hours-row"><span class="hours-day">Niedziela</span><span class="hours-time">13:00 – 22:00</span></div>
-        </div>
-      </div>
-      <div class="map-box">📍 ul. Józefa 14, Kraków Kazimierz</div>
+      <div class="map-ph">📍 ul. Józefa 14, Kraków Kazimierz</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <a href="#" class="footer-logo">u Marka</a>
-  <div class="footer-tagline">Prawdziwa pizza z pieca · Kraków od 1997</div>
-  <nav class="footer-links">
-    <a href="#menu">Menu</a>
+<footer>
+  <a href="#" class="footer-logo">u <strong>Marka</strong></a>
+  <div class="footer-tagline">Prawdziwa pizza z pieca · Kraków Kazimierz · od 1997</div>
+  <nav class="footer-nav">
     <a href="#o-nas">O nas</a>
+    <a href="#menu">Menu</a>
+    <a href="#atmosfera">Klimat</a>
     <a href="#opinie">Opinie</a>
     <a href="#zamow">Zamów</a>
   </nav>
@@ -656,6 +723,9 @@ nav {
 </footer>
 
 <script>
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('nav-links');
+if (burger) burger.addEventListener('click', () => navLinks.classList.toggle('open'));
 function switchTab(el) {
   el.parentNode.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
