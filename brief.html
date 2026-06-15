@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief — deczdev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f3ef;
+  --paper: #ffffff;
+  --border: #e4e0d8;
+  --border2: #ccc8be;
+  --text: #1a1a1a;
+  --muted: #777;
+  --accent: #d4f564;
+  --accent-dark: #3a5a0a;
+  --ink: #0e0e0e;
+  --red: #c0392b;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding: 36px 20px 80px;
+}
+
+.wrapper { max-width: 720px; margin: 0 auto; }
+
+/* NAGŁÓWEK */
+.top-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #999; margin-bottom: 8px;
+}
+h1 {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 6px;
+}
+.subtitle { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+
+/* WYBÓR PAKIETU */
+.pkg-picker {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin-bottom: 32px;
+}
+.pkg-btn {
+  padding: 14px 10px; border: 1.5px solid var(--border2);
+  border-radius: 11px; background: var(--paper);
+  cursor: pointer; text-align: center;
+  transition: all 0.15s; font-family: 'DM Sans', sans-serif;
+}
+.pkg-btn:hover { border-color: #aaa; background: #faf9f6; }
+.pkg-btn.active {
+  border-color: var(--ink); background: var(--ink);
+}
+.pkg-btn-name {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.pkg-btn.active .pkg-btn-name { color: var(--accent); }
+.pkg-btn-price {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 20px; font-weight: 700; color: var(--ink);
+}
+.pkg-btn.active .pkg-btn-price { color: #fff; }
+.pkg-btn-time { font-size: 11px; color: #aaa; margin-top: 3px; }
+.pkg-btn.active .pkg-btn-time { color: rgba(255,255,255,0.4); }
+
+/* FORMULARZ */
+.form-card {
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden; margin-bottom: 16px;
+}
+.form-section-header {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.form-section-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--ink); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; flex-shrink: 0;
+  font-family: 'Fraunces', serif; font-style: italic;
+}
+.form-section-title { font-size: 15px; font-weight: 600; color: var(--ink); }
+.form-section-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+.form-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+label {
+  font-size: 12px; font-weight: 600; color: var(--text);
+  letter-spacing: 0.02em;
+}
+label .req { color: var(--red); margin-left: 2px; }
+label .hint {
+  font-weight: 400; color: var(--muted);
+  font-size: 11px; margin-left: 6px;
+}
+
+input[type=text], input[type=email], input[type=tel],
+input[type=url], textarea, select {
+  background: #faf9f6; border: 1px solid var(--border2);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; padding: 11px 14px; border-radius: 9px;
+  outline: none; width: 100%; appearance: none;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.5;
+}
+input::placeholder, textarea::placeholder { color: #bbb; }
+input:focus, textarea:focus, select:focus {
+  border-color: #888; background: #fff;
+}
+textarea { resize: vertical; min-height: 88px; }
+select option { background: #fff; }
+
+/* CHECKBOXY */
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 13px; border: 1px solid var(--border);
+  border-radius: 9px; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.check-item:hover { border-color: var(--border2); background: #faf9f6; }
+.check-item input[type=checkbox] {
+  width: 16px; height: 16px; border-radius: 4px;
+  border: 1.5px solid var(--border2); background: #faf9f6;
+  flex-shrink: 0; margin-top: 2px; padding: 0;
+  cursor: pointer; accent-color: var(--ink);
+}
+.check-item-label { font-size: 13px; color: var(--text); line-height: 1.45; }
+.check-item-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* RADIO */
+.radio-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.radio-pill {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border: 1px solid var(--border2);
+  border-radius: 99px; cursor: pointer; background: #faf9f6;
+  font-size: 13px; color: var(--text);
+  transition: all 0.15s;
+}
+.radio-pill:hover { border-color: #888; background: #fff; }
+.radio-pill input[type=radio] {
+  width: 14px; height: 14px; padding: 0;
+  accent-color: var(--ink); cursor: pointer;
+}
+
+/* TAG INSPIRACJI */
+.url-row { display: flex; gap: 8px; align-items: center; }
+.url-row input { flex: 1; }
+.add-url-btn {
+  padding: 11px 14px; border: 1px solid var(--border2);
+  border-radius: 9px; background: #faf9f6;
+  font-size: 13px; color: var(--muted); cursor: pointer;
+  white-space: nowrap; font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s;
+}
+.add-url-btn:hover { border-color: #888; color: var(--text); }
+.url-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.url-tag {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #f0ede8; border-radius: 7px; padding: 7px 12px;
+  font-size: 13px; color: var(--text);
+}
+.url-remove { color: #aaa; cursor: pointer; font-size: 16px; line-height: 1; }
+.url-remove:hover { color: var(--red); }
+
+/* SEKCJE PAKIETOWE — ukryte/widoczne */
+.pkg-section { display: none; }
+.pkg-section.visible { display: flex; flex-direction: column; gap: 16px; }
+
+/* INFO BOX */
+.info-box {
+  background: #f0f7e6; border: 1px solid #c8e08a;
+  border-radius: 10px; padding: 13px 16px;
+  font-size: 13px; color: var(--accent-dark); line-height: 1.65;
+}
+.info-box strong { font-weight: 600; }
+
+.warn-box {
+  background: #fff8e6; border: 1px solid #e8d070;
+  border-radius: 10px; padding: 13px 16px;
+  font-size: 13px; color: #7a5800; line-height: 1.65;
+}
+
+/* SUBMIT */
+.submit-area {
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.submit-note { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.submit-note strong { color: var(--text); font-weight: 600; }
+.btn-submit {
+  background: var(--ink); color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 600;
+  font-size: 15px; padding: 13px 32px; border-radius: 10px;
+  border: none; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-submit:hover { background: #333; transform: translateY(-1px); }
+
+/* PROGRESS */
+.progress-bar {
+  height: 3px; background: var(--border);
+  border-radius: 99px; margin-bottom: 28px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: var(--ink);
+  border-radius: 99px; transition: width 0.3s;
+  width: 0%;
+}
+
+/* SUKCES */
+.success-screen {
+  display: none; text-align: center; padding: 60px 20px;
+}
+.success-screen.visible { display: block; }
+.success-icon { font-size: 52px; margin-bottom: 16px; }
+.success-title {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 26px; font-weight: 700; color: var(--ink);
+  margin-bottom: 10px;
+}
+.success-sub { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+/* PRINT */
+@media print {
+  body { background: white; padding: 0; }
+  .pkg-picker, .btn-submit, .add-url-btn { display: none; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 22px; }
+  .pkg-picker { grid-template-columns: 1fr 1fr; }
+  .field-row, .field-row-3 { grid-template-columns: 1fr; }
+  .check-grid { grid-template-columns: 1fr; }
+  .submit-area { flex-direction: column; align-items: flex-start; }
+  .btn-submit { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div class="top-label">deczdev — brief klienta</div>
+<h1>Formularz zlecenia strony</h1>
+<p class="subtitle">Wypełnij poniższe pola — im więcej informacji, tym szybciej i lepiej przygotuję Twoją stronę. Nie musisz mieć wszystkiego od razu, wrócimy do brakujących rzeczy.</p>
+
+<!-- WYBÓR PAKIETU -->
+<div style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#999;margin-bottom:10px">Wybrany pakiet</div>
+<div class="pkg-picker" id="pkgPicker">
+  <div class="pkg-btn" onclick="selectPkg('mini', this)">
+    <div class="pkg-btn-name">Mini</div>
+    <div class="pkg-btn-price">500 zł</div>
+    <div class="pkg-btn-time">3 dni</div>
+  </div>
+  <div class="pkg-btn" onclick="selectPkg('start', this)">
+    <div class="pkg-btn-name">Start</div>
+    <div class="pkg-btn-price">800 zł</div>
+    <div class="pkg-btn-time">5 dni</div>
+  </div>
+  <div class="pkg-btn active" onclick="selectPkg('biznes', this)">
+    <div class="pkg-btn-name">Biznes</div>
+    <div class="pkg-btn-price">1 800 zł</div>
+    <div class="pkg-btn-time">7 dni</div>
+  </div>
+  <div class="pkg-btn" onclick="selectPkg('premium', this)">
+    <div class="pkg-btn-name">Premium</div>
+    <div class="pkg-btn-price">3 500 zł</div>
+    <div class="pkg-btn-time">10 dni</div>
+  </div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<form id="briefForm" onsubmit="submitForm(event)">
+
+<!-- ══ SEKCJA WSPÓLNA DLA WSZYSTKICH ══ -->
+
+<!-- 1. DANE FIRMY -->
+<div class="form-card">
+  <div class="form-section-header">
+    <div class="form-section-num">1</div>
+    <div>
+      <div class="form-section-title">Dane firmy</div>
+      <div class="form-section-sub">Podstawowe informacje które pojawią się na stronie</div>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="field-row">
+      <div class="field">
+        <label>Pełna nazwa firmy <span class="req">*</span></label>
+        <input type="text" placeholder="np. Zakład Fryzjerski Kowalski" required>
+      </div>
+      <div class="field">
+        <label>Branża / typ działalności <span class="req">*</span></label>
+        <input type="text" placeholder="np. fryzjer, elektryk, restauracja">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Imię i nazwisko właściciela</label>
+        <input type="text" placeholder="Osoba do kontaktu">
+      </div>
+      <div class="field">
+        <label>Telefon kontaktowy <span class="req">*</span></label>
+        <input type="tel" placeholder="+48 000 000 000">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>E-mail do kontaktu <span class="req">*</span></label>
+        <input type="email" placeholder="firma@gmail.com">
+      </div>
+      <div class="field">
+        <label>Adres firmy <span class="hint">(jeśli klienci odwiedzają)</span></label>
+        <input type="text" placeholder="ul. Przykładowa 1, Warszawa">
+      </div>
+    </div>
+    <div class="field">
+      <label>Krótki opis firmy <span class="req">*</span><span class="hint">co robisz, dla kogo, co Cię wyróżnia</span></label>
+      <textarea placeholder="Np. Prowadzę jednoosobowy zakład fryzjerski na Mokotowie od 10 lat. Specjalizuję się w koloryzacji i strzyżeniu damskim. Mam stałych klientów, chcę żeby nowe osoby mogły mnie łatwo znaleźć w Google."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- 2. MATERIAŁY -->
+<div class="form-card">
+  <div class="form-section-header">
+    <div class="form-section-num">2</div>
+    <div>
+      <div class="form-section-title">Logo i materiały graficzne</div>
+      <div class="form-section-sub">Co już masz, a co trzeba stworzyć</div>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="field">
+      <label>Co masz przygotowane?</label>
+      <div class="check-grid">
+        <label class="check-item">
+          <input type="checkbox">
+          <div><div class="check-item-label">Logo</div><div class="check-item-sub">plik PNG lub SVG</div></div>
+        </label>
+        <label class="check-item">
+          <input type="checkbox">
+          <div><div class="check-item-label">Zdjęcia firmy / produktów</div><div class="check-item-sub">własne fotografie</div></div>
+        </label>
+        <label class="check-item">
+          <input type="checkbox">
+          <div><div class="check-item-label">Preferowane kolory</div><div class="check-item-sub">hex, Pantone lub opis</div></div>
+        </label>
+        <label class="check-item">
+          <input type="checkbox">
+          <div><div class="check-item-label">Gotowe teksty</div><div class="check-item-sub">opisy usług, O nas itp.</div></div>
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Preferowane kolory <span class="hint">jeśli masz — wpisz, jeśli nie — opisz słowami</span></label>
+      <input type="text" placeholder="np. granat #1a3a6b i złoty, albo: ciepłe brązy, stonowane">
+    </div>
+    <div class="field">
+      <label>Uwagi do grafiki / stylu</label>
+      <textarea placeholder="np. Chcę żeby strona wyglądała elegancko i profesjonalnie, nie kolorowo. Albo: mamy wesołą markę, lubimy pastele." style="min-height:72px"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- 3. INSPIRACJE -->
+<div class="form-card">
+  <div class="form-section-header">
+    <div class="form-section-num">3</div>
+    <div>
+      <div class="form-section-title">Inspiracje</div>
+      <div class="form-section-sub">Strony które lubisz — swoje lub konkurencji</div>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="field">
+      <label>Adresy stron które podobają Ci się wizualnie <span class="hint">dodaj do 5</span></label>
+      <div class="url-row">
+        <input type="url" id="urlInput" placeholder="https://przyklad.pl">
+        <button type="button" class="add-url-btn" onclick="addUrl()">+ Dodaj</button>
+      </div>
+      <div class="url-list" id="urlList"></div>
+    </div>
+    <div class="field">
+      <label>Co konkretnie podoba Ci się w tych stronach? <span class="hint">nieobowiązkowo</span></label>
+      <textarea placeholder="np. Podoba mi się że mają duże zdjęcia i prosty układ. Albo: lubię kiedy ceny są od razu widoczne." style="min-height:72px"></textarea>
+    </div>
+    <div class="field">
+      <label>Czego zdecydowanie NIE chcesz?</label>
+      <input type="text" placeholder="np. Nie chcę animacji, nie chcę ciemnego tła, nie chcę zbyt dużo tekstu">
+    </div>
+  </div>
+</div>
+
+<!-- ══ MINI — tylko kontakt i godziny ══ -->
+<div class="pkg-section" id="section-mini">
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">4</div>
+      <div>
+        <div class="form-section-title">Dane kontaktowe na stronie</div>
+        <div class="form-section-sub">Pakiet Mini — jedna strona z kluczowymi informacjami</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="info-box"><strong>Pakiet Mini</strong> to landing page — jedna strona z Twoją ofertą, danymi kontaktowymi i mapą. Tych kilka pytań wystarczy żeby ją zbudować.</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Telefon na stronie <span class="req">*</span></label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="field">
+          <label>E-mail na stronie</label>
+          <input type="email" placeholder="kontakt@firma.pl">
+        </div>
+      </div>
+      <div class="field">
+        <label>Godziny otwarcia <span class="hint">jeśli dotyczy</span></label>
+        <input type="text" placeholder="np. Pon–Pt 9:00–18:00, Sob 9:00–14:00">
+      </div>
+      <div class="field">
+        <label>Główna usługa / produkt który chcesz wyeksponować <span class="req">*</span></label>
+        <textarea placeholder="Co robisz? Dla kogo? Co wyróżnia Twoją ofertę? To będzie główna treść strony." style="min-height:80px"></textarea>
+      </div>
+      <div class="field">
+        <label>Gdzie jesteś widoczny w internecie? <span class="hint">linki które możemy dodać</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Facebook</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Instagram</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Google Moja Firma</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Allegro / OLX</div></div></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ START — podstrony i treści ══ -->
+<div class="pkg-section" id="section-start">
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">4</div>
+      <div>
+        <div class="form-section-title">Podstrony i treści</div>
+        <div class="form-section-sub">Pakiet Start — do 3 podstron</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="info-box"><strong>Pakiet Start</strong> to 3 podstrony. Najczęściej: Strona główna + Oferta/Usługi + Kontakt. Możesz wybrać inne.</div>
+      <div class="field">
+        <label>Jakie podstrony chcesz? <span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Strona główna</div><div class="check-item-sub">zawsze</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Oferta / Usługi</div><div class="check-item-sub">co robisz i za ile</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Kontakt</div><div class="check-item-sub">formularz, mapa, dane</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">O nas / O mnie</div><div class="check-item-sub">historia, zespół</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Galeria / Realizacje</div><div class="check-item-sub">zdjęcia prac</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Cennik</div><div class="check-item-sub">tabela lub lista cen</div></div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Główne usługi / produkty <span class="req">*</span><span class="hint">wylicz wszystkie</span></label>
+        <textarea placeholder="np. Strzyżenie damskie, Koloryzacja, Keratyna, Upięcia okolicznościowe. Albo: montaż instalacji elektrycznych, przeglądy, naprawy domowe."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Telefon na stronie <span class="req">*</span></label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="field">
+          <label>E-mail na stronie</label>
+          <input type="email" placeholder="kontakt@firma.pl">
+        </div>
+      </div>
+      <div class="field">
+        <label>Godziny otwarcia</label>
+        <input type="text" placeholder="np. Pon–Pt 9:00–18:00, Sob 9:00–14:00, Nd nieczynne">
+      </div>
+      <div class="field">
+        <label>Co chcesz żeby klient zrobił po wejściu na stronę? <span class="req">*</span></label>
+        <div class="radio-grid">
+          <label class="radio-pill"><input type="radio" name="cta" value="telefon"> Zadzwonił</label>
+          <label class="radio-pill"><input type="radio" name="cta" value="formularz"> Wypełnił formularz</label>
+          <label class="radio-pill"><input type="radio" name="cta" value="email"> Napisał maila</label>
+          <label class="radio-pill"><input type="radio" name="cta" value="wizyta"> Przyszedł do lokalu</label>
+          <label class="radio-pill"><input type="radio" name="cta" value="rezerwacja"> Zarezerwował termin</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BIZNES — pełen brief ══ -->
+<div class="pkg-section visible" id="section-biznes">
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">4</div>
+      <div>
+        <div class="form-section-title">Struktura i treści strony</div>
+        <div class="form-section-sub">Pakiet Biznes — do 8 podstron z panelem CMS</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="info-box"><strong>Pakiet Biznes</strong> to pełna strona firmowa. Będziesz mógł samodzielnie edytować treści przez panel — dlatego ważne żebyśmy dobrze zaplanowali strukturę.</div>
+      <div class="field">
+        <label>Jakie podstrony chcesz? <span class="hint">zaznacz wszystkie potrzebne</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Strona główna</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">O nas / O mnie</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Oferta / Usługi</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Cennik</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Realizacje / Portfolio</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Blog / Aktualności</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Opinie klientów</div></div></label>
+          <label class="check-item"><input type="checkbox" checked><div><div class="check-item-label">Kontakt</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">FAQ</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Inna (opisz niżej)</div></div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Pełna lista usług / produktów <span class="req">*</span></label>
+        <textarea placeholder="Wylicz wszystko co oferujesz — każda usługa osobno. Jeśli masz cennik, wpisz go tutaj lub dołącz w mailu."></textarea>
+      </div>
+      <div class="field">
+        <label>Historia / O firmie <span class="hint">co warto o Tobie wiedzieć</span></label>
+        <textarea placeholder="Kiedy założona, przez kogo, skąd nazwa, czym się wyróżniasz, jakie masz doświadczenie, certyfikaty, wyróżnienia..."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Telefon na stronie <span class="req">*</span></label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="field">
+          <label>E-mail na stronie <span class="req">*</span></label>
+          <input type="email" placeholder="kontakt@firma.pl">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Godziny otwarcia</label>
+          <input type="text" placeholder="Pon–Pt 9–18, Sob 9–14">
+        </div>
+        <div class="field">
+          <label>NIP <span class="hint">jeśli ma być w stopce</span></label>
+          <input type="text" placeholder="000-000-00-00">
+        </div>
+      </div>
+      <div class="field">
+        <label>Co chcesz żeby klient zrobił po wejściu na stronę? <span class="req">*</span></label>
+        <div class="radio-grid">
+          <label class="radio-pill"><input type="radio" name="cta2" value="telefon"> Zadzwonił</label>
+          <label class="radio-pill"><input type="radio" name="cta2" value="formularz"> Wypełnił formularz</label>
+          <label class="radio-pill"><input type="radio" name="cta2" value="email"> Napisał maila</label>
+          <label class="radio-pill"><input type="radio" name="cta2" value="wizyta"> Przyszedł do lokalu</label>
+          <label class="radio-pill"><input type="radio" name="cta2" value="rezerwacja"> Zarezerwował termin</label>
+          <label class="radio-pill"><input type="radio" name="cta2" value="zakup"> Kupił online</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social media -->
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">5</div>
+      <div>
+        <div class="form-section-title">Social media i linki</div>
+        <div class="form-section-sub">Dodamy ikony i linki do stopki strony</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Facebook</label>
+          <input type="url" placeholder="https://facebook.com/twojafirma">
+        </div>
+        <div class="field">
+          <label>Instagram</label>
+          <input type="url" placeholder="https://instagram.com/twojafirma">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Google Moja Firma</label>
+          <input type="url" placeholder="link do profilu">
+        </div>
+        <div class="field">
+          <label>Inne (TikTok, LinkedIn, YouTube...)</label>
+          <input type="text" placeholder="wpisz linki">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PREMIUM — wszystko + SEO + integracje ══ -->
+<div class="pkg-section" id="section-premium">
+  <!-- Wszystkie sekcje Biznes + poniższe -->
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">4</div>
+      <div>
+        <div class="form-section-title">Struktura i treści strony</div>
+        <div class="form-section-sub">Pakiet Premium — bez limitu podstron</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="info-box"><strong>Pakiet Premium</strong> — nieograniczona liczba podstron, zaawansowane SEO i integracje. Poniżej pełen brief.</div>
+      <div class="field">
+        <label>Pełna lista podstron które chcesz <span class="req">*</span></label>
+        <textarea placeholder="Wypisz wszystkie planowane podstrony — np. Strona główna, O nas, Usługi, Realizacje, Blog, FAQ, Kontakt, Polityka prywatności..." style="min-height:100px"></textarea>
+      </div>
+      <div class="field">
+        <label>Pełna lista usług / produktów <span class="req">*</span></label>
+        <textarea placeholder="Każda usługa osobno — nazwa, opis, cena jeśli chcesz pokazać. Im więcej szczegółów, tym lepsza strona."></textarea>
+      </div>
+      <div class="field">
+        <label>Historia / O firmie <span class="req">*</span></label>
+        <textarea placeholder="Kiedy założona, przez kogo, doświadczenie, certyfikaty, wyróżnienia, wartości firmy — to buduje zaufanie klientów."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Telefon <span class="req">*</span></label>
+          <input type="tel" placeholder="+48 000 000 000">
+        </div>
+        <div class="field">
+          <label>E-mail <span class="req">*</span></label>
+          <input type="email" placeholder="kontakt@firma.pl">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Godziny otwarcia</label>
+          <input type="text" placeholder="Pon–Pt 9–18, Sob 9–14">
+        </div>
+        <div class="field">
+          <label>NIP / dane do stopki</label>
+          <input type="text" placeholder="000-000-00-00">
+        </div>
+      </div>
+      <div class="field">
+        <label>Główne wezwanie do działania (CTA) <span class="req">*</span></label>
+        <div class="radio-grid">
+          <label class="radio-pill"><input type="radio" name="cta3"> Zadzwoń</label>
+          <label class="radio-pill"><input type="radio" name="cta3"> Formularz</label>
+          <label class="radio-pill"><input type="radio" name="cta3"> Rezerwacja</label>
+          <label class="radio-pill"><input type="radio" name="cta3"> Zakup online</label>
+          <label class="radio-pill"><input type="radio" name="cta3"> Wycena</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">5</div>
+      <div>
+        <div class="form-section-title">SEO — słowa kluczowe</div>
+        <div class="form-section-sub">Pomaga nam zoptymalizować stronę pod Google</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="field">
+        <label>Jak Twoi klienci szukają Cię w Google? <span class="req">*</span><span class="hint">wpisz jak wyszukujesz konkurencję</span></label>
+        <textarea placeholder="np. &quot;fryzjer Mokotów&quot;, &quot;koloryzacja włosów Warszawa&quot;, &quot;dobry fryzjer damski&quot; — wpisz wszystko co przychodzi do głowy." style="min-height:80px"></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Miasto / dzielnica działania <span class="req">*</span></label>
+          <input type="text" placeholder="np. Warszawa Mokotów">
+        </div>
+        <div class="field">
+          <label>Promień obsługi <span class="hint">jeśli dotyczy</span></label>
+          <input type="text" placeholder="np. cała Polska, 30 km od Gdańska">
+        </div>
+      </div>
+      <div class="field">
+        <label>Kto jest Twoją główną konkurencją? <span class="hint">linki do stron lub nazwy firm</span></label>
+        <input type="text" placeholder="np. www.konkurencja.pl, Fryzjer Nowak Mokotów">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-section-header">
+      <div class="form-section-num">6</div>
+      <div>
+        <div class="form-section-title">Integracje i dodatkowe funkcje</div>
+        <div class="form-section-sub">Co ma działać na stronie oprócz treści</div>
+      </div>
+    </div>
+    <div class="form-body">
+      <div class="field">
+        <label>Jakie funkcje potrzebujesz?</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Google Analytics</div><div class="check-item-sub">statystyki odwiedzin</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Formularz kontaktowy</div><div class="check-item-sub">wiadomości na e-mail</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Rezerwacja online</div><div class="check-item-sub">np. Calendly</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Chat / WhatsApp</div><div class="check-item-sub">przycisk kontaktu</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Mapa Google</div><div class="check-item-sub">wbudowana w kontakt</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Newsletter</div><div class="check-item-sub">zbieranie e-maili</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Galeria zdjęć</div><div class="check-item-sub">lightbox / pokaz slajdów</div></div></label>
+          <label class="check-item"><input type="checkbox"><div><div class="check-item-label">Pixel Facebook</div><div class="check-item-sub">śledzenie reklam FB</div></div></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Social media i linki zewnętrzne</label>
+        <div class="field-row" style="margin-top:4px">
+          <input type="url" placeholder="Facebook">
+          <input type="url" placeholder="Instagram">
+        </div>
+        <div class="field-row" style="margin-top:8px">
+          <input type="url" placeholder="LinkedIn">
+          <input type="url" placeholder="YouTube / TikTok">
+        </div>
+      </div>
+      <div class="field">
+        <label>Inne wymagania / pomysły</label>
+        <textarea placeholder="Cokolwiek co chcesz żebym wiedział. Nie ma głupich pytań ani głupich pomysłów." style="min-height:72px"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SEKCJA WSPÓLNA — DOMENA I UWAGI ══ -->
+
+<div class="form-card">
+  <div class="form-section-header">
+    <div class="form-section-num" id="lastSectionNum">6</div>
+    <div>
+      <div class="form-section-title">Domena i termin</div>
+      <div class="form-section-sub">Ostatnie szczegóły techniczne</div>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="field">
+      <label>Czy masz już domenę? <span class="hint">(adres www)</span></label>
+      <div class="radio-grid">
+        <label class="radio-pill"><input type="radio" name="domena" value="tak"> Tak, mam</label>
+        <label class="radio-pill"><input type="radio" name="domena" value="nie"> Nie, potrzebuję</label>
+        <label class="radio-pill"><input type="radio" name="domena" value="niewiemco"> Nie wiem co to</label>
+      </div>
+    </div>
+    <div class="field">
+      <label>Adres domeny <span class="hint">jeśli masz</span></label>
+      <input type="text" placeholder="np. mojafirma.pl">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Preferowany termin oddania</label>
+        <input type="text" placeholder="np. do końca miesiąca, możliwie szybko">
+      </div>
+      <div class="field">
+        <label>Czy potrzebujesz faktury?</label>
+        <div class="radio-grid" style="margin-top:6px">
+          <label class="radio-pill"><input type="radio" name="faktura" value="tak"> Tak</label>
+          <label class="radio-pill"><input type="radio" name="faktura" value="nie"> Nie</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Dodatkowe uwagi / pytania</label>
+      <textarea placeholder="Cokolwiek co chcesz żebym wiedział przed startem prac. Im więcej, tym lepiej." style="min-height:80px"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-area">
+  <div class="submit-note">
+    <strong>Co dalej?</strong><br>
+    Po wysłaniu odezwę się w ciągu 24 godzin z potwierdzeniem i ewentualnymi pytaniami. Następny krok to zaliczka 50% i start prac.
+  </div>
+  <button type="submit" class="btn-submit">Wyślij brief →</button>
+</div>
+
+</form>
+
+<!-- SUKCES -->
+<div class="success-screen" id="successScreen">
+  <div class="success-icon">✓</div>
+  <div class="success-title">Brief wysłany, dziękuję!</div>
+  <p class="success-sub">Odezwę się w ciągu 24 godzin. Jeśli będę potrzebował czegoś jeszcze — napiszę na podany adres e-mail.<br><br>W międzyczasie możesz do mnie zadzwonić: <strong>+48 690 000 923</strong></p>
+</div>
+
+</div><!-- /wrapper -->
+
+<script>
+let currentPkg = 'biznes';
+
+function selectPkg(pkg, el) {
+  document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  currentPkg = pkg;
+  document.querySelectorAll('.pkg-section').forEach(s => s.classList.remove('visible'));
+  const target = document.getElementById('section-' + pkg);
+  if (target) target.classList.add('visible');
+  updateProgress();
+}
+
+// URL inspiracji
+const urls = [];
+function addUrl() {
+  const inp = document.getElementById('urlInput');
+  const val = inp.value.trim();
+  if (!val) return;
+  if (urls.length >= 5) return;
+  urls.push(val);
+  renderUrls();
+  inp.value = '';
+}
+function removeUrl(i) {
+  urls.splice(i, 1); renderUrls();
+}
+function renderUrls() {
+  const list = document.getElementById('urlList');
+  list.innerHTML = urls.map((u, i) =>
+    `<div class="url-tag"><span>${u}</span><span class="url-remove" onclick="removeUrl(${i})">×</span></div>`
+  ).join('');
+}
+document.getElementById('urlInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); addUrl(); }
+});
+
+// Progress bar
+function updateProgress() {
+  const required = document.querySelectorAll('input[required], textarea[required]');
+  const filled = [...required].filter(f => f.value.trim() !== '').length;
+  const pct = required.length ? Math.round((filled / required.length) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+document.addEventListener('input', updateProgress);
+
+// Submit
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('briefForm').style.display = 'none';
+  document.getElementById('successScreen').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+selectPkg('biznes', document.querySelector('.pkg-btn.active'));
+</script>
+</body>
+</html>
