@@ -290,7 +290,8 @@ select option { background: #fff; }
 
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-<form id="briefForm" onsubmit="submitForm(event)">
+<form id="briefForm" onsubmit="submitForm(event)" action="https://formspree.io/f/xaqzvywz" method="POST">
+<input type="hidden" name="pakiet" id="hiddenPkg" value="Biznes — 1800 zł">
 
 <!-- ══ SEKCJA WSPÓLNA DLA WSZYSTKICH ══ -->
 
@@ -808,6 +809,13 @@ select option { background: #fff; }
 <script>
 let currentPkg = 'biznes';
 
+const pkgLabels = {
+  mini: 'Mini — 500 zł',
+  start: 'Start — 800 zł',
+  biznes: 'Biznes — 1800 zł',
+  premium: 'Premium — 3500 zł'
+};
+
 function selectPkg(pkg, el) {
   document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
@@ -815,6 +823,7 @@ function selectPkg(pkg, el) {
   document.querySelectorAll('.pkg-section').forEach(s => s.classList.remove('visible'));
   const target = document.getElementById('section-' + pkg);
   if (target) target.classList.add('visible');
+  document.getElementById('hiddenPkg').value = pkgLabels[pkg];
   updateProgress();
 }
 
@@ -852,11 +861,36 @@ function updateProgress() {
 document.addEventListener('input', updateProgress);
 
 // Submit
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
-  document.getElementById('briefForm').style.display = 'none';
-  document.getElementById('successScreen').classList.add('visible');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const btn = document.querySelector('.btn-submit');
+  const original = btn.textContent;
+  btn.textContent = 'Wysyłanie...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xaqzvywz', {
+      method: 'POST',
+      body: new FormData(e.target),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('briefForm').style.display = 'none';
+      document.getElementById('successScreen').classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = 'Błąd — spróbuj ponownie';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
 }
 
 // Init
