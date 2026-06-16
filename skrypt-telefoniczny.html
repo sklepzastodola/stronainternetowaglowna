@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skrypt telefoniczny — deczdev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f5f3ef;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  padding: 36px 20px 80px;
+}
+.wrapper { max-width: 740px; margin: 0 auto; }
+
+.page-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #999; margin-bottom: 8px;
+}
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 700; font-style: italic;
+  letter-spacing: -0.02em; color: #1a1a1a;
+  margin-bottom: 6px; line-height: 1.2;
+}
+.subtitle { font-size: 14px; color: #888; margin-bottom: 10px; line-height: 1.6; }
+
+/* FILOZOFIA */
+.philosophy {
+  background: #fff; border-radius: 12px;
+  border: 1px solid #e8e4df;
+  padding: 18px 22px; margin-bottom: 28px;
+  font-size: 14px; color: #555; line-height: 1.75;
+}
+.philosophy strong { color: #1a1a1a; font-weight: 600; }
+
+/* LEGENDA */
+.legend {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 24px; padding: 13px 18px;
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e8e4df;
+}
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #666; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-ty { background: #1a1a1a; }
+.dot-oni { background: #c07840; }
+.dot-tip { background: #5a8a30; }
+.dot-uwaga { background: #b89020; }
+
+/* ETAP */
+.stage { margin-bottom: 20px; }
+.stage-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+}
+.stage-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #1a1a1a; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; flex-shrink: 0;
+  font-family: 'Fraunces', serif; font-style: italic;
+}
+.stage-title {
+  font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.2;
+}
+.stage-goal { font-size: 12px; color: #999; margin-top: 2px; }
+
+.card {
+  background: #fff; border: 1px solid #e8e4df;
+  border-radius: 14px; overflow: hidden;
+}
+
+.line {
+  padding: 13px 18px; border-bottom: 1px solid #f4f1ed;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.line:last-child { border-bottom: none; }
+
+.lm { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+.line-ty .lm { background: #1a1a1a; }
+.line-oni .lm { background: #c07840; }
+.line-tip .lm { background: #5a8a30; }
+.line-uwaga .lm { background: #b89020; }
+
+.lc { flex: 1; }
+.lr {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 3px;
+}
+.line-ty .lr { color: #1a1a1a; }
+.line-oni .lr { color: #c07840; }
+.line-tip .lr { color: #5a8a30; }
+.line-uwaga .lr { color: #b89020; }
+
+.lt { font-size: 14px; color: #2a2a2a; line-height: 1.65; }
+.line-tip .lt { color: #555; font-style: italic; }
+.line-uwaga .lt { color: #7a6010; }
+.lt strong { font-weight: 600; color: #1a1a1a; }
+.line-tip .lt strong { color: #3a6010; }
+
+/* OBIEKCJE */
+.obj-item {
+  background: #fff; border: 1px solid #e8e4df;
+  border-radius: 11px; margin-bottom: 8px; overflow: hidden;
+}
+.obj-q {
+  padding: 13px 16px 8px;
+  font-size: 14px; font-weight: 500; color: #c07840;
+  display: flex; align-items: flex-start; gap: 9px;
+}
+.obj-q-icon { flex-shrink: 0; margin-top: 1px; font-size: 13px; }
+.obj-a { padding: 0 16px 13px 38px; font-size: 14px; color: #2a2a2a; line-height: 1.65; }
+.obj-a strong { font-weight: 600; }
+
+/* NOTE */
+.note {
+  background: #fffdf0; border: 1px solid #e8d888;
+  border-radius: 10px; padding: 13px 16px;
+  font-size: 13px; color: #7a6010; line-height: 1.65; margin-top: 8px;
+}
+.note strong { font-weight: 600; color: #5a4000; }
+
+hr { border: none; border-top: 1px solid #e8e4df; margin: 24px 0; }
+
+/* ŚCIĄGA */
+.quick {
+  background: #0e0e0e; color: #edebe6;
+  border-radius: 14px; padding: 26px 28px; margin-top: 32px;
+}
+.quick h2 {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 18px; font-weight: 700; color: #fff;
+  margin-bottom: 16px; letter-spacing: -0.01em;
+}
+.pr {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  gap: 12px;
+}
+.pr:last-child { border-bottom: none; }
+.pr-left { flex: 1; }
+.pr-name { font-size: 14px; font-weight: 600; color: #edebe6; }
+.pr-desc { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 1px; }
+.pr-price { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; font-weight: 700; color: #d4f564; white-space: nowrap; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 24px; }
+  .legend { gap: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div class="page-eyebrow">deczdev — skrypt rozmowy telefonicznej</div>
+<h1>Miłe, nienachalne podejście</h1>
+<p class="subtitle">Nie dzwonisz sprzedawać — dzwonisz <em>pomóc</em>. Traktuj to jak rozmowę sąsiada który przypadkiem robi strony.<br>Wydrukuj lub trzymaj na ekranie. Nie czytaj słowo w słowo — to mapa, nie scenariusz.</p>
+
+<div class="philosophy">
+  <strong>Złota zasada:</strong> Twoim celem w tej rozmowie <strong>nie jest sprzedaż</strong> — celem jest zdobycie adresu e-mail i pozwolenia na przesłanie oferty. Sprzedaży dokonuje mail i follow-up. Dzwonek telefonu już na wstępie budzi opór — dlatego bądź miły, krótki i bez nacisku. Daj rozmówcy poczuć że może spokojnie powiedzieć "nie" — i często wtedy mówi "dobrze, niech Pan prześle".
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot dot-ty"></div> Ty mówisz</div>
+  <div class="legend-item"><div class="dot dot-oni"></div> Klient odpowiada</div>
+  <div class="legend-item"><div class="dot dot-tip"></div> Wskazówka</div>
+  <div class="legend-item"><div class="dot dot-uwaga"></div> Uwaga</div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">1</div>
+    <div>
+      <div class="stage-title">Otwarcie — pierwsze 15 sekund</div>
+      <div class="stage-goal">Cel: nie przestraszyć, nie brzmi jak telemarketer</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Dzień dobry, mówi Jakub Deczyński. Przepraszam że przeszkadzam — dzwonię w krótkiej sprawie dotyczącej strony internetowej <strong>[NAZWA FIRMY]</strong>. Czy trafiam do właściciela?</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">"Przepraszam że przeszkadzam" to nie słabość — to uprzejmość która natychmiast odróżnia Cię od call center. Rozmówca od razu czuje że rozmawiał z człowiekiem, nie skryptem.</div></div>
+    </div>
+    <div class="line line-oni">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Klient</div>
+      <div class="lt">Tak, słucham. / A o co chodzi?</div></div>
+    </div>
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Robię strony internetowe dla lokalnych firm i <strong>zauważyłem że [NAZWA FIRMY] nie ma strony</strong> / ma stronę która mogłaby wyglądać nowocześniej. Chciałem zapytać czy to w ogóle jest coś co Pana interesuje — jeśli nie, to nic się nie dzieje, nie będę namawiał.</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt"><strong>Kluczowe:</strong> od razu daj wyjście — "jeśli nie, to nic się nie dzieje". To paradoksalnie zwiększa szansę że powie "to niech Pan mówi". Ludzie chętniej słuchają gdy nie czują presji.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">2</div>
+    <div>
+      <div class="stage-title">Krótka rozmowa — poznaj sytuację</div>
+      <div class="stage-goal">Cel: słuchać, nie mówić. 2–3 pytania maksimum.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Powiem szczerze — nie dzwonię z gotową ofertą za milion złotych. <strong>Zaczynam od 500 zł</strong>, robię strony dla małych firm, fryzjerów, elektryków, restauracji — normalnych ludzi którzy potrzebują żeby klienci mogli ich znaleźć w internecie. Ale zanim cokolwiek zaproponuję — jak teraz Pana firma trafia do nowych klientów?</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">Wspomnij cenę wcześnie i naturalnie — "zaczynam od 500 zł". To od razu zdejmuje lęk przed "pewnie chce mnie oskubać". Potem zadaj pytanie i <strong>zamknij się</strong> — niech mówi klient.</div></div>
+    </div>
+    <div class="line line-oni">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Klient</div>
+      <div class="lt">Głównie z polecenia. / Mamy stałych klientów, jakoś idzie. / Nie wiem, żona się tym zajmuje.</div></div>
+    </div>
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">To świetna baza. A zdarzyło się że ktoś szukał Pana w Google i nie mógł znaleźć? Albo klient mówił "chciałem zadzwonić ale nie wiedziałem jak się z Panem skontaktować"?</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">To pytanie prawie zawsze wywołuje "no tak, zdarza się". Nie musisz przekonywać — wystarczy że klient sam przyznaje że problem istnieje. Wtedy strona staje się <strong>jego pomysłem</strong>, nie Twoją sprzedażą.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">3</div>
+    <div>
+      <div class="stage-title">Propozycja — lekko, bez nacisku</div>
+      <div class="stage-goal">Cel: zainteresować, nie przytłoczyć. Max 45 sekund mówienia.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Rozumiem. Mogę Panu zaproponować coś prostego — <strong>bez zobowiązań</strong> prześlę na maila krótką ofertę z przykładem strony którą zrobiłem dla podobnej firmy. Zobaczy Pan jak to wygląda i sam Pan oceni czy ma sens. Jeśli nie — to nic, nikomu nic się nie stanie.</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">Nie opisuj pakietów przez telefon — to za dużo informacji naraz. <strong>Celem jest e-mail</strong>. Ofertę "sprzeda" ładny PDF który klient zobaczy w spokoju, nie rozmowa gdzie wszystko umyka.</div></div>
+    </div>
+    <div class="line line-uwaga">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Uwaga</div>
+      <div class="lt">Nie mów "wyślę Panu ofertę" — brzmi jak telemarketer. Mów "prześlę przykład strony" albo "podeślę kilka zdjęć jak to może wyglądać". Konkret jest mniej straszny niż słowo "oferta".</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">4</div>
+    <div>
+      <div class="stage-title">Kiedy słyszysz "nie" lub wahanie</div>
+      <div class="stage-goal">Cel: nie naciskać, ale delikatnie rozwiać wątpliwość</div>
+    </div>
+  </div>
+  <div class="objections">
+
+    <div class="obj-item">
+      <div class="obj-q"><span class="obj-q-icon">💬</span> Nie potrzebuję, mam Facebook.</div>
+      <div class="obj-a">Rozumiem, Facebook jest super do kontaktu ze stałymi klientami. Chodzi mi o coś innego — kiedy ktoś wpisuje w Google "fryzjer [miasto]" albo "elektryk [dzielnica]", <strong>Facebook nie pojawia się w wynikach</strong>. Strona tak. Ale rozumiem jeśli teraz nie jest to priorytet — naprawdę, bez problemu.</div>
+    </div>
+
+    <div class="obj-item">
+      <div class="obj-q"><span class="obj-q-icon">💬</span> To pewnie drogo kosztuje.</div>
+      <div class="obj-a">Właśnie dlatego zadzwoniłem zamiast czekać aż Pan sam trafi na agencję za kilkanaście tysięcy. <strong>U mnie zaczyna się od 500 zł</strong> — to mniej niż jeden weekend reklamy w gazecie, a strona działa przez lata. Ale najlepiej niech Pan sam zobaczy — podeślę na maila, bez żadnych haczyków.</div>
+    </div>
+
+    <div class="obj-item">
+      <div class="obj-q"><span class="obj-q-icon">💬</span> Muszę się zastanowić / porozmawiać z żoną/wspólnikiem.</div>
+      <div class="obj-a">Oczywiście, to normalne przy każdej decyzji. <strong>Właśnie dlatego proponuję żebym przesłał maila</strong> — będzie miał Pan i żona coś konkretnego do obejrzenia razem, a nie tylko moje słowa przez telefon. Na jaki adres mogę przesłać?</div>
+    </div>
+
+    <div class="obj-item">
+      <div class="obj-q"><span class="obj-q-icon">💬</span> Mamy już stronę.</div>
+      <div class="obj-a">Miło słyszeć. Mogę zapytać — <strong>jak dawno była robiona?</strong> Pytam bo dziś ponad połowa klientów szuka przez telefon, a starsze strony często źle wyglądają na mobile. Ale jeśli jest OK, to super — powodzenia i przepraszam że przeszkadzałem.</div>
+    </div>
+
+    <div class="obj-item">
+      <div class="obj-q"><span class="obj-q-icon">💬</span> Nie mam teraz czasu / jestem zajęty.</div>
+      <div class="obj-a">Absolutnie rozumiem — <strong>właśnie dlatego nie będę Pana zatrzymywał</strong>. Mogę tylko zapytać o adres e-mail? Prześlę wszystko pisemnie, obejrzy Pan kiedy będzie chwila. Zajmie mi to 10 sekund, Panu 2 minuty wieczorem.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">5</div>
+    <div>
+      <div class="stage-title">Zamknięcie — jeden konkretny krok</div>
+      <div class="stage-goal">Cel: wyjść z rozmowy z e-mailem lub umówionym terminem</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">W takim razie — <strong>na jaki adres e-mail</strong> mogę przesłać przykład i krótką ofertę? Wyślę jeszcze dziś, jedną stronę, żadnych spamu.</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">Pytaj "na jaki adres" — nie "czy mogę przesłać". Małe słowo, duża różnica. Pierwsze zakłada zgodę, drugie zaprasza do odmowy.</div></div>
+    </div>
+    <div class="line line-oni">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Klient — daje e-mail</div>
+      <div class="lt">Proszę pisać na: [e-mail]</div></div>
+    </div>
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Dziękuję bardzo. Wyślę dziś, a <strong>za 2–3 dni</strong> pozwolę sobie zadzwonić żeby zapytać czy miał Pan chwilę rzucić okiem — czy to w porządku?</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">Umów follow-up od razu i z pytaniem — "czy to w porządku" brzmi uprzejmie i prawie zawsze słyszysz "tak". Drugi telefon staje się zapowiedzianym, nie nachalnym.</div></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Jeśli definitywnie odmawia:</strong> "Rozumiem, żadnych pretensji. Gdyby kiedyś zmieniły się potrzeby — znajdzie mnie Pan na decz.pl. Miłego dnia i powodzenia z firmą!" — i rozłącz się w dobrym nastroju. Dobre wrażenie po odmowie to reklama na przyszłość.
+  </div>
+</div>
+
+<hr>
+
+<div class="stage">
+  <div class="stage-header">
+    <div class="stage-num">↩</div>
+    <div>
+      <div class="stage-title">Follow-up — telefon 2–3 dni po mailu</div>
+      <div class="stage-goal">Najlepsze godziny: 10:00–12:00 lub 14:30–16:30</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Dzień dobry, tu Jakub Deczyński — rozmawialiśmy kilka dni temu o stronie internetowej i wysłałem maila z przykładem. Miał Pan chwilę rzucić okiem?</div></div>
+    </div>
+    <div class="line line-oni">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Klient — nie czytał</div>
+      <div class="lt">Oj, zgubiło się w skrzynce / nie miałem czasu.</div></div>
+    </div>
+    <div class="line line-ty">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Ty</div>
+      <div class="lt">Nic się nie stało, rozumiem — skrzynka to skrzynka. Powiem w dwóch zdaniach: <strong>cztery pakiety, od 500 do 3 500 zł</strong>, płatność pół na pół, gotowe w kilka dni. Czy to jest coś co mogłoby mieć sens dla Pana firmy — nawet ta najprostsza opcja za 500 zł?</div></div>
+    </div>
+    <div class="line line-tip">
+      <div class="lm"></div>
+      <div class="lc"><div class="lr">Wskazówka</div>
+      <div class="lt">"Nawet ta najprostsza opcja za 500 zł" — to zdejmuje presję. Klient nie czuje że musisz mu sprzedać drogi pakiet. Często właśnie wtedy mówi "dobra, to powiedz mi więcej o tym za 500".</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="quick">
+  <h2>Ściąga — pakiety</h2>
+  <div class="pr">
+    <div class="pr-left">
+      <div class="pr-name">Mini</div>
+      <div class="pr-desc">Landing 1-stronowy · mapa · hosting i domena</div>
+      <div class="pr-desc">Gotowe w 3 dni</div>
+    </div>
+    <div class="pr-price">500 zł</div>
+  </div>
+  <div class="pr">
+    <div class="pr-left">
+      <div class="pr-name">Start</div>
+      <div class="pr-desc">Do 3 podstron · formularz · podstawowe SEO</div>
+      <div class="pr-desc">Gotowe w 5 dni</div>
+    </div>
+    <div class="pr-price">800 zł</div>
+  </div>
+  <div class="pr">
+    <div class="pr-left">
+      <div class="pr-name">Biznes ⭐</div>
+      <div class="pr-desc">Do 8 podstron · panel CMS · blog · SEO</div>
+      <div class="pr-desc">Gotowe w 7 dni</div>
+    </div>
+    <div class="pr-price">1 800 zł</div>
+  </div>
+  <div class="pr">
+    <div class="pr-left">
+      <div class="pr-name">Premium</div>
+      <div class="pr-desc">Bez limitu · zaawansowane SEO · Analytics</div>
+      <div class="pr-desc">Gotowe w 10 dni</div>
+    </div>
+    <div class="pr-price">3 500 zł</div>
+  </div>
+  <div class="pr">
+    <div class="pr-left">
+      <div class="pr-name">Opieka miesięczna</div>
+      <div class="pr-desc">Aktualizacje, kopie, drobne zmiany</div>
+    </div>
+    <div class="pr-price">150 zł</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

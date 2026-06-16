@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
 
@@ -27,14 +28,14 @@
 </nav>
 
 <div class="page-header">
-  <div class="eyebrow">Kontakt</div>
-  <h1>Porozmawiajmy</h1>
+  <div class="eyebrow" data-aos="fade-right">Kontakt</div>
+  <h1 data-aos="fade-up" data-aos-delay="100">Porozmawiajmy</h1>
   <p>Napisz kilka słów o swojej firmie. Odpisuję w ciągu 24 godzin — bezpłatnie i bez zobowiązań.</p>
 </div>
 
 <section class="section">
   <div class="contact-wrapper">
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mlgkzerq" method="POST">
+    <form class="contact-form" data-aos="fade-right" data-aos-delay="150" id="contact-form" action="https://formspree.io/f/mlgkzerq" method="POST">
       <div class="form-row">
         <input type="text" name="imie" placeholder="Imię *" required>
         <input type="text" name="firma" placeholder="Firma">
@@ -54,7 +55,7 @@
       <button type="submit" class="btn-primary">Wyślij wiadomość →</button>
     </form>
 
-    <div class="contact-info">
+    <div class="contact-info" data-aos="fade-left" data-aos-delay="150">
       <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:8px">
         Wolisz zadzwonić? Chętnie porozmawiam — bez presji i bez sprzedawania na siłę.
       </p>
@@ -126,5 +127,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 60 });</script>
 </body>
 </html>

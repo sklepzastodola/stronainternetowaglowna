@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta — Strona internetowa dla Twojej firmy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f0ede8;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px 80px;
+  }
+
+  .wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .header {
+    background: #0e0e0e;
+    padding: 40px 48px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .header-logo span { color: #d4f564; }
+  .header-badge {
+    background: rgba(212,245,100,0.12);
+    border: 1px solid rgba(212,245,100,0.25);
+    color: #d4f564;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 99px;
+  }
+
+  /* HERO */
+  .hero {
+    background: #0e0e0e;
+    padding: 0 48px 48px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #f0ede8;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .hero h1 em { font-style: normal; color: #d4f564; }
+  .hero p {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: #f0ede8; }
+
+  /* BODY */
+  .body { padding: 40px 48px; }
+
+  .greeting { font-size: 16px; color: #444; line-height: 1.75; margin-bottom: 32px; }
+  .greeting strong { color: #1a1a1a; font-weight: 700; }
+
+  /* REALIZACJA */
+  .example-box {
+    background: #f7f5f2;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .example-icon { font-size: 32px; flex-shrink: 0; }
+  .example-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+  .example-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+  .example-url { font-size: 13px; color: #c8a04a; text-decoration: none; }
+
+  /* PAKIETY */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #999; margin-bottom: 16px;
+  }
+
+  .packages { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+  .pkg {
+    border: 1.5px solid #e8e4df;
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .pkg.featured {
+    border-color: #d4f564;
+    background: #f7fbef;
+  }
+  .pkg-left { flex: 1; }
+  .pkg-name {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #999; margin-bottom: 4px;
+  }
+  .pkg.featured .pkg-name { color: #5a7a1a; }
+  .pkg-title { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+  .pkg-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .pkg-features li {
+    font-size: 13px; color: #555;
+    display: flex; align-items: flex-start; gap: 7px;
+  }
+  .pkg-features li::before {
+    content: '✓'; color: #7ab524; font-weight: 700;
+    font-size: 12px; flex-shrink: 0; margin-top: 2px;
+  }
+  .pkg-features li.off { color: #bbb; }
+  .pkg-features li.off::before { content: '–'; color: #ddd; }
+  .pkg-right { text-align: right; flex-shrink: 0; }
+  .pkg-price { font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.02em; line-height: 1; }
+  .pkg-price span { font-size: 14px; font-weight: 500; color: #999; }
+  .pkg-time { font-size: 12px; color: #aaa; margin-top: 6px; }
+  .pkg-badge {
+    background: #d4f564; color: #3a5a0a;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 99px;
+    margin-bottom: 8px; display: inline-block;
+  }
+
+  /* OPIEKA */
+  .opieka {
+    background: #f7f5f2; border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 32px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .opieka-label { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+  .opieka-desc { font-size: 13px; color: #888; }
+  .opieka-price { font-size: 20px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
+  .opieka-price span { font-size: 13px; font-weight: 500; color: #aaa; }
+
+  /* PROCES */
+  .steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+  .step-row {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 0; border-bottom: 1px solid #f0ede8;
+  }
+  .step-row:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #f0ede8; display: flex; align-items: center;
+    justify-content: center; font-size: 12px; font-weight: 700;
+    color: #888; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+  .step-desc { font-size: 13px; color: #888; line-height: 1.6; }
+
+  /* CTA */
+  .cta-box {
+    background: #0e0e0e; border-radius: 14px;
+    padding: 32px 36px; text-align: center; margin-bottom: 32px;
+  }
+  .cta-box h2 { font-size: 22px; font-weight: 700; color: #f0ede8; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .cta-box p { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.65; }
+  .cta-btn {
+    display: inline-block;
+    background: #d4f564; color: #0e0e0e;
+    font-weight: 700; font-size: 15px; padding: 14px 32px;
+    border-radius: 10px; text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .cta-btn-ghost {
+    display: inline-block; margin-left: 12px;
+    border: 1px solid rgba(255,255,255,0.15); color: #aaa;
+    font-weight: 600; font-size: 14px; padding: 13px 24px;
+    border-radius: 10px; text-decoration: none;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #f0ede8;
+    padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+  }
+  .footer-sig { font-size: 13px; color: #1a1a1a; font-weight: 600; }
+  .footer-contact { font-size: 13px; color: #999; }
+  .footer-contact a { color: #c8a04a; text-decoration: none; }
+
+  /* PRINT / PDF */
+  @media print {
+    body { background: white; padding: 0; }
+    .wrapper { box-shadow: none; border-radius: 0; }
+    .cta-btn, .cta-btn-ghost { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  
+  <div class="header">
+    <div class="header-logo">deczdev<span>.</span></div>
+    <div class="header-badge">Oferta indywidualna</div>
+  </div>
+
+  
+  <div class="hero">
+    <h1>Strona internetowa<br>dla <em>[NAZWA FIRMY]</em></h1>
+    <p>Przygotowałem dla Państwa spersonalizowaną ofertę — poniżej znajdziecie pakiety, zakres i ceny dopasowane do lokalnej firmy.</p>
+  </div>
+
+  
+  <div class="body">
+
+    
+    <div class="greeting">
+      Dzień dobry,<br><br>
+      Dziękuję za kontakt. Jak ustaliliśmy, przesyłam ofertę na <strong>profesjonalną stronę internetową</strong> dla <strong>[NAZWA FIRMY]</strong>.<br><br>
+      Specjalizuję się w stronach dla lokalnych firm — szybkich, czytelnych i skutecznych. Poniżej znajdą Państwo dostępne pakiety oraz informację o tym jak wygląda współpraca.
+    </div>
+
+    
+    <div class="section-label">Przykład mojej realizacji</div>
+    <div class="example-box">
+      <div class="example-icon">🚜</div>
+      <div>
+        <div class="example-label">Zrealizowany projekt</div>
+        <div class="example-name">Sklep za Stodołą — maszyny rolnicze, leasing, ARiMR</div>
+        <a href="https://www.sklepzastodola.pl" class="example-url">www.sklepzastodola.pl →</a>
+      </div>
+    </div>
+
+    
+    <div class="section-label">Dostępne pakiety</div>
+    <div class="packages">
+
+      <div class="pkg">
+        <div class="pkg-left">
+          <div class="pkg-name">Mini</div>
+          <div class="pkg-title">Wizytówka jednoekranowa</div>
+          <ul class="pkg-features">
+            <li>Strona 1-stronicowa (landing)</li>
+            <li>Wersja mobilna</li>
+            <li>Dane kontaktowe i mapa Google</li>
+            <li>Hosting i domena — setup</li>
+            <li class="off">Formularz kontaktowy</li>
+            <li class="off">Optymalizacja SEO</li>
+          </ul>
+        </div>
+        <div class="pkg-right">
+          <div class="pkg-price">500 <span>zł</span></div>
+          <div class="pkg-time">gotowe w 3 dni</div>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-left">
+          <div class="pkg-name">Start</div>
+          <div class="pkg-title">Strona firmowa do 3 podstron</div>
+          <ul class="pkg-features">
+            <li>Do 3 podstron (np. O nas, Oferta, Kontakt)</li>
+            <li>Wersja mobilna</li>
+            <li>Formularz kontaktowy</li>
+            <li>Mapa Google + dane kontaktowe</li>
+            <li>Hosting i domena — setup</li>
+            <li>Podstawowa optymalizacja SEO</li>
+          </ul>
+        </div>
+        <div class="pkg-right">
+          <div class="pkg-price">800 <span>zł</span></div>
+          <div class="pkg-time">gotowe w 5 dni</div>
+        </div>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-left">
+          <div class="pkg-name">Biznes</div>
+          <div class="pkg-title">Pełna strona z panelem CMS</div>
+          <ul class="pkg-features">
+            <li>Do 8 podstron</li>
+            <li>Wersja mobilna</li>
+            <li>Formularz kontaktowy</li>
+            <li>Mapa Google + dane kontaktowe</li>
+            <li>Hosting i domena — setup</li>
+            <li>Panel CMS — samodzielna edycja treści</li>
+            <li>Blog / aktualności</li>
+            <li>Podstawowe SEO</li>
+          </ul>
+        </div>
+        <div class="pkg-right">
+          <div class="pkg-badge">Najpopularniejszy</div>
+          <div class="pkg-price">1 800 <span>zł</span></div>
+          <div class="pkg-time">gotowe w 7 dni</div>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-left">
+          <div class="pkg-name">Premium</div>
+          <div class="pkg-title">Zaawansowany projekt z SEO</div>
+          <ul class="pkg-features">
+            <li>Bez limitu podstron</li>
+            <li>Wersja mobilna</li>
+            <li>Formularze i integracje</li>
+            <li>Hosting i domena — setup</li>
+            <li>Panel CMS — samodzielna edycja</li>
+            <li>Blog / aktualności</li>
+            <li>Zaawansowane SEO + Google Analytics</li>
+          </ul>
+        </div>
+        <div class="pkg-right">
+          <div class="pkg-price">3 500 <span>zł</span></div>
+          <div class="pkg-time">gotowe w 10 dni</div>
+        </div>
+      </div>
+
+    </div>
+
+    
+    <div class="opieka">
+      <div>
+        <div class="opieka-label">Opieka techniczna (opcja)</div>
+        <div class="opieka-desc">Aktualizacje, kopie zapasowe, drobne zmiany, monitoring bezpieczeństwa.</div>
+      </div>
+      <div class="opieka-price">150 <span>zł/mies.</span></div>
+    </div>
+
+    
+    <div class="section-label">Jak wygląda współpraca</div>
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Krótka rozmowa i wycena</div>
+          <div class="step-desc">Ustalamy zakres, wycena tego samego dnia. Bez zobowiązań.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Zaliczka 50% i brief</div>
+          <div class="step-desc">Krótki formularz z materiałami — logo, kolory, teksty. Resztę biorę na siebie.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Projekt i 2 rundy poprawek</div>
+          <div class="step-desc">Gotowa strona do oceny w ustalonym terminie. Dwie rundy poprawek w cenie.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Wdrożenie i odbiór</div>
+          <div class="step-desc">Domena, hosting, HTTPS — wszystko skonfiguruję. Krótkie szkolenie z zarządzania treścią.</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="cta-box">
+      <h2>Gotowi żeby ruszyć?</h2>
+      <p>Odpisuję w ciągu kilku godzin. Możemy też porozmawiać przez telefon — bez żadnej presji.</p>
+      
+      <a href="mailto:kontakt.deczdev@gmail.com" class="cta-btn">Odpowiedz na tę wiadomość →</a>
+      <a href="https://decz.pl" class="cta-btn-ghost">Zobacz portfolio</a>
+    </div>
+
+  </div>
+
+  
+  <div class="footer">
+    <div class="footer-sig">deczdev — strony internetowe dla lokalnych firm</div>
+    <div class="footer-contact">
+      
+      <a href="tel:+48690000923">+48 690 000 923</a> &nbsp;·&nbsp;
+      <a href="mailto:kontakt.deczdev@gmail.com">kontakt.deczdev@gmail.com</a> &nbsp;·&nbsp;
+      <a href="https://decz.pl">decz.pl</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

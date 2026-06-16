@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
 
@@ -27,15 +28,15 @@
 </nav>
 
 <div class="page-header">
-  <div class="eyebrow">Cennik</div>
-  <h1>Pakiety</h1>
+  <div class="eyebrow" data-aos="fade-right">Cennik</div>
+  <h1 data-aos="fade-up" data-aos-delay="100">Pakiety</h1>
   <p>Cztery jasne opcje — wybierz to, czego potrzebujesz. Żadnych ukrytych kosztów.</p>
 </div>
 
 <section class="section">
   <div class="packages-grid">
 
-    <div class="package-card">
+    <div class="package-card" data-aos="fade-up" data-aos-delay="100">
       <div class="package-name">Mini</div>
       <div class="package-price">500 <span>zł</span></div>
       <p class="package-desc">Najprostszy punkt wejścia — jedna strona z najważniejszymi informacjami. Gotowe w 3 dni.</p>
@@ -52,7 +53,7 @@
       <a href="kontakt.html" class="btn-outline">Zapytaj o wycenę</a>
     </div>
 
-    <div class="package-card">
+    <div class="package-card" data-aos="fade-up" data-aos-delay="200">
       <div class="package-name">Start</div>
       <div class="package-price">800 <span>zł</span></div>
       <p class="package-desc">Idealna wizytówka dla małej firmy. Szybko, czytelnie, gotowe w 5 dni.</p>
@@ -69,7 +70,7 @@
       <a href="kontakt.html" class="btn-outline">Zapytaj o wycenę</a>
     </div>
 
-    <div class="package-card featured">
+    <div class="package-card featured" data-aos="zoom-in" data-aos-delay="300">
       <div class="featured-badge">Najpopularniejszy</div>
       <div class="package-name">Biznes</div>
       <div class="package-price">1 800 <span>zł</span></div>
@@ -87,7 +88,7 @@
       <a href="kontakt.html" class="btn-solid">Zapytaj o wycenę</a>
     </div>
 
-    <div class="package-card">
+    <div class="package-card" data-aos="fade-up" data-aos-delay="400">
       <div class="package-name">Premium</div>
       <div class="package-price">3 500 <span>zł</span></div>
       <p class="package-desc">Zaawansowany projekt z rozbudowanym SEO i priorytetowym wsparciem.</p>
@@ -106,7 +107,7 @@
 
   </div>
 
-  <div class="opieka-bar">
+  <div class="opieka-bar" data-aos="fade-up">
     <div>
       <div style="font-weight:600;font-size:16px;margin-bottom:4px">Opieka miesięczna</div>
       <div style="font-size:14px;color:var(--muted)">Aktualizacje, kopie zapasowe, drobne zmiany, monitoring bezpieczeństwa.</div>
@@ -151,7 +152,7 @@
 <hr class="divider">
 
 <section class="section">
-  <div class="cta-banner">
+  <div class="cta-banner" data-aos="fade-up">
     <div>
       <h2>Nie wiesz który pakiet?</h2>
       <p>Napisz — doradzimy razem bez zobowiązań.</p>
@@ -171,5 +172,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 60 });</script>
 </body>
 </html>

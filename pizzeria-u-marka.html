@@ -261,6 +261,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   footer { padding: 36px 20px; }
 }
 </style>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
 
@@ -286,14 +287,14 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
   <div class="hero-gradient"></div>
   <div class="hero-content">
-    <div class="hero-tag">Kraków · Kazimierz · od 1997</div>
-    <h1>Pizza jak<br>w <em>Neapolu.</em></h1>
-    <p class="hero-sub">Ciasto na zakwasie przez 48 godzin. Piec opalany dębem rozgrzany do 450°C. Składniki prosto z Włoch. Bez kompromisów od 27 lat.</p>
-    <div class="hero-actions">
+    <div class="hero-tag" data-aos="fade-right">Kraków · Kazimierz · od 1997</div>
+    <h1 data-aos="fade-up" data-aos-delay="150">Pizza jak<br>w <em>Neapolu.</em></h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="250">Ciasto na zakwasie przez 48 godzin. Piec opalany dębem rozgrzany do 450°C. Składniki prosto z Włoch. Bez kompromisów od 27 lat.</p>
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="350">
       <a href="#zamow" class="btn-red">Zamów z dostawą →</a>
       <a href="#menu" class="btn-ghost">Zobacz menu</a>
     </div>
-    <div class="hero-chips">
+    <div class="hero-chips" data-aos="fade-up" data-aos-delay="450">
       <span class="chip">🔥 Piec dębowy 450°C</span>
       <span class="chip">🌿 Składniki z Włoch</span>
       <span class="chip">⏱ Dowóz 35 min</span>
@@ -307,7 +308,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <hr class="divider">
 
 <section class="section" id="o-nas">
-  <div class="about-grid">
+  <div class="about-grid" data-aos="fade-up">
     <div class="about-img">
       <img src="img/marek-piec.jpg" alt="Marek Wiśniewski przy piecu">
     </div>
@@ -329,8 +330,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <hr class="divider">
 
 <section class="section" id="menu">
-  <div class="section-eyebrow">Menu</div>
-  <h2 class="section-title">Nasze<br><em>pizze</em></h2>
+  <div class="section-eyebrow" data-aos="fade-right">Menu</div>
+  <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Nasze<br><em>pizze</em></h2>
   <p class="section-sub">Każda robiona na zamówienie — ciasto i sos świeże każdego dnia.</p>
 
   <div class="menu-tabs">
@@ -341,7 +342,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
 
   <div class="menu-grid">
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="0">
       <div class="menu-photo">
         <img src="img/pizza-margherita.jpg" alt="Margherita">
       </div>
@@ -354,7 +355,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="80">
       <div class="menu-photo">
         <img src="img/pizza-diavola.jpg" alt="Diavola">
         <div class="menu-badge">Bestseller</div>
@@ -368,7 +369,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="160">
       <div class="menu-photo">
         <img src="img/pizza-4formaggi.jpg" alt="Quattro Formaggi">
       </div>
@@ -381,7 +382,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="240">
       <div class="menu-photo">
         <img src="img/pizza-specjalna.jpg" alt="u Marka Specjalna">
         <div class="menu-badge">Nowość</div>
@@ -395,7 +396,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="320">
       <div class="menu-photo">
         <img src="img/pizza-prosciutto.jpg" alt="Prosciutto">
       </div>
@@ -408,7 +409,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <div class="menu-card">
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="400">
       <div class="menu-photo">
         <img src="img/pizza-calzone.jpg" alt="Calzone">
       </div>
@@ -430,11 +431,11 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <hr class="divider">
 
 <section class="section" id="atmosfera">
-  <div class="section-eyebrow">Klimat</div>
+  <div class="section-eyebrow" data-aos="fade-right">Klimat</div>
   <h2 class="section-title">Przyjdź<br><em>do nas</em></h2>
   <p class="section-sub">Kazimierz, stare kamienice i prawdziwy włoski klimat — u nas jest miejsce dla każdego.</p>
 
-  <div class="atmo-grid">
+  <div class="atmo-grid" data-aos="fade-up">
     <div class="atmo-item tall">
       <img src="img/wnetrze-glowne.jpg" alt="Wnętrze pizzerii">
     </div>
@@ -460,21 +461,21 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <hr class="divider">
 
 <section class="section" id="opinie">
-  <div class="section-eyebrow">Opinie</div>
+  <div class="section-eyebrow" data-aos="fade-right">Opinie</div>
   <h2 class="section-title">Co mówią<br><em>goście</em></h2>
 
   <div class="reviews-grid">
-    <div class="review">
+    <div class="review" data-aos="fade-up" data-aos-delay="0">
       <div class="review-stars">★★★★★</div>
       <div class="review-text">„Najlepsza pizza w Krakowie bez dyskusji. Ciasto cienkie, chrupiące, składniki świeże. Wracam tu od dziesięciu lat."</div>
       <div class="review-author">Marta W. · 2 tygodnie temu</div>
     </div>
-    <div class="review">
+    <div class="review" data-aos="fade-up" data-aos-delay="150">
       <div class="review-stars">★★★★★</div>
       <div class="review-text">„Przychodzimy całą rodziną od lat. Pan Marek zawsze z uśmiechem, pizza zawsze taka sama — doskonała. To rzadkość."</div>
       <div class="review-author">Tomasz K. · miesiąc temu</div>
     </div>
-    <div class="review">
+    <div class="review" data-aos="fade-up" data-aos-delay="300">
       <div class="review-stars">★★★★★</div>
       <div class="review-text">„Byłam w Neapolu, Rzymie i Florencji. U Marka jest na tym samym poziomie. Serio. I to w Krakowie."</div>
       <div class="review-author">Karolina P. · 3 tygodnie temu</div>
@@ -487,11 +488,11 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <hr class="divider">
 
 <section class="section" id="zamow">
-  <div class="section-eyebrow">Zamówienie</div>
+  <div class="section-eyebrow" data-aos="fade-right">Zamówienie</div>
   <h2 class="section-title">Zamów<br><em>online</em></h2>
   <p class="section-sub">Dowóz w 35 minut lub odbiór bez czekania.</p>
 
-  <div class="order-grid">
+  <div class="order-grid" data-aos="fade-up">
     <div>
       <div class="order-toggle">
         <button class="toggle-btn active" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">🛵 Dowóz</button>
@@ -558,5 +559,7 @@ function switchTab(el) {
   el.classList.add('active');
 }
 </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 60 });</script>
 </body>
 </html>

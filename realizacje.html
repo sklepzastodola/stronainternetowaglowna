@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
 
@@ -27,13 +28,13 @@
 </nav>
 
 <div class="page-header">
-  <div class="eyebrow">Portfolio</div>
-  <h1>Realizacje</h1>
+  <div class="eyebrow" data-aos="fade-right">Portfolio</div>
+  <h1 data-aos="fade-up" data-aos-delay="100">Realizacje</h1>
   <p>Strony dla lokalnych firm z różnych branż — każda dopasowana do potrzeb klienta.</p>
 </div>
 
 <section class="section">
-  <div class="stats-bar">
+  <div class="stats-bar" data-aos="fade-up">
     <div>
       <div class="stat-num">5<span>+</span></div>
       <div class="stat-label">projektów oddanych</div>
@@ -50,7 +51,7 @@
 
   <div class="works-grid">
 
-    <a href="https://www.sklepzastodola.pl" target="_blank" rel="noopener" class="work-card">
+    <a href="https://www.sklepzastodola.pl" target="_blank" rel="noopener" class="work-card" data-aos="fade-up" data-aos-delay="0">
       <div class="work-thumb">
         <div style="font-size:56px">🚜</div>
         <span class="work-tag">Sklep / Oferta</span>
@@ -67,7 +68,7 @@
       </div>
     </a>
 
-    <a href="fryzjer-kowalski.html" class="work-card">
+    <a href="fryzjer-kowalski.html" class="work-card" data-aos="fade-up" data-aos-delay="100">
       <div class="work-thumb">
         <div style="font-size:56px">✂️</div>
         <span class="work-tag">Wizytówka</span>
@@ -84,7 +85,7 @@
       </div>
     </a>
 
-    <a href="pizzeria-u-marka.html" class="work-card">
+    <a href="pizzeria-u-marka.html" class="work-card" data-aos="fade-up" data-aos-delay="200">
       <div class="work-thumb">
         <div style="font-size:56px">🍕</div>
         <span class="work-tag">Restauracja</span>
@@ -101,7 +102,7 @@
       </div>
     </a>
 
-    <div class="work-card no-hover" style="border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:300px">
+    <div class="work-card no-hover" data-aos="fade-up" data-aos-delay="300" style="border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:300px">
       <div style="text-align:center;padding:40px 24px">
         <div style="font-size:36px;margin-bottom:16px;opacity:0.3">+</div>
         <div style="font-size:15px;font-weight:600;color:var(--muted);margin-bottom:8px">Twoja firma tutaj?</div>
@@ -116,7 +117,7 @@
 <hr class="divider">
 
 <section class="section">
-  <div class="cta-banner">
+  <div class="cta-banner" data-aos="fade-up">
     <div>
       <h2>Masz pytanie o realizację?</h2>
       <p>Chętnie opowiem więcej o którymkolwiek projekcie.</p>
@@ -136,5 +137,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, offset: 60 });</script>
 </body>
 </html>
