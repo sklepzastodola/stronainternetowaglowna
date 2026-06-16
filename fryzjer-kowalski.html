@@ -35,7 +35,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -70,7 +69,6 @@ nav {
 }
 .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; }
 
-/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
@@ -122,7 +120,6 @@ nav {
 .meta-item-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .meta-item-val { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; font-style: italic; color: var(--cream); }
 
-/* HERO RIGHT — zdjęcie */
 .hero-right {
   position: relative; overflow: hidden;
   background: var(--surface2);
@@ -155,11 +152,9 @@ nav {
 .hero-badge-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
 .hero-badge-text { font-size: 13px; color: var(--text); font-weight: 500; }
 
-/* ── DIVIDER ── */
 .divider { border: none; border-top: 1px solid var(--border); margin: 0 52px; }
 .ornament { text-align: center; padding: 6px 0; color: var(--gold); font-size: 14px; letter-spacing: 14px; opacity: 0.35; user-select: none; }
-
-/* ── SECTION ── */
+  
 .section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
 .section-eyebrow {
   display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
@@ -175,7 +170,6 @@ nav {
 .section-title em { font-style: italic; font-weight: 600; color: var(--gold); }
 .section-sub { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.8; margin-bottom: 48px; }
 
-/* ── USŁUGI — siatka z kartami ── */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .service-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -203,7 +197,6 @@ nav {
 .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
 .service-price { font-size: 13px; color: var(--gold); font-weight: 600; letter-spacing: 0.04em; }
 
-/* ── CENNIK ── */
 .price-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .price-col { background: var(--surface); border: 1px solid var(--border); padding: 32px 28px; }
 .price-col-title {
@@ -220,7 +213,6 @@ nav {
 .price-name { font-size: 14px; color: var(--text); }
 .price-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); white-space: nowrap; }
 
-/* ── GALERIA ── */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -251,7 +243,6 @@ nav {
 }
 .gallery-placeholder .ph-hint { font-size: 11px; color: var(--muted); opacity: 0.5; line-height: 1.5; }
 
-/* ── OPINIE ── */
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .review {
   background: var(--surface); border: 1px solid var(--border);
@@ -265,7 +256,6 @@ nav {
 }
 .review-author { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
 
-/* ── REZERWACJA ── */
 .booking-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 52px; align-items: start; }
 .booking-form { display: flex; flex-direction: column; gap: 11px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -295,7 +285,6 @@ nav {
   font-size: 13px; color: var(--muted);
 }
 
-/* ── FOOTER ── */
 footer {
   background: var(--surface); border-top: 1px solid var(--border);
   padding: 44px 52px; text-align: center;
@@ -312,7 +301,6 @@ footer {
 .footer-nav a:hover { color: var(--gold); }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
-/* ── DEMO BAR ── */
 .demo-bar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
   background: var(--surface); border-top: 1px solid var(--border);
@@ -321,7 +309,6 @@ footer {
 }
 .demo-bar a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .hero-right { height: 400px; }
@@ -370,7 +357,6 @@ footer {
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Salon fryzjerski · Warszawa</div>
@@ -396,8 +382,6 @@ footer {
     </div>
   </div>
   <div class="hero-right">
-    <!-- ZDJĘCIE HERO: pionowe zdjęcie fryzjera przy pracy lub wnętrza salonu -->
-    <!-- Zalecany rozmiar: min. 900×1200px, format JPG -->
     <img src="img/hero-salon.jpg" alt="Salon fryzjerski Kowalski" class="hero-photo">
     <div class="hero-photo-placeholder">
       <div class="ph-icon">📷</div>
@@ -417,7 +401,6 @@ footer {
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- USŁUGI -->
 <section class="section" id="uslugi">
   <div class="section-eyebrow">Oferta</div>
   <h2 class="section-title">Co dla Ciebie<br><em>zrobimy</em></h2>
@@ -467,7 +450,6 @@ footer {
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- CENNIK -->
 <section class="section" id="cennik">
   <div class="section-eyebrow">Cennik</div>
   <h2 class="section-title">Przejrzyste<br><em>ceny</em></h2>
@@ -505,14 +487,12 @@ footer {
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- GALERIA -->
 <section class="section" id="galeria">
   <div class="section-eyebrow">Galeria</div>
   <h2 class="section-title">Nasze<br><em>realizacje</em></h2>
   <p class="section-sub">Każde zdjęcie to prawdziwy efekt pracy naszego zespołu — bez filtrów i retuszu.</p>
 
   <div class="gallery-grid">
-    <!-- ZDJĘCIE 1: Szerokie — wnętrze salonu lub metamorfoza przed/po -->
     <div class="gallery-item wide">
       <!-- <img src="img/galeria-1.jpg" alt="Wnętrze salonu Kowalski"> -->
       <div class="gallery-placeholder">
@@ -521,49 +501,44 @@ footer {
         <div class="ph-hint">Wnętrze salonu lub efekt koloryzacji z lotu ptaka. Poziome, min. 1200×700 px.</div>
       </div>
     </div>
-    <!-- ZDJĘCIE 2: Pionowe — szczegół fryzury damskiej -->
     <div class="gallery-item">
       <!-- <img src="img/galeria-2.jpg" alt="Koloryzacja balayage"> -->
       <div class="gallery-placeholder">
         <div class="ph-icon">📷</div>
         <div class="ph-label">Zdjęcie 2</div>
-        <div class="ph-hint">Fryzura damska z bliska — koloryzacja lub cięcie. Pionowe.</div>
+        <div class="ph-hint">Fryzura damska z bliska. Pionowe.</div>
       </div>
     </div>
-    <!-- ZDJĘCIE 3: Pionowe — fryzura męska lub broda -->
     <div class="gallery-item">
       <!-- <img src="img/galeria-3.jpg" alt="Strzyżenie męskie"> -->
       <div class="gallery-placeholder">
         <div class="ph-icon">📷</div>
         <div class="ph-label">Zdjęcie 3</div>
-        <div class="ph-hint">Fryzura męska lub broda. Pionowe, dobre oświetlenie boczne.</div>
+        <div class="ph-hint">Fryzura męska lub broda. Pionowe.</div>
       </div>
     </div>
-    <!-- ZDJĘCIE 4: Pionowe — balayage lub ombre -->
     <div class="gallery-item">
       <!-- <img src="img/galeria-4.jpg" alt="Balayage"> -->
       <div class="gallery-placeholder">
         <div class="ph-icon">📷</div>
         <div class="ph-label">Zdjęcie 4</div>
-        <div class="ph-hint">Balayage lub ombre — pokazuje umiejętności koloryzacji.</div>
+        <div class="ph-hint">Balayage lub ombre.</div>
       </div>
     </div>
-    <!-- ZDJĘCIE 5: Pionowe — praca fryzjera przy kliencie -->
     <div class="gallery-item">
       <!-- <img src="img/galeria-5.jpg" alt="Fryzjer przy pracy"> -->
       <div class="gallery-placeholder">
         <div class="ph-icon">📷</div>
         <div class="ph-label">Zdjęcie 5</div>
-        <div class="ph-hint">Fryzjer przy pracy — buduje zaufanie. Pionowe.</div>
+        <div class="ph-hint">Fryzjer przy pracy. Pionowe.</div>
       </div>
     </div>
-    <!-- ZDJĘCIE 6: Szerokie — detale salonu (nożyczki, produkty, lustro) -->
     <div class="gallery-item wide">
       <!-- <img src="img/galeria-6.jpg" alt="Detale salonu"> -->
       <div class="gallery-placeholder">
         <div class="ph-icon">📷</div>
         <div class="ph-label">Zdjęcie 6 — szerokie</div>
-        <div class="ph-hint">Detale salonu — nożyczki, produkty, lustro, fotel. Klimatyczne, poziome.</div>
+        <div class="ph-hint">Detale salonu — nożyczki, produkty, lustro, fotel. Poziome.</div>
       </div>
     </div>
   </div>
@@ -577,7 +552,6 @@ footer {
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- OPINIE -->
 <section class="section" id="opinie">
   <div class="section-eyebrow">Opinie</div>
   <h2 class="section-title">Co mówią<br><em>klienci</em></h2>
@@ -605,7 +579,6 @@ footer {
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- REZERWACJA -->
 <section class="section" id="rezerwacja">
   <div class="section-eyebrow">Rezerwacja</div>
   <h2 class="section-title">Umów wizytę<br><em>online</em></h2>
@@ -653,7 +626,7 @@ footer {
     <div class="contact-side">
       <div>
         <div class="contact-block-label">Adres</div>
-        <div class="contact-block-val">ul. xxx<br>02-512 Warszawa — Mokotów<br><span style="color:var(--muted);font-size:13px">przy metrze Wilanowska</span></div>
+        <div class="contact-block-val">ul. xxx<br>02-512 Warszawa<br><span style="color:var(--muted);font-size:13px">przy metrze Wilanowska</span></div>
       </div>
       <div>
         <div class="contact-block-label">Telefon</div>
@@ -667,14 +640,14 @@ footer {
           <div class="hours-row"><span class="hours-day">Niedziela</span><span class="hours-time">nieczynne</span></div>
         </div>
       </div>
-      <div class="map-ph">📍 ul. xxxx, Warszawa Mokotów</div>
+      <div class="map-ph">📍 ul. xxxx, Warszawa</div>
     </div>
   </div>
 </section>
 
 <footer>
   <a href="#" class="footer-logo">Kowalski <em>&</em> Co</a>
-  <div class="footer-tagline">Salon fryzjerski · Warszawa Mokotów · od 1998</div>
+  <div class="footer-tagline">Salon fryzjerski · Warszawa · od 1998</div>
   <nav class="footer-nav">
     <a href="#uslugi">Usługi</a>
     <a href="#cennik">Cennik</a>
