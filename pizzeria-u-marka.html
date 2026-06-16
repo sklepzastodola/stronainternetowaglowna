@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pizzeria u Marka — Kraków Kazimierz</title>
+<title>Pizzeria u Marka — Kraków</title>
 <meta name="description" content="Prawdziwa pizza z pieca opalanego drewnem. Kraków Kazimierz. Zamów online z dostawą lub przyjdź do nas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -66,7 +65,6 @@ nav {
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; }
 
-/* ── HERO — fullscreen z obrazem ── */
 .hero {
   height: 100vh; min-height: 600px;
   position: relative; overflow: hidden;
@@ -130,11 +128,9 @@ nav {
   font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 500; letter-spacing: 0.03em;
 }
 
-/* ── DIVIDER ── */
 .divider { border: none; border-top: 1px solid var(--border); margin: 0 52px; }
 .ornament { text-align: center; padding: 6px 0; color: var(--gold); font-size: 14px; letter-spacing: 14px; opacity: 0.3; user-select: none; }
 
-/* ── SECTION ── */
 .section { padding: 80px 52px; max-width: 1200px; margin: 0 auto; }
 .section-eyebrow {
   display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
@@ -150,7 +146,6 @@ nav {
 .section-title em { font-style: italic; font-weight: 600; color: var(--red); }
 .section-sub { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.8; margin-bottom: 48px; }
 
-/* ── O NAS — z zdjęciem ── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
 .about-img {
   position: relative; min-height: 480px;
@@ -171,7 +166,6 @@ nav {
 .fact-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; font-style: italic; color: var(--red); line-height: 1; }
 .fact-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.02em; }
 
-/* ── MENU — siatka zdjęć ── */
 .menu-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
 .tab { padding: 10px 22px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: none; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
 .tab.active { color: var(--red); border-bottom-color: var(--red); }
@@ -191,7 +185,6 @@ nav {
 .menu-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--cream); }
 .menu-sizes { font-size: 11px; color: var(--muted); }
 
-/* ── ATMOSFERA — siatka zdjęć ── */
 .atmo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; }
 .atmo-item { position: relative; background: var(--surface2); border-radius: 10px; overflow: hidden; }
 .atmo-item.tall { grid-row: span 2; }
@@ -199,7 +192,6 @@ nav {
 .atmo-item:hover img { transform: scale(1.04); opacity: 1; }
 
 
-/* ── ZAMÓW ── */
 .order-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 52px; align-items: start; }
 .order-toggle { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--border2); border-radius: 9px; overflow: hidden; width: fit-content; }
 .toggle-btn { padding: 10px 24px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; background: none; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em; transition: all 0.15s; }
@@ -226,17 +218,14 @@ nav {
 .hours-time { color: var(--text); font-weight: 500; }
 .map-ph { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; height: 140px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--muted); }
 
-/* ZDJĘCIA GUIDE */
 
 
-/* ── OPINIE ── */
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .review { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px; }
 .review-stars { color: var(--gold); font-size: 11px; letter-spacing: 3px; margin-bottom: 14px; }
 .review-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
 .review-author { font-size: 12px; color: var(--muted); font-weight: 500; }
 
-/* ── FOOTER ── */
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 44px 52px; text-align: center; }
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: var(--cream); display: block; margin-bottom: 8px; text-decoration: none; }
 .footer-logo strong { font-weight: 600; font-style: normal; color: var(--red); }
@@ -246,11 +235,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .footer-nav a:hover { color: var(--gold); }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
-/* ── DEMO BAR ── */
 .demo-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 11px 20px; font-size: 12px; color: var(--muted); }
 .demo-bar a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-img { min-height: 300px; }
@@ -293,7 +280,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO — fullscreen z zdjęciem -->
 <div class="hero">
   <div class="hero-bg">
     <img src="img/hero-pizza.jpg" alt="Pizza u Marka">
@@ -320,7 +306,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- O NAS -->
 <section class="section" id="o-nas">
   <div class="about-grid">
     <div class="about-img">
@@ -343,7 +328,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- MENU -->
 <section class="section" id="menu">
   <div class="section-eyebrow">Menu</div>
   <h2 class="section-title">Nasze<br><em>pizze</em></h2>
@@ -445,7 +429,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- ATMOSFERA -->
 <section class="section" id="atmosfera">
   <div class="section-eyebrow">Klimat</div>
   <h2 class="section-title">Przyjdź<br><em>do nas</em></h2>
@@ -476,7 +459,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- OPINIE -->
 <section class="section" id="opinie">
   <div class="section-eyebrow">Opinie</div>
   <h2 class="section-title">Co mówią<br><em>goście</em></h2>
@@ -504,7 +486,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="ornament">· · ·</div>
 <hr class="divider">
 
-<!-- ZAMÓW -->
 <section class="section" id="zamow">
   <div class="section-eyebrow">Zamówienie</div>
   <h2 class="section-title">Zamów<br><em>online</em></h2>
@@ -543,7 +524,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
     <div class="info-side">
       <div><div class="info-label">Adres</div><div class="info-val">ul. Józefa 14<br>31-056 Kraków — Kazimierz<br><span style="color:var(--muted);font-size:13px">przy Placu Nowym</span></div></div>
-      <div><div class="info-label">Telefon</div><div class="info-val"><a href="tel:+48122345678">+48 12 234 56 78</a></div></div>
+      <div><div class="info-label">Telefon</div><div class="info-val"><a href="tel:+48122345678">+48 xxx xxx xxx</a></div></div>
       <div>
         <div class="info-label">Godziny</div>
         <div class="hours-row"><span class="hours-day">Pon – Czw</span><span class="hours-time">12:00 – 22:00</span></div>
